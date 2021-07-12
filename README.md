@@ -150,6 +150,11 @@ Friend:
     <td>name of the friend</td>
   </tr>
   <tr>
+    <td>birthday</td>
+    <td>NSDate</td>
+    <td>birthday of the friend so the user will get reminders to buy gift for them</td>
+  </tr>
+  <tr>
     <td>interests</td>
     <td>Array of Strings</td>
     <td>interests / likes of the friend that will be used to generate gift ideas</td>
