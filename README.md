@@ -216,7 +216,3 @@ Gift Suggestion / Product:
 * Details Screen
    * (Read/GET) Query the details for the selected gift suggestion
 
-
-
-(Create/POST) Create a new friend object
-
