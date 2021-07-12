@@ -11,11 +11,14 @@ Original App Design Project - Samantha
 
 ## Overview
 ### Description
-Gifter allows you to input your friends' interests, as well as your budgets, and suggests products on the internet that could be fabulous presents for them. 
-
-Right now, planning not to have interaction between people in the app (ie. allow people to input their own interests and suggest gift ideas for themselves). Idea is that people will be surpised, could change.
+Gifter allows you to input your friends' interests, as well as your budgets, and suggests products on the internet that could be great presents for them. 
 
 APIs: 
+Free:
+http://api-doc.axesso.de/#api-Amazon
+http://api-doc.axesso.de/#api-Walmart
+
+Paid:
 https://rapidapi.com/cristiandasilvaapps/api/amazon-search/
 https://rapidapi.com/ApisbyET/api/search-walmart/
 
