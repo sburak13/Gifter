@@ -47,6 +47,7 @@ https://rapidapi.com/ApisbyET/api/search-walmart/
 
 **Optional Nice-to-have Stories**
 
+* User will be notified when friend's birthday is coming up
 * User can input a budget for each friend
 * User can star products for each friend (appear at the top of list)
 * User can search the main products screen
@@ -231,7 +232,6 @@ Gift Suggestion / Product:
    * Example: friend likes "hiking" - search not only for "hiking" but also for "camping gear", "mountain gear", "tent", etc. 
 * Create gift baskets - app will generate a bunch of items that together add up to your budget for that friend, instead of showing each item seperately
 * Combining different API's - Amazon, Walmart, Target, etc.
-* User will be notified when friend's birthday is coming up
 
   
 
