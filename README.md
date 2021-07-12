@@ -97,7 +97,6 @@ https://rapidapi.com/ApisbyET/api/search-walmart/
    * => None (except product links to outside)
 
 
-
 ## Wireframes
 ![Wireframes 2](https://user-images.githubusercontent.com/26338000/125311303-4fe7dd00-e301-11eb-843b-6978e77aa5e8.jpg)
 
@@ -107,9 +106,103 @@ https://rapidapi.com/ApisbyET/api/search-walmart/
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
+
 ### Models
-[Add table of models]
+User:
+<table>
+<thead>
+  <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>username</td>
+    <td>String</td>
+    <td>username of the user</td>
+  </tr>
+  <tr>
+    <td>password</td>
+    <td>String</td>
+    <td>password of the user</td>
+  </tr>
+</tbody>
+</table>
+
+Friend:
+<table>
+<thead>
+  <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>name</td>
+    <td>String</td>
+    <td>name of the friend</td>
+  </tr>
+  <tr>
+    <td>interests</td>
+    <td>Array of Strings</td>
+    <td>interests / likes of the friend that will be used to generate gift ideas</td>
+  </tr>
+  <tr>
+    <td>budget</td>
+    <td>Int</td>
+    <td>amount that the user wants to spend on each friend</td>
+  </tr>
+  <tr>
+    <td>image (optional)</td>
+    <td>File</td>
+    <td>picture of the friend</td>
+  </tr>
+</tbody>
+</table>
+
+Gift Suggestion / Product:
+<table>
+<thead>
+  <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>name</td>
+    <td>String</td>
+    <td>name of the gift suggestion</td>
+  </tr>
+  <tr>
+    <td>description</td>
+    <td>String</td>
+    <td>description of the gift suggestion</td>
+  </tr>
+  <tr>
+    <td>price</td>
+    <td>Int</td>
+    <td>cost of the gift suggestion</td>
+  </tr>
+  <tr>
+    <td>image</td>
+    <td>File</td>
+    <td>picture of the gift suggestion</td>
+  </tr>
+  <tr>
+    <td>link</td>
+    <td>String</td>
+    <td>link to to buy the gift suggestion on amazon / walmart / etc.</td>
+  </tr>
+</tbody>
+</table>
+
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
