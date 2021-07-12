@@ -204,6 +204,19 @@ Gift Suggestion / Product:
 
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+* Friends Stream
+   * (Create/POST) Create a new friend object
+* Add/Modify Friend Screen
+   * (Read/GET) Query the current information for the selected friend
+* Friend Specific Stream
+   * (Read/GET) Query all of the friend's interests
+   * (Read/GET) Query all products from keywords with the friend's interests
+   * (Create/POST) Create a new gift suggestion object for each product
+* Details Screen
+   * (Read/GET) Query the details for the selected gift suggestion
+
+
+
+(Create/POST) Create a new friend object
+
