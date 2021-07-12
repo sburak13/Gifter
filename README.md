@@ -211,7 +211,8 @@ Gift Suggestion / Product:
    * (Read/GET) Query the current information for the selected friend
 * Friend Specific Stream
    * (Read/GET) Query all of the friend's interests
-   * (Read/GET) Query all products from keywords with the friend's interests
+   * (Read/GET) Find words related to friend's interests
+   * (Read/GET) Query all products from keywords with the friend's interests + related words
    * (Create/POST) Create a new gift suggestion object for each product
 * Details Screen
    * (Read/GET) Query the details for the selected gift suggestion
