@@ -226,6 +226,7 @@ Gift Suggestion / Product:
    * Example: friend likes "hiking" - search not only for "hiking" but also for "camping gear", "mountain gear", "tent", etc. 
 * Create gift baskets - app will generate a bunch of items that together add up to your budget for that friend, instead of showing each item seperately
 * Combining different API's - Amazon, Walmart, Target, etc.
+* User will be notified when friend's birthday is coming up
 
   
 
