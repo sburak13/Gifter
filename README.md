@@ -217,3 +217,11 @@ Gift Suggestion / Product:
 * Details Screen
    * (Read/GET) Query the details for the selected gift suggestion
 
+### Ways to Increase Algorithmic Complexity
+
+* Generates products not just based on the friend's exact interests, but also on related keywords
+   * Example: friend likes "hiking" - search not only for "hiking" but also for "camping gear", "mountain gear", "tent", etc. 
+* Create gift baskets - app will generate a bunch of items that together add up to your budget for that friend, instead of showing each item seperately
+
+  
+
