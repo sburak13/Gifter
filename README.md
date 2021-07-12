@@ -43,13 +43,13 @@ https://rapidapi.com/ApisbyET/api/search-walmart/
 * User can add "interests" to friends
 * User can see a suggested list of products for each friend
 * User can click on products to see a more detailed view (including link to buy)
-* User can scroll through a main products screen and add any product to a friend's list
 
 **Optional Nice-to-have Stories**
 
 * User will be notified when friend's birthday is coming up
 * User can input a budget for each friend
 * User can star products for each friend (appear at the top of list)
+* User can scroll through a main products screen and add any product to a friend's list
 * User can search the main products screen
 * User can input friends' ages
 
