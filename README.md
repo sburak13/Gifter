@@ -99,8 +99,8 @@ https://rapidapi.com/ApisbyET/api/search-walmart/
 
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+![Wireframes 2](https://user-images.githubusercontent.com/26338000/125311303-4fe7dd00-e301-11eb-843b-6978e77aa5e8.jpg)
+
 
 ### [BONUS] Digital Wireframes & Mockups
 
