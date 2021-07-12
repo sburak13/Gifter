@@ -58,7 +58,7 @@ https://rapidapi.com/ApisbyET/api/search-walmart/
    * User can login (and logout)
 * Registration Screen
    * User can create a new account
-* Main Stream
+* Main Stream (OPT)
     * User can scroll through a main products screen and add any product to a friend's list
     * (OPT) User can search the main products screen
 * Friends Screen
