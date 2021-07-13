@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,6 +40,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="didTapLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bi2-ju-Rjb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rd-t7-SFp">
                                 <rect key="frame" x="175" y="596" width="64" height="34"/>
@@ -47,6 +50,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
+                                    <action selector="didTapSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="efS-tZ-Qry"/>
                                     <segue destination="qZE-1y-xKZ" kind="presentation" identifier="registerSegue" modalPresentationStyle="fullScreen" id="aEa-A7-MZG"/>
                                 </connections>
                             </button>
@@ -62,6 +66,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="passwordTextField" destination="3bS-HP-G69" id="nZU-dj-FM5"/>
+                        <outlet property="usernameTextField" destination="qWU-eu-g6Q" id="WWU-VP-mIF"/>
                         <segue destination="ZSE-Rl-ThD" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="HI0-po-Op1"/>
                     </connections>
                 </viewController>
@@ -69,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="20" y="94"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="QaV-tG-YW5">
             <objects>
-                <viewController id="04O-7E-VYb" sceneMemberID="viewController">
+                <viewController id="04O-7E-VYb" customClass="SignUpViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iu3-bp-uYK">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,6 +107,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="didTapRegister:" destination="04O-7E-VYb" eventType="touchUpInside" id="GWg-hv-DCN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cZI-yc-pED"/>
@@ -110,6 +119,8 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="L3h-3p-f4p"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="passwordTextField" destination="kV7-y3-cRb" id="ZDR-wI-eE5"/>
+                        <outlet property="usernameTextField" destination="1Hb-PC-5e6" id="1QV-hz-5wd"/>
                         <segue destination="ZSE-Rl-ThD" kind="presentation" identifier="signUpSegue" modalPresentationStyle="fullScreen" id="btJ-A4-cIf"/>
                     </connections>
                 </viewController>
@@ -208,7 +219,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="btJ-A4-cIf"/>
+        <segue reference="HI0-po-Op1"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.3" catalog="system" width="128" height="62"/>

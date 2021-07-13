@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,13 +11,14 @@
 		3AD38C15A26188D8CDA8D770 /* Pods_Gifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE90673B65A6247B8221830B /* Pods_Gifter.framework */; };
 		72B73561269D058300EC3322 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B73560269D058300EC3322 /* AppDelegate.m */; };
 		72B73564269D058300EC3322 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B73563269D058300EC3322 /* SceneDelegate.m */; };
-		72B73567269D058300EC3322 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B73566269D058300EC3322 /* ViewController.m */; };
 		72B7356A269D058300EC3322 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B73568269D058300EC3322 /* Main.storyboard */; };
 		72B7356C269D058400EC3322 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72B7356B269D058400EC3322 /* Assets.xcassets */; };
 		72B7356F269D058400EC3322 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B7356D269D058400EC3322 /* LaunchScreen.storyboard */; };
 		72B73572269D058400EC3322 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B73571269D058400EC3322 /* main.m */; };
 		72B7357C269D058400EC3322 /* GifterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B7357B269D058400EC3322 /* GifterTests.m */; };
 		72B73587269D058400EC3322 /* GifterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B73586269D058400EC3322 /* GifterUITests.m */; };
+		72B735A2269D5FB500EC3322 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735A1269D5FB500EC3322 /* LoginViewController.m */; };
+		72B735A5269D602300EC3322 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735A4269D602300EC3322 /* SignUpViewController.m */; };
 		BB5E358AFC81B10F0EA90981 /* Pods_Gifter_GifterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953822AD74C9FCF05EDEAB42 /* Pods_Gifter_GifterUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,8 +48,6 @@
 		72B73560269D058300EC3322 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		72B73562269D058300EC3322 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		72B73563269D058300EC3322 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		72B73565269D058300EC3322 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		72B73566269D058300EC3322 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		72B73569269D058300EC3322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		72B7356B269D058400EC3322 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72B7356E269D058400EC3322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,6 +59,10 @@
 		72B73582269D058400EC3322 /* GifterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B73586269D058400EC3322 /* GifterUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GifterUITests.m; sourceTree = "<group>"; };
 		72B73588269D058400EC3322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72B735A0269D5FB500EC3322 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		72B735A1269D5FB500EC3322 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		72B735A3269D602300EC3322 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		72B735A4269D602300EC3322 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		953822AD74C9FCF05EDEAB42 /* Pods_Gifter_GifterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gifter_GifterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B236C7D7F098AEA935595453 /* Pods-GifterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifterTests.debug.xcconfig"; path = "Target Support Files/Pods-GifterTests/Pods-GifterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9F0EE85E583401907AE1710 /* Pods_GifterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,7 +109,6 @@
 				B236C7D7F098AEA935595453 /* Pods-GifterTests.debug.xcconfig */,
 				2228C5033F9D56DC34568639 /* Pods-GifterTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -135,12 +137,13 @@
 		72B7355E269D058300EC3322 /* Gifter */ = {
 			isa = PBXGroup;
 			children = (
+				72B73596269D5D2500EC3322 /* View Controllers */,
+				72B73595269D5D1700EC3322 /* Models */,
+				72B73594269D5D0400EC3322 /* Views */,
 				72B7355F269D058300EC3322 /* AppDelegate.h */,
 				72B73560269D058300EC3322 /* AppDelegate.m */,
 				72B73562269D058300EC3322 /* SceneDelegate.h */,
 				72B73563269D058300EC3322 /* SceneDelegate.m */,
-				72B73565269D058300EC3322 /* ViewController.h */,
-				72B73566269D058300EC3322 /* ViewController.m */,
 				72B73568269D058300EC3322 /* Main.storyboard */,
 				72B7356B269D058400EC3322 /* Assets.xcassets */,
 				72B7356D269D058400EC3322 /* LaunchScreen.storyboard */,
@@ -166,6 +169,31 @@
 				72B73588269D058400EC3322 /* Info.plist */,
 			);
 			path = GifterUITests;
+			sourceTree = "<group>";
+		};
+		72B73594269D5D0400EC3322 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		72B73595269D5D1700EC3322 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		72B73596269D5D2500EC3322 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				72B735A0269D5FB500EC3322 /* LoginViewController.h */,
+				72B735A1269D5FB500EC3322 /* LoginViewController.m */,
+				72B735A3269D602300EC3322 /* SignUpViewController.h */,
+				72B735A4269D602300EC3322 /* SignUpViewController.m */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		DDA315301D89538C0AAFAFC6 /* Frameworks */ = {
@@ -415,7 +443,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72B73567269D058300EC3322 /* ViewController.m in Sources */,
+				72B735A2269D5FB500EC3322 /* LoginViewController.m in Sources */,
+				72B735A5269D602300EC3322 /* SignUpViewController.m in Sources */,
 				72B73561269D058300EC3322 /* AppDelegate.m in Sources */,
 				72B73572269D058400EC3322 /* main.m in Sources */,
 				72B73564269D058300EC3322 /* SceneDelegate.m in Sources */,
