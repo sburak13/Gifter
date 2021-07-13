@@ -152,33 +152,54 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hanching Wang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvQ-Qc-Xzs">
-                                                    <rect key="frame" x="119" y="27" width="128" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hanching Wang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvQ-Qc-Xzs">
+                                                    <rect key="frame" x="119" y="27" width="202" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Auk-t5-Qas">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Auk-t5-Qas">
                                                     <rect key="frame" x="20" y="27" width="75" height="75"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="LZc-mN-a8o"/>
+                                                        <constraint firstAttribute="height" constant="78.329999999999998" id="dTy-hb-0qa"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1t-1d-TjC">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1t-1d-TjC">
                                                     <rect key="frame" x="340" y="11" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="CTd-KK-fJX"/>
+                                                        <constraint firstAttribute="height" constant="30" id="f6i-KJ-6ta"/>
+                                                    </constraints>
                                                     <state key="normal" title="Edit"/>
+                                                    <connections>
+                                                        <action selector="didTapEdit:" destination="sFM-4d-vNt" eventType="touchUpInside" id="hzd-0m-tIw"/>
+                                                    </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cooking, Outer Space, Computer Science" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLG-kz-v9Z">
-                                                    <rect key="frame" x="119" y="49" width="251" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cooking, Outer Space, Computer Science" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLG-kz-v9Z">
+                                                    <rect key="frame" x="119" y="56" width="251" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iLG-kz-v9Z" firstAttribute="leading" secondItem="Auk-t5-Qas" secondAttribute="trailing" constant="24" id="05D-Hx-88p"/>
+                                                <constraint firstItem="O1t-1d-TjC" firstAttribute="top" secondItem="Moh-tq-0io" secondAttribute="topMargin" id="1Jn-Wz-5hu"/>
+                                                <constraint firstItem="O1t-1d-TjC" firstAttribute="trailing" secondItem="Moh-tq-0io" secondAttribute="trailingMargin" id="A3p-Tk-vET"/>
+                                                <constraint firstItem="OvQ-Qc-Xzs" firstAttribute="leading" secondItem="Auk-t5-Qas" secondAttribute="trailing" constant="24" id="IIE-1X-uqV"/>
+                                                <constraint firstItem="iLG-kz-v9Z" firstAttribute="top" secondItem="OvQ-Qc-Xzs" secondAttribute="bottom" constant="8" id="Li4-5t-LeB"/>
+                                                <constraint firstItem="Auk-t5-Qas" firstAttribute="top" secondItem="Moh-tq-0io" secondAttribute="topMargin" constant="14" id="Z1W-H6-TFk"/>
+                                                <constraint firstItem="OvQ-Qc-Xzs" firstAttribute="top" secondItem="Moh-tq-0io" secondAttribute="topMargin" constant="16" id="aV4-gH-fdS"/>
+                                                <constraint firstItem="Auk-t5-Qas" firstAttribute="leading" secondItem="Moh-tq-0io" secondAttribute="leadingMargin" id="bQo-TQ-ZDS"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Auk-t5-Qas" secondAttribute="bottom" constant="10.67" id="hiA-d4-kX6"/>
+                                                <constraint firstItem="O1t-1d-TjC" firstAttribute="leading" secondItem="OvQ-Qc-Xzs" secondAttribute="trailing" constant="19" id="qXb-hc-G9C"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="iLG-kz-v9Z" secondAttribute="bottom" constant="16" id="xC6-0r-Ts2"/>
+                                                <constraint firstItem="iLG-kz-v9Z" firstAttribute="trailing" secondItem="Moh-tq-0io" secondAttribute="trailingMargin" id="yxq-oJ-ap8"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="sSb-im-rjt" kind="presentation" trigger="accessoryAction" modalPresentationStyle="fullScreen" id="dR6-gH-VaR"/>
+                                            <segue destination="sSb-im-rjt" kind="presentation" identifier="streamSegue" trigger="accessoryAction" modalPresentationStyle="fullScreen" id="dR6-gH-VaR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -195,19 +216,20 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="jlv-RV-Duc">
                             <connections>
-                                <segue destination="0PC-5e-leA" kind="presentation" modalPresentationStyle="fullScreen" id="GbT-1Q-iVh"/>
+                                <action selector="didTapAdd:" destination="sFM-4d-vNt" id="OEp-qn-MAr"/>
+                                <segue destination="0PC-5e-leA" kind="presentation" identifier="addEditSegue" modalPresentationStyle="fullScreen" id="GbT-1Q-iVh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7H9-VV-bXK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1334" y="1591"/>
+            <point key="canvasLocation" x="-1335.3846153846152" y="1590.995260663507"/>
         </scene>
-        <!--View Controller-->
+        <!--Product Stream View Controller-->
         <scene sceneID="iUJ-he-3Bh">
             <objects>
-                <viewController id="vcw-9t-2ex" sceneMemberID="viewController">
+                <viewController id="vcw-9t-2ex" customClass="ProductStreamViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sVN-Jt-1EC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -245,7 +267,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="7f9-ga-Ih8" kind="show" id="iNN-wT-UU9"/>
+                                            <segue destination="7f9-ga-Ih8" kind="show" identifier="detailsSegue" id="iNN-wT-UU9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -255,7 +277,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="dgl-bA-4Pk">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Tiz-0c-GoX"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Tiz-0c-GoX">
+                            <connections>
+                                <action selector="didTapBackButton:" destination="vcw-9t-2ex" id="dXc-pt-NQQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRZ-Rr-U9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -334,7 +360,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="riR-Ab-vhG">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="0vE-aJ-s9d"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="0vE-aJ-s9d">
+                            <connections>
+                                <action selector="didTapBackButton:" destination="hJr-BJ-JeB" id="5ck-lQ-vuX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
             </objects>
@@ -396,7 +426,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="91U-it-A7D">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="eq2-im-hLr"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="eq2-im-hLr">
+                            <connections>
+                                <action selector="didTapBackButton:" destination="iaK-ca-Czo" id="3hu-DI-q9h"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="YTJ-Ga-Z74"/>
                     </navigationItem>
                 </viewController>
@@ -424,7 +458,7 @@
         <!--People-->
         <scene sceneID="Hgu-pi-34o">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1LX-uh-bU9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PeopleNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="1LX-uh-bU9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="People" image="person.3" catalog="system" id="93S-7X-LwQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z4L-Jw-lxI">
@@ -479,7 +513,7 @@
         <!--Navigation Controller-->
         <scene sceneID="9Mi-yr-Hxm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sSb-im-rjt" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StreamNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="sSb-im-rjt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3JK-xC-8EN">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -515,7 +549,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="btJ-A4-cIf"/>
+        <segue reference="HI0-po-Op1"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.3" catalog="system" width="128" height="62"/>

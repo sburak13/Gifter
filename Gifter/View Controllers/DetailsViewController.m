@@ -6,6 +6,8 @@
 //
 
 #import "DetailsViewController.h"
+#import "SceneDelegate.h"
+#import "ProductStreamViewController.h"
 
 @interface DetailsViewController ()
 
@@ -16,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)didTapBackButton:(id)sender {
+    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    // Remember to set the Storyboard ID to LoginViewController
+    ProductStreamViewController *productStreamViewController = [storyboard instantiateViewControllerWithIdentifier:@"StreamNavViewController"];
+    sceneDelegate.window.rootViewController = productStreamViewController;
 }
 
 /*

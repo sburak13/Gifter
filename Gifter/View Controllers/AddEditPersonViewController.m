@@ -6,6 +6,8 @@
 //
 
 #import "AddEditPersonViewController.h"
+#import "SceneDelegate.h"
+#import "PeopleViewController.h"
 
 @interface AddEditPersonViewController ()
 
@@ -27,5 +29,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)didTapBackButton:(id)sender {
+    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    // Remember to set the Storyboard ID to LoginViewController
+    PeopleViewController *peopleViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeopleNavViewController"];
+    sceneDelegate.window.rootViewController = peopleViewController;
+}
 
 @end

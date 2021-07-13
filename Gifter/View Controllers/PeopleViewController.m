@@ -42,6 +42,14 @@
     }];
 }
 
+- (IBAction)didTapAdd:(id)sender {
+    [self performSegueWithIdentifier:@"addEditSegue" sender:nil];
+}
+
+- (IBAction)didTapEdit:(id)sender {
+    [self performSegueWithIdentifier:@"addEditSegue" sender:nil];
+}
+
 
 /*
 #pragma mark - Navigation
