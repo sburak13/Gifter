@@ -1,0 +1,6 @@
+framework module Pods_GifterTests {
+  umbrella header "Pods-GifterTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
