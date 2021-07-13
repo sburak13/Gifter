@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,7 +116,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="uhv-BY-FU6">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="L3h-3p-f4p"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="L3h-3p-f4p">
+                            <connections>
+                                <action selector="didTapBackButton:" destination="04O-7E-VYb" id="5tv-Sw-Q0N"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="passwordTextField" destination="kV7-y3-cRb" id="ZDR-wI-eE5"/>
@@ -128,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="2140" y="-145.02369668246445"/>
         </scene>
-        <!--View Controller-->
+        <!--People View Controller-->
         <scene sceneID="DeJ-k2-i8H">
             <objects>
-                <viewController id="sFM-4d-vNt" sceneMemberID="viewController">
+                <viewController id="sFM-4d-vNt" customClass="PeopleViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tiy-BG-cIw">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,7 +160,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="lm3-Hg-brS">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="qTo-Yt-3T6"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="qTo-Yt-3T6">
+                            <connections>
+                                <action selector="didTapLogout:" destination="sFM-4d-vNt" id="vLY-Ls-tej"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7H9-VV-bXK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -166,7 +174,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="v9O-Wk-Fkg">
             <objects>
-                <tabBarController id="ZSE-Rl-ThD" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeTabBarViewController" id="ZSE-Rl-ThD" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XXT-Aa-sge">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -219,7 +227,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HI0-po-Op1"/>
+        <segue reference="btJ-A4-cIf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.3" catalog="system" width="128" height="62"/>

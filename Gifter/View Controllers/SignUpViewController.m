@@ -7,6 +7,8 @@
 
 #import "SignUpViewController.h"
 #import <Parse/Parse.h>
+#import "SceneDelegate.h"
+#import "LoginViewController.h"
 
 @interface SignUpViewController ()
 
@@ -70,6 +72,16 @@
         }];
     }
 }
+
+- (IBAction)didTapBackButton:(id)sender {
+    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    // Remember to set the Storyboard ID to LoginViewController
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    sceneDelegate.window.rootViewController = loginViewController;
+}
+
 
 /*
 #pragma mark - Navigation
