@@ -21,6 +21,9 @@
 		72B735A5269D602300EC3322 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735A4269D602300EC3322 /* SignUpViewController.m */; };
 		72B735A8269D62FD00EC3322 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735A7269D62FD00EC3322 /* PeopleViewController.m */; };
 		72B735B1269DF68800EC3322 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B0269DF68800EC3322 /* Person.m */; };
+		72B735B4269E172600EC3322 /* AddEditPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B3269E172600EC3322 /* AddEditPersonViewController.m */; };
+		72B735B7269E176100EC3322 /* ProductStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B6269E176100EC3322 /* ProductStreamViewController.m */; };
+		72B735BA269E177100EC3322 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B9269E177100EC3322 /* DetailsViewController.m */; };
 		BB5E358AFC81B10F0EA90981 /* Pods_Gifter_GifterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953822AD74C9FCF05EDEAB42 /* Pods_Gifter_GifterUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,12 @@
 		72B735A7269D62FD00EC3322 /* PeopleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
 		72B735AF269DF68800EC3322 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		72B735B0269DF68800EC3322 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		72B735B2269E172600EC3322 /* AddEditPersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddEditPersonViewController.h; sourceTree = "<group>"; };
+		72B735B3269E172600EC3322 /* AddEditPersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddEditPersonViewController.m; sourceTree = "<group>"; };
+		72B735B5269E176100EC3322 /* ProductStreamViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductStreamViewController.h; sourceTree = "<group>"; };
+		72B735B6269E176100EC3322 /* ProductStreamViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductStreamViewController.m; sourceTree = "<group>"; };
+		72B735B8269E177100EC3322 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		72B735B9269E177100EC3322 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		953822AD74C9FCF05EDEAB42 /* Pods_Gifter_GifterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gifter_GifterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B236C7D7F098AEA935595453 /* Pods-GifterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifterTests.debug.xcconfig"; path = "Target Support Files/Pods-GifterTests/Pods-GifterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9F0EE85E583401907AE1710 /* Pods_GifterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +211,12 @@
 				72B735A4269D602300EC3322 /* SignUpViewController.m */,
 				72B735A6269D62FD00EC3322 /* PeopleViewController.h */,
 				72B735A7269D62FD00EC3322 /* PeopleViewController.m */,
+				72B735B2269E172600EC3322 /* AddEditPersonViewController.h */,
+				72B735B3269E172600EC3322 /* AddEditPersonViewController.m */,
+				72B735B5269E176100EC3322 /* ProductStreamViewController.h */,
+				72B735B6269E176100EC3322 /* ProductStreamViewController.m */,
+				72B735B8269E177100EC3322 /* DetailsViewController.h */,
+				72B735B9269E177100EC3322 /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -454,10 +469,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				72B735A2269D5FB500EC3322 /* LoginViewController.m in Sources */,
+				72B735BA269E177100EC3322 /* DetailsViewController.m in Sources */,
 				72B735A5269D602300EC3322 /* SignUpViewController.m in Sources */,
 				72B735B1269DF68800EC3322 /* Person.m in Sources */,
 				72B73561269D058300EC3322 /* AppDelegate.m in Sources */,
 				72B735A8269D62FD00EC3322 /* PeopleViewController.m in Sources */,
+				72B735B4269E172600EC3322 /* AddEditPersonViewController.m in Sources */,
+				72B735B7269E176100EC3322 /* ProductStreamViewController.m in Sources */,
 				72B73572269D058400EC3322 /* main.m in Sources */,
 				72B73564269D058300EC3322 /* SceneDelegate.m in Sources */,
 			);
