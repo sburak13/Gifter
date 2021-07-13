@@ -145,7 +145,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="125" id="sfo-5Z-stK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="125" id="sfo-5Z-stK" customClass="PersonCell">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sfo-5Z-stK" id="Moh-tq-0io">
@@ -199,6 +199,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="interestsLabel" destination="iLG-kz-v9Z" id="s9L-wM-xfh"/>
+                                            <outlet property="nameLabel" destination="OvQ-Qc-Xzs" id="ZCj-RZ-kMR"/>
                                             <segue destination="sSb-im-rjt" kind="presentation" identifier="streamSegue" trigger="accessoryAction" modalPresentationStyle="fullScreen" id="dR6-gH-VaR"/>
                                         </connections>
                                     </tableViewCell>
@@ -221,6 +223,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="peopleTableView" destination="KQB-sJ-Pmb" id="LdJ-om-bzX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7H9-VV-bXK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -431,8 +436,15 @@
                                 <action selector="didTapBackButton:" destination="iaK-ca-Czo" id="3hu-DI-q9h"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="YTJ-Ga-Z74"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="YTJ-Ga-Z74">
+                            <connections>
+                                <action selector="didTapDone:" destination="iaK-ca-Czo" id="Yku-oi-Oy6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="CK1-mP-JP9" id="zxM-QI-Yt6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVk-Sg-6bb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

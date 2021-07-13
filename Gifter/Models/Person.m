@@ -16,9 +16,10 @@
     return @"Person";
 }
 
-+ (void) createPerson: ( NSString * _Nullable )image withInterests: ( NSMutableArray * _Nullable )interests withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void)createPerson: ( NSString * _Nullable )name withInterests: ( NSMutableArray * _Nullable )interests withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Person *newPerson = [Person new];
+    newPerson.name = name;
     newPerson.interests = interests;
     
     [newPerson saveInBackgroundWithBlock: completion];

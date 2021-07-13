@@ -9,8 +9,11 @@
 #import <Parse/Parse.h>
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
+#import "PersonCell.h"
 
-@interface PeopleViewController ()
+@interface PeopleViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic) NSMutableArray *peopleArray;
 
 @end
 
@@ -18,8 +21,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.peopleTableView.dataSource = self;
+    self.peopleTableView.delegate = self;
+    
+    [self loadPeople];
 }
+
+- (void)loadPeople {
+    // construct PFQuery
+    PFQuery *personQuery = [Person query];
+    [personQuery orderByDescending:@"createdAt"];
+    personQuery.limit = 20;
+
+    // fetch data asynchronously
+    [personQuery findObjectsInBackgroundWithBlock:^(NSArray<Person *> * _Nullable people, NSError * _Nullable error) {
+        if (people) {
+            // do something with the data fetched
+            self.peopleArray = people;
+            [self.peopleTableView reloadData];
+        }
+        else {
+            // handle error
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
 
 - (IBAction)didTapLogout:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
@@ -50,6 +78,19 @@
     [self performSegueWithIdentifier:@"addEditSegue" sender:nil];
 }
 
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    // PersonCell *cell = [self.peopleTableView dequeueReusableCellWithIdentifier:@"PersonCell" forIndexPath:indexPath];
+    PersonCell *cell = [self.peopleTableView dequeueReusableCellWithIdentifier:@"PersonCell"];
+    Person *person = self.peopleArray[indexPath.row];
+    cell.person = person;
+    
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.peopleArray.count;
+}
 
 /*
 #pragma mark - Navigation
