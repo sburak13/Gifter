@@ -24,7 +24,8 @@
     _person = person;
     
     self.nameLabel.text = person.name;
-    self.interestsLabel.text = person.interests;
+    NSString *interests = [[person.interests valueForKey:@"description"] componentsJoinedByString:@", "];
+    self.interestsLabel.text = interests;
 }
 
 @end

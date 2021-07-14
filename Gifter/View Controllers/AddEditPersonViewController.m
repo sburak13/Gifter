@@ -45,7 +45,7 @@
 }
 
 - (IBAction)didTapDone:(id)sender {
-    [Person createPerson:self.nameTextField.text withInterests:NULL withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    [Person createPerson:self.nameTextField.text withInterests:self.interestsArray withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         
         if (succeeded) {
             NSLog(@"Succesfully created person");
