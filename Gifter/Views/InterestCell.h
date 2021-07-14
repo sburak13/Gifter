@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface InterestCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UITextField *interestTextField;
+@property (weak, nonatomic) IBOutlet UILabel *interestLabel;
 
 @end
 

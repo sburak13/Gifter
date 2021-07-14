@@ -401,16 +401,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="263" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6HW-HZ-24i">
-                                                    <rect key="frame" x="0.0" y="5" width="263" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDy-cH-7gZ">
+                                                    <rect key="frame" x="16" y="11" width="231" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="interestTextField" destination="6HW-HZ-24i" id="yjb-X6-NyU"/>
+                                            <outlet property="interestLabel" destination="LDy-cH-7gZ" id="eTJ-SX-J0Q"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -429,6 +430,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ug-vb-IXz">
+                                <rect key="frame" x="84" y="557" width="191" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMY-aH-dUQ">
+                                <rect key="frame" x="283" y="559" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="didTapAddInterest:" destination="iaK-ca-Czo" eventType="touchUpInside" id="Xtj-E9-4Zj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R9C-1f-ELc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -446,6 +461,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addInterestTextField" destination="2Ug-vb-IXz" id="r0p-eH-VPQ"/>
                         <outlet property="interestsTableView" destination="k43-QC-6Zb" id="jet-jr-yO0"/>
                         <outlet property="nameTextField" destination="CK1-mP-JP9" id="zxM-QI-Yt6"/>
                     </connections>

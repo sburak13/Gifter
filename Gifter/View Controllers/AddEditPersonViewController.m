@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITableView *interestsTableView;
 @property (nonatomic) NSMutableArray *interestsArray;
+@property (weak, nonatomic) IBOutlet UITextField *addInterestTextField;
 
 @end
 
@@ -26,6 +27,8 @@
 
     self.interestsTableView.dataSource = self;
     self.interestsTableView.delegate = self;
+    
+    self.interestsArray = [NSMutableArray array];
 }
 
 - (void)goToFriendsScreen {
@@ -42,8 +45,6 @@
 }
 
 - (IBAction)didTapDone:(id)sender {
-    
-    
     [Person createPerson:self.nameTextField.text withInterests:NULL withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         
         if (succeeded) {
@@ -62,15 +63,25 @@
     }];
 }
 
+- (IBAction)didTapAddInterest:(id)sender {
+    NSString *interest = self.addInterestTextField.text;
+    NSLog(@"%@", interest);
+    [self.interestsArray insertObject:interest atIndex:0];
+    [self.interestsTableView reloadData];
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     InterestCell *cell = [self.interestsTableView dequeueReusableCellWithIdentifier:@"InterestCell"];
     NSString *interest = self.interestsArray[indexPath.row];
-    cell.interestTextField.text = interest;
+    cell.interestLabel.text = interest;
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    if (self.interestsArray.count > 10) {
+        return 10;
+    }
+    return self.interestsArray.count;
 }
 
 /*
