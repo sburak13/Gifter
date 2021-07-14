@@ -83,7 +83,7 @@
     PersonCell *cell = [self.peopleTableView dequeueReusableCellWithIdentifier:@"PersonCell"];
     Person *person = self.peopleArray[indexPath.row];
     cell.person = person;
-    
+    NSLog(@"%@", cell.person.name);
     
     return cell;
 }
