@@ -9,10 +9,13 @@
 #import "SceneDelegate.h"
 #import "PeopleViewController.h"
 #import "Person.h"
+#import "InterestCell.h"
 
-@interface AddEditPersonViewController ()
+@interface AddEditPersonViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITableView *interestsTableView;
+@property (nonatomic) NSMutableArray *interestsArray;
 
 @end
 
@@ -20,7 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    self.interestsTableView.dataSource = self;
+    self.interestsTableView.delegate = self;
 }
 
 - (void)goToFriendsScreen {
@@ -37,6 +42,8 @@
 }
 
 - (IBAction)didTapDone:(id)sender {
+    
+    
     [Person createPerson:self.nameTextField.text withInterests:NULL withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         
         if (succeeded) {
@@ -55,7 +62,16 @@
     }];
 }
 
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    InterestCell *cell = [self.interestsTableView dequeueReusableCellWithIdentifier:@"InterestCell"];
+    NSString *interest = self.interestsArray[indexPath.row];
+    cell.interestTextField.text = interest;
+    return cell;
+}
 
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
 
 /*
 #pragma mark - Navigation
@@ -66,5 +82,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

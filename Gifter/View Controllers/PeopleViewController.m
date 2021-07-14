@@ -109,7 +109,6 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    // PersonCell *cell = [self.peopleTableView dequeueReusableCellWithIdentifier:@"PersonCell" forIndexPath:indexPath];
     PersonCell *cell = [self.peopleTableView dequeueReusableCellWithIdentifier:@"PersonCell"];
     Person *person = self.peopleArray[indexPath.row];
     cell.person = person;

@@ -25,6 +25,7 @@
 		72B735B7269E176100EC3322 /* ProductStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B6269E176100EC3322 /* ProductStreamViewController.m */; };
 		72B735BA269E177100EC3322 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B9269E177100EC3322 /* DetailsViewController.m */; };
 		72B735BD269E302100EC3322 /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735BC269E302100EC3322 /* PersonCell.m */; };
+		72B735C0269E7FF500EC3322 /* InterestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735BF269E7FF500EC3322 /* InterestCell.m */; };
 		BB5E358AFC81B10F0EA90981 /* Pods_Gifter_GifterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953822AD74C9FCF05EDEAB42 /* Pods_Gifter_GifterUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,8 @@
 		72B735B9269E177100EC3322 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		72B735BB269E302100EC3322 /* PersonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCell.h; sourceTree = "<group>"; };
 		72B735BC269E302100EC3322 /* PersonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCell.m; sourceTree = "<group>"; };
+		72B735BE269E7FF500EC3322 /* InterestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterestCell.h; sourceTree = "<group>"; };
+		72B735BF269E7FF500EC3322 /* InterestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterestCell.m; sourceTree = "<group>"; };
 		953822AD74C9FCF05EDEAB42 /* Pods_Gifter_GifterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gifter_GifterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B236C7D7F098AEA935595453 /* Pods-GifterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifterTests.debug.xcconfig"; path = "Target Support Files/Pods-GifterTests/Pods-GifterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9F0EE85E583401907AE1710 /* Pods_GifterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +197,8 @@
 			children = (
 				72B735BB269E302100EC3322 /* PersonCell.h */,
 				72B735BC269E302100EC3322 /* PersonCell.m */,
+				72B735BE269E7FF500EC3322 /* InterestCell.h */,
+				72B735BF269E7FF500EC3322 /* InterestCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 				72B735B7269E176100EC3322 /* ProductStreamViewController.m in Sources */,
 				72B73572269D058400EC3322 /* main.m in Sources */,
 				72B73564269D058300EC3322 /* SceneDelegate.m in Sources */,
+				72B735C0269E7FF500EC3322 /* InterestCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
