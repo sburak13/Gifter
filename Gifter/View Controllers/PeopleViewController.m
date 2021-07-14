@@ -14,6 +14,7 @@
 @interface PeopleViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) NSMutableArray *peopleArray;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -26,6 +27,10 @@
     self.peopleTableView.delegate = self;
     
     [self loadPeople];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadPeople) forControlEvents:UIControlEventValueChanged];
+    [self.peopleTableView insertSubview:self.refreshControl atIndex: 0];
 }
 
 - (void)loadPeople {
@@ -40,6 +45,7 @@
             // do something with the data fetched
             self.peopleArray = people;
             [self.peopleTableView reloadData];
+            [self.refreshControl endRefreshing];
         }
         else {
             // handle error
@@ -47,6 +53,30 @@
         }
     }];
 }
+
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+        // Create NSURL and NSURLRequest
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                                              delegate:nil
+                                                         delegateQueue:[NSOperationQueue mainQueue]];
+        session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:self.peopleArray
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    
+           // ... Use the new data to update the data source ...
+
+           // Reload the tableView now that there is new data
+            [self.peopleTableView reloadData];
+
+           // Tell the refreshControl to stop spinning
+            [refreshControl endRefreshing];
+
+        }];
+    
+        [task resume];
+}
+
 
 
 - (IBAction)didTapLogout:(id)sender {
