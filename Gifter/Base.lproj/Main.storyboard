@@ -132,7 +132,7 @@
             </objects>
             <point key="canvasLocation" x="2095" y="-654"/>
         </scene>
-        <!--People View Controller-->
+        <!--People-->
         <scene sceneID="DeJ-k2-i8H">
             <objects>
                 <viewController id="sFM-4d-vNt" customClass="PeopleViewController" sceneMemberID="viewController">
@@ -201,7 +201,7 @@
                                         <connections>
                                             <outlet property="interestsLabel" destination="iLG-kz-v9Z" id="s9L-wM-xfh"/>
                                             <outlet property="nameLabel" destination="OvQ-Qc-Xzs" id="ZCj-RZ-kMR"/>
-                                            <segue destination="sSb-im-rjt" kind="presentation" identifier="streamSegue" trigger="accessoryAction" modalPresentationStyle="fullScreen" id="dR6-gH-VaR"/>
+                                            <segue destination="sSb-im-rjt" kind="presentation" identifier="streamSegue" modalPresentationStyle="fullScreen" id="1NN-y2-X9V"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -210,7 +210,7 @@
                         <viewLayoutGuide key="safeArea" id="z9Y-OR-Y5V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lm3-Hg-brS">
+                    <navigationItem key="navigationItem" title="People" id="lm3-Hg-brS">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="qTo-Yt-3T6">
                             <connections>
                                 <action selector="didTapLogout:" destination="sFM-4d-vNt" id="vLY-Ls-tej"/>
@@ -231,10 +231,10 @@
             </objects>
             <point key="canvasLocation" x="-1335.3846153846152" y="1590.995260663507"/>
         </scene>
-        <!--Product Stream View Controller-->
+        <!--Stream-->
         <scene sceneID="iUJ-he-3Bh">
             <objects>
-                <viewController id="vcw-9t-2ex" customClass="ProductStreamViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductStreamViewController" id="vcw-9t-2ex" customClass="ProductStreamViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sVN-Jt-1EC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -281,7 +281,7 @@
                         <viewLayoutGuide key="safeArea" id="ePv-Cg-ach"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dgl-bA-4Pk">
+                    <navigationItem key="navigationItem" title="Stream" id="dgl-bA-4Pk">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="Tiz-0c-GoX">
                             <connections>
                                 <action selector="didTapBackButton:" destination="vcw-9t-2ex" id="dXc-pt-NQQ"/>
@@ -293,7 +293,7 @@
             </objects>
             <point key="canvasLocation" x="-475" y="2310"/>
         </scene>
-        <!--Details View Controller-->
+        <!--Item-->
         <scene sceneID="9Pe-Th-Bzt">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZJ-4c-fEG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -364,7 +364,7 @@
                             <constraint firstItem="Jlg-Zd-4TK" firstAttribute="trailing" secondItem="aiP-cU-fW3" secondAttribute="trailing" id="x2h-rf-OUf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="riR-Ab-vhG">
+                    <navigationItem key="navigationItem" title="Item" id="riR-Ab-vhG">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="0vE-aJ-s9d">
                             <connections>
                                 <action selector="didTapBackButton:" destination="hJr-BJ-JeB" id="5ck-lQ-vuX"/>
@@ -547,6 +547,7 @@
             <objects>
                 <navigationController storyboardIdentifier="StreamNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="sSb-im-rjt" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="EUR-Fk-Fnz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3JK-xC-8EN">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

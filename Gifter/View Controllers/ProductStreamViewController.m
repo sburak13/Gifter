@@ -25,7 +25,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     // Remember to set the Storyboard ID to LoginViewController
-    PeopleViewController *peopleViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeopleNavViewController"];
+    PeopleViewController *peopleViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeTabBarViewController"];
     sceneDelegate.window.rootViewController = peopleViewController;
 }
 

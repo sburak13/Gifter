@@ -6,10 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Person.h"
+@import Parse;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AddEditPersonViewController : UIViewController
+
+@property (nonatomic, weak) Person *person;
 
 @end
 
