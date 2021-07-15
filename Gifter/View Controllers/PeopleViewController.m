@@ -132,8 +132,14 @@
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.peopleTableView indexPathForCell:tappedCell];
         Person *person = self.peopleArray[indexPath.row];
+        // person = tappedCell.person;
+        NSLog(@"person's name %@", person.name);
+        
         ProductStreamViewController *productStreamViewController = [segue destinationViewController];
-        // ProductStreamViewController.person = person;
+        
+        // UINavigationController *streamNC = self.tabBarController.viewControllers.firstObject;
+        // productStreamViewController = (ProductStreamViewController *)streamNC.viewControllers.firstObject;
+        productStreamViewController.person = person;
     }
 }
 

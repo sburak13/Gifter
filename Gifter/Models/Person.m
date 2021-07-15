@@ -25,6 +25,9 @@
     [newPerson saveInBackgroundWithBlock: completion];
 }
 
+- (NSMutableArray *)getInterests {
+    return self.interests;
+}
 
 @end
 

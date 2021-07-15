@@ -201,7 +201,7 @@
                                         <connections>
                                             <outlet property="interestsLabel" destination="iLG-kz-v9Z" id="s9L-wM-xfh"/>
                                             <outlet property="nameLabel" destination="OvQ-Qc-Xzs" id="ZCj-RZ-kMR"/>
-                                            <segue destination="eCS-4K-gGh" kind="presentation" destinationCreationSelector="streamSegue" modalPresentationStyle="fullScreen" id="fRI-ny-JNB"/>
+                                            <segue destination="eCS-4K-gGh" kind="presentation" identifier="streamSegue" modalPresentationStyle="fullScreen" id="3cR-Sc-EdD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -272,6 +272,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="descriptionLabel" destination="Nhv-qX-VP5" id="IME-o8-0Eb"/>
+                                            <outlet property="giftImageView" destination="aPx-Ee-ldT" id="ZaF-ds-M2o"/>
+                                            <outlet property="priceLabel" destination="RHf-mK-Pnr" id="pbX-Hk-ScB"/>
                                             <segue destination="7f9-ga-Ih8" kind="show" identifier="detailsSegue" id="iNN-wT-UU9"/>
                                         </connections>
                                     </tableViewCell>
@@ -335,7 +338,6 @@
         <!--Item-->
         <scene sceneID="9Pe-Th-Bzt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZZJ-4c-fEG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="hJr-BJ-JeB" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xuh-es-wOU">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
@@ -411,6 +413,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZZJ-4c-fEG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1092.3076923076924" y="2309.7156398104266"/>
         </scene>

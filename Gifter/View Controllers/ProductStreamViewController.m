@@ -13,6 +13,7 @@
 @interface ProductStreamViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *giftTableView;
+@property (nonatomic) NSMutableArray *giftsArray;
 
 @end
 
@@ -20,19 +21,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    APIManager *api = [APIManager shared];
+    self.giftsArray = [NSMutableArray array];
+    [self loadGifts];
     
-    [api getSearchResultsFor:@"Jeans" completion:^(NSDictionary *data, NSError *error) {
-        if(error){
-            NSLog(@"Error getting search results: %@", error.localizedDescription);
-        }
+}
+
+- (void)loadGifts {
+    
+    NSMutableArray *interests = self.person.interests;
+    NSLog(@"Name %@", self.person.name);
+    // [self.person getInterests];
+    for (NSString* interest in interests) {
         
-        else{
-            NSLog(@"Search data: %@", data);
-        }
-    }];
+        [[APIManager shared] getSearchResultsFor:interest completion:^(NSDictionary *data, NSError *error) {
+            if(error){
+                NSLog(@"Error getting search results: %@", error.localizedDescription);
+            }
+            
+            else{
+                NSLog(@"Search data: %@", data);
+            }
+        }];
+        
+    }
+    
 }
 
 - (IBAction)didTapBackButton:(id)sender {
