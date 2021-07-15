@@ -65,9 +65,10 @@
 
 - (IBAction)didTapAddInterest:(id)sender {
     NSString *interest = self.addInterestTextField.text;
-    NSLog(@"%@", interest);
-    [self.interestsArray insertObject:interest atIndex:0];
-    [self.interestsTableView reloadData];
+    if (![interest isEqualToString:@""]) {
+        [self.interestsArray insertObject:interest atIndex:0];
+        [self.interestsTableView reloadData];
+    }
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

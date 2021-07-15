@@ -8,8 +8,11 @@
 #import "ProductStreamViewController.h"
 #import "SceneDelegate.h"
 #import "PeopleViewController.h"
+#import "APIManager.h"
 
 @interface ProductStreamViewController ()
+
+@property (weak, nonatomic) IBOutlet UITableView *giftTableView;
 
 @end
 
@@ -18,6 +21,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    APIManager *api = [APIManager shared];
+    
+    [api getSearchResultsFor:@"Jeans" completion:^(NSDictionary *data, NSError *error) {
+        if(error){
+            NSLog(@"Error getting search results: %@", error.localizedDescription);
+        }
+        
+        else{
+            NSLog(@"Search data: %@", data);
+        }
+    }];
 }
 
 - (IBAction)didTapBackButton:(id)sender {
