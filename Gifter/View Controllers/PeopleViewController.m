@@ -135,11 +135,23 @@
         // person = tappedCell.person;
         NSLog(@"person's name %@", person.name);
         
-        ProductStreamViewController *productStreamViewController = [segue destinationViewController];
+        //ProductStreamViewController *productStreamViewController = [segue destinationViewController];
         
         // UINavigationController *streamNC = self.tabBarController.viewControllers.firstObject;
         // productStreamViewController = (ProductStreamViewController *)streamNC.viewControllers.firstObject;
+        // productStreamViewController.person = person;
+        
+        
+        
+        /*Get a pointer to the selected row*/
+            // NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+
+        UINavigationController *navController = segue.destinationViewController;
+
+            /*Get a pointer to the ViewController we will segue to*/
+        ProductStreamViewController *productStreamViewController = navController.topViewController;
         productStreamViewController.person = person;
+
     }
 }
 

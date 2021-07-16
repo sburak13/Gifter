@@ -31,10 +31,12 @@
     
     NSMutableArray *interests = self.person.interests;
     NSLog(@"Name %@", self.person.name);
-    // [self.person getInterests];
+    
     for (NSString* interest in interests) {
-        
-        [[APIManager shared] getSearchResultsFor:interest completion:^(NSDictionary *data, NSError *error) {
+        NSLog(@"INTEREST %@", interest);
+        NSString *editedInterest = [interest stringByReplacingOccurrencesOfString:@" "
+                                                        withString:@"%20"];
+        [[APIManager shared] getSearchResultsFor:editedInterest completion:^(NSDictionary *data, NSError *error) {
             if(error){
                 NSLog(@"Error getting search results: %@", error.localizedDescription);
             }

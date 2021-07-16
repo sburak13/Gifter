@@ -201,7 +201,7 @@
                                         <connections>
                                             <outlet property="interestsLabel" destination="iLG-kz-v9Z" id="s9L-wM-xfh"/>
                                             <outlet property="nameLabel" destination="OvQ-Qc-Xzs" id="ZCj-RZ-kMR"/>
-                                            <segue destination="eCS-4K-gGh" kind="presentation" identifier="streamSegue" modalPresentationStyle="fullScreen" id="3cR-Sc-EdD"/>
+                                            <segue destination="sSb-im-rjt" kind="presentation" identifier="streamSegue" modalPresentationStyle="fullScreen" id="upZ-6T-Zxm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -231,7 +231,7 @@
             </objects>
             <point key="canvasLocation" x="-1335.3846153846152" y="1590.995260663507"/>
         </scene>
-        <!--Single Gifts-->
+        <!--Product Stream View Controller-->
         <scene sceneID="iUJ-he-3Bh">
             <objects>
                 <viewController storyboardIdentifier="ProductStreamViewController" id="vcw-9t-2ex" customClass="ProductStreamViewController" sceneMemberID="viewController">
@@ -284,7 +284,7 @@
                         <viewLayoutGuide key="safeArea" id="ePv-Cg-ach"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Single Gifts" id="dgl-bA-4Pk">
+                    <navigationItem key="navigationItem" id="dgl-bA-4Pk">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="Tiz-0c-GoX">
                             <connections>
                                 <action selector="didTapBackButton:" destination="vcw-9t-2ex" id="dXc-pt-NQQ"/>
@@ -327,7 +327,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="sSb-im-rjt" kind="relationship" relationship="viewControllers" id="0g7-9Z-s0M"/>
                         <segue destination="AJ7-vc-ud8" kind="relationship" relationship="viewControllers" id="wr0-Fk-dtr"/>
                     </connections>
                 </tabBarController>
