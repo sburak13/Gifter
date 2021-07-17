@@ -35,7 +35,7 @@
     NSString *requestURL = [baseURLWithKeyword stringByAppendingString: @"&domainCode=com&sortBy=relevanceblender"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURL]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:10.0];
+                                                       timeoutInterval:120.0];
     [request setHTTPMethod:@"GET"];
     [request setAllHTTPHeaderFields:headers];
 

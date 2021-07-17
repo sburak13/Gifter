@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Gift.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *giftImageView;
+
+@property (strong, nonatomic) Gift *gift;
 
 @end
 

@@ -9,11 +9,14 @@
 #import "SceneDelegate.h"
 #import "PeopleViewController.h"
 #import "APIManager.h"
+#import "Gift.h"
+#import "GiftCell.h"
 
-@interface ProductStreamViewController ()
+@interface ProductStreamViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *giftTableView;
-@property (nonatomic) NSMutableArray *giftsArray;
+@property (nonatomic) NSMutableArray *giftsDictionaryArray; // array of NSDictionaries
+@property (nonatomic) NSMutableArray *arrayOfGifts; // array of Gifts
 
 @end
 
@@ -22,7 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.giftsArray = [NSMutableArray array];
+    self.giftTableView.dataSource = self;
+    self.giftTableView.delegate = self;
+    
+    self.giftsDictionaryArray = [NSMutableArray array];
     [self loadGifts];
     
 }
@@ -34,20 +40,32 @@
     
     for (NSString* interest in interests) {
         NSLog(@"INTEREST %@", interest);
-        NSString *editedInterest = [interest stringByReplacingOccurrencesOfString:@" "
-                                                        withString:@"%20"];
-        [[APIManager shared] getSearchResultsFor:editedInterest completion:^(NSDictionary *data, NSError *error) {
+        /*
+        NSData * data =[interest dataUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@"Data = %@",data);
+        NSString * convertedStr =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"Converted String = %@",convertedStr);
+        */
+        NSString *editedInterest = [interest stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        [[APIManager shared] getSearchResultsFor:editedInterest completion:^(NSDictionary *gifts, NSError *error) {
             if(error){
                 NSLog(@"Error getting search results: %@", error.localizedDescription);
             }
-            
             else{
-                NSLog(@"Search data: %@", data);
+                NSArray *giftDetails = gifts[@"searchProductDetails"];
+                // NSLog(@"Search data: %@", giftDetails);
+                // NSLog(@"Items in array: %@", giftDetails.count);
+                for (NSDictionary* gift in giftDetails) {
+                    [self.giftsDictionaryArray addObject:gift];
+                }
+                NSLog(@"Gifts: %@", self.giftsDictionaryArray);
+                self.arrayOfGifts = [Gift giftsWithArray: self.giftsDictionaryArray];
+                NSLog(@"More Gifts: %@", self.arrayOfGifts);
+                [self.giftTableView reloadData];
             }
         }];
         
     }
-    
 }
 
 - (IBAction)didTapBackButton:(id)sender {
@@ -57,6 +75,19 @@
     // Remember to set the Storyboard ID to LoginViewController
     PeopleViewController *peopleViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeTabBarViewController"];
     sceneDelegate.window.rootViewController = peopleViewController;
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    GiftCell *cell = [self.giftTableView dequeueReusableCellWithIdentifier:@"GiftCell"];
+    Gift *gift = self.arrayOfGifts[indexPath.row];
+    cell.gift = gift;
+    NSLog(@"%@", cell.gift.descrip);
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayOfGifts.count;
 }
 
 /*

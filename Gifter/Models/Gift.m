@@ -36,4 +36,19 @@
     return self;
 }
 
++ (NSMutableArray *)giftsWithArray:(NSArray *)dictionaries {
+    
+    NSMutableArray *gifts = [NSMutableArray array];
+    
+    for (NSDictionary *dictionary in dictionaries) {
+        if (dictionary) {
+            Gift *gift = [[Gift alloc] initWithDictionary:dictionary];
+            [gifts addObject:gift];
+        }
+    }
+    
+    return gifts;
+    
+}
+
 @end
