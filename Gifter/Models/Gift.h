@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *asin;
 @property (nonatomic, strong) NSString *descrip;
-@property (nonatomic, strong) NSNumber *price;
+@property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) PFFileObject *image;
 // @property (nonatomic, strong) NSString *link;
 

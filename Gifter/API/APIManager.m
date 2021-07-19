@@ -26,6 +26,7 @@
     return key;
 }
 
+/* old API
 - (void)getSearchResultsFor:(NSString *)keyword completion:(void (^)(NSDictionary *, NSError *))completion {
     NSDictionary *headers = @{ @"x-rapidapi-key": [self getKey],
                                @"x-rapidapi-host": @"axesso-axesso-amazon-data-service-v1.p.rapidapi.com" };
@@ -54,5 +55,36 @@
                                                 }];
     [dataTask resume];
 }
+ */
+
+- (void)getSearchResultsFor:(NSString *)keyword completion:(void (^)(NSDictionary *, NSError *))completion {
+    NSDictionary *headers = @{ @"x-rapidapi-key": [self getKey],
+                               @"x-rapidapi-host": @"amazon-product-reviews-keywords.p.rapidapi.com" };
+
+    NSString *baseURL = @"https://amazon-product-reviews-keywords.p.rapidapi.com/product/search?keyword=";
+    NSString *baseURLWithKeyword = [baseURL stringByAppendingString:keyword];
+    NSString *requestURL = [baseURLWithKeyword stringByAppendingString: @"&country=US&category=aps"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURL]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+    [request setAllHTTPHeaderFields:headers];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        NSLog(@"%@", error);
+                                                        completion(nil, error);
+                                                    } else {
+                                                        // NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                        // NSLog(@"%@", httpResponse);
+                                                        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                                                        completion(dataDictionary, nil);
+                                                    }
+                                                }];
+    [dataTask resume];
+}
+
 
 @end

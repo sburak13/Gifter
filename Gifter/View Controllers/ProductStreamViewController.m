@@ -52,7 +52,7 @@
                 NSLog(@"Error getting search results: %@", error.localizedDescription);
             }
             else{
-                NSArray *giftDetails = gifts[@"searchProductDetails"];
+                NSArray *giftDetails = gifts[@"products"];
                 // NSLog(@"Search data: %@", giftDetails);
                 // NSLog(@"Items in array: %@", giftDetails.count);
                 for (NSDictionary* gift in giftDetails) {

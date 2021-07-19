@@ -6,6 +6,7 @@
 //
 
 #import "Gift.h"
+#import "Parse/Parse.h"
 
 @implementation Gift
 
@@ -24,10 +25,10 @@
     
     if (self) {
         self.asin = dictionary[@"asin"];
-        self.descrip = dictionary[@"productDescription"];
-        self.price = dictionary[@"price"];
+        self.descrip = dictionary[@"title"];
+        self.price = dictionary[@"price"][@"current_price"];
         
-        NSURL *imageUrl = [NSURL URLWithString:dictionary[@"imgUrl"]];
+        NSURL *imageUrl = [NSURL URLWithString:dictionary[@"thumbnail"]];
         NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
         // UIImage *image = [UIImage imageWithData:imageData];
         self.image = [PFFileObject fileObjectWithName:@"image.png" data:imageData];
