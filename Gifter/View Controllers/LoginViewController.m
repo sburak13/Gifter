@@ -37,6 +37,11 @@
     [self loginUser];
 }
 
+- (IBAction)tapView:(id)sender {
+    NSLog(@"hello");
+    [self.view endEditing:true];
+}
+
 - (void)loginUser {
     self.loginAlert.title = @"Invalid Login";
     
@@ -64,9 +69,7 @@
 }
 
 // Test the function below on phone
-- (IBAction)didTapView:(id)sender {
-    [self.view endEditing:true];
-}
+
 
 /*
 #pragma mark - Navigation

@@ -14,7 +14,7 @@
 @dynamic descrip;
 @dynamic price;
 @dynamic image;
-// @dynamic link;
+@dynamic link;
 
 + (nonnull NSString *)parseClassName {
     return @"Gift";
@@ -32,6 +32,8 @@
         NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
         // UIImage *image = [UIImage imageWithData:imageData];
         self.image = [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+        
+        self.link = dictionary[@"url"];
     }
     
     return self;

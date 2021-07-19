@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *descrip;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) PFFileObject *image;
-// @property (nonatomic, strong) NSString *link;
+@property (nonatomic, strong) NSString *link;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
