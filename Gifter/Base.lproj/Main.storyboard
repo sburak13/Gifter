@@ -244,7 +244,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="150" id="eWG-Bi-P0a" customClass="GiftCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GiftCell" rowHeight="150" id="eWG-Bi-P0a" customClass="GiftCell">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eWG-Bi-P0a" id="69q-6x-SXP">
@@ -275,7 +275,7 @@
                                             <outlet property="descriptionLabel" destination="Nhv-qX-VP5" id="IME-o8-0Eb"/>
                                             <outlet property="giftImageView" destination="aPx-Ee-ldT" id="ZaF-ds-M2o"/>
                                             <outlet property="priceLabel" destination="RHf-mK-Pnr" id="pbX-Hk-ScB"/>
-                                            <segue destination="7f9-ga-Ih8" kind="show" identifier="detailsSegue" id="iNN-wT-UU9"/>
+                                            <segue destination="7f9-ga-Ih8" kind="presentation" identifier="detailsSegue" modalPresentationStyle="fullScreen" id="iNN-wT-UU9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

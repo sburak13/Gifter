@@ -15,8 +15,8 @@
 @interface ProductStreamViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *giftTableView;
-@property (nonatomic) NSMutableArray *giftsDictionaryArray; // array of NSDictionaries
-@property (nonatomic) NSMutableArray *arrayOfGifts; // array of Gifts
+@property (strong, nonatomic) NSMutableArray *giftsDictionaryArray; // array of NSDictionaries
+@property (strong, nonatomic) NSMutableArray *arrayOfGifts; // array of Gifts
 
 @end
 
@@ -61,7 +61,11 @@
                 NSLog(@"Gifts: %@", self.giftsDictionaryArray);
                 self.arrayOfGifts = [Gift giftsWithArray: self.giftsDictionaryArray];
                 NSLog(@"More Gifts: %@", self.arrayOfGifts);
-                [self.giftTableView reloadData];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                       // whatever code you need to be run on the main queue such as reloadData
+                    [self.giftTableView reloadData];
+                });
+                
             }
         }];
         
@@ -78,7 +82,7 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    GiftCell *cell = [self.giftTableView dequeueReusableCellWithIdentifier:@"GiftCell"];
+    GiftCell *cell = [self.giftTableView dequeueReusableCellWithIdentifier:@"GiftCell" forIndexPath:indexPath];
     Gift *gift = self.arrayOfGifts[indexPath.row];
     cell.gift = gift;
     NSLog(@"%@", cell.gift.descrip);

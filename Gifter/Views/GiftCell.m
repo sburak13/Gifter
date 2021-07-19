@@ -24,7 +24,9 @@
     _gift = gift;
     
     self.descriptionLabel.text = gift.descrip;
-    self.priceLabel.text = gift.price;
+    NSString *priceString = [gift[@"price"] stringValue];
+    self.priceLabel.text = priceString;
+    //[NSString gift.price stringValue];
     
     // self.giftImageView.image = gift.image;
     
