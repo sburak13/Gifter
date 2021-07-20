@@ -51,7 +51,8 @@
         NSString * convertedStr =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"Converted String = %@",convertedStr);
         */
-        NSString *editedInterest = [interest stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        // NSString *editedInterest = [interest stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        NSString *editedInterest = [interest stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
         [[APIManager shared] getSearchResultsFor:editedInterest completion:^(NSDictionary *gifts, NSError *error) {
             if(error){
                 NSLog(@"Error getting search results: %@", error.localizedDescription);
