@@ -11,11 +11,12 @@
 #import "APIManager.h"
 #import "Gift.h"
 #import "GiftCell.h"
+#import "GiftBasketsViewController.h"
 
 @interface ProductStreamViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *giftTableView;
-@property (strong, nonatomic) NSMutableArray *giftsDictionaryArray; // array of NSDictionaries
+// @property (strong, nonatomic) NSMutableArray *giftsDictionaryArray; // array of NSDictionaries
 @property (strong, nonatomic) NSMutableArray *arrayOfGifts; // array of Gifts
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
@@ -29,12 +30,13 @@
     self.giftTableView.dataSource = self;
     self.giftTableView.delegate = self;
     
-    self.giftsDictionaryArray = [NSMutableArray array];
+    // self.giftsDictionaryArray = [NSMutableArray array];
     
     [self.activityIndicator startAnimating];
     self.activityIndicator.layer.zPosition = 1;
     
     [self loadGifts];
+    // [self passGiftDataToGiftBasketTab];
     
 }
 
@@ -61,12 +63,13 @@
                 NSArray *giftDetails = gifts[@"products"];
                 // NSLog(@"Search data: %@", giftDetails);
                 // NSLog(@"Items in array: %@", giftDetails.count);
+                NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
                 for (NSDictionary* gift in giftDetails) {
-                    [self.giftsDictionaryArray addObject:gift];
+                    [giftsDictionaryArray addObject:gift];
                 }
-                NSLog(@"Gifts: %@", self.giftsDictionaryArray);
-                self.arrayOfGifts = [Gift giftsWithArray: self.giftsDictionaryArray];
-                NSLog(@"More Gifts: %@", self.arrayOfGifts);
+                // NSLog(@"Gifts: %@", giftsDictionaryArray);
+                self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
+                // NSLog(@"More Gifts: %@", self.arrayOfGifts);
                 dispatch_async(dispatch_get_main_queue(), ^{
                        // whatever code you need to be run on the main queue such as reloadData
                     [self.giftTableView reloadData];
@@ -78,6 +81,12 @@
         }];
         
     }
+}
+
+- (void)passGiftDataToGiftBasketTab {
+    GiftBasketsViewController *secondViewController = [[GiftBasketsViewController alloc] init];
+    secondViewController.arrayOfGifts = self.arrayOfGifts; // Set the exposed property
+    // [self.navigationController pushViewController:secondViewController animated:YES];
 }
 
 - (IBAction)didTapBackButton:(id)sender {
@@ -93,7 +102,7 @@
     GiftCell *cell = [self.giftTableView dequeueReusableCellWithIdentifier:@"GiftCell" forIndexPath:indexPath];
     Gift *gift = self.arrayOfGifts[indexPath.row];
     cell.gift = gift;
-    NSLog(@"%@", cell.gift.descrip);
+    // NSLog(@"%@", cell.gift.descrip);
     
     return cell;
 }
@@ -102,14 +111,18 @@
     return self.arrayOfGifts.count;
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue destinationViewController] class] == [GiftBasketsViewController class]) {
+        GiftBasketsViewController *secondViewController = [segue destinationViewController];
+        NSLog(@"hiiiii");
+        secondViewController.arrayOfGifts = self.arrayOfGifts;
+    }
 }
-*/
+
 
 @end
