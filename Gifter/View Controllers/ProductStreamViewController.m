@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *giftTableView;
 @property (strong, nonatomic) NSMutableArray *giftsDictionaryArray; // array of NSDictionaries
 @property (strong, nonatomic) NSMutableArray *arrayOfGifts; // array of Gifts
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -29,6 +30,10 @@
     self.giftTableView.delegate = self;
     
     self.giftsDictionaryArray = [NSMutableArray array];
+    
+    [self.activityIndicator startAnimating];
+    self.activityIndicator.layer.zPosition = 1;
+    
     [self loadGifts];
     
 }
@@ -64,9 +69,11 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                        // whatever code you need to be run on the main queue such as reloadData
                     [self.giftTableView reloadData];
+                    [self.activityIndicator stopAnimating];
                 });
                 
             }
+            
         }];
         
     }
