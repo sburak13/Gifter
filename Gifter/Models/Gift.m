@@ -10,15 +10,13 @@
 
 @implementation Gift
 
+/*
 @dynamic asin;
 @dynamic descrip;
 @dynamic price;
 @dynamic image;
 @dynamic link;
-
-+ (nonnull NSString *)parseClassName {
-    return @"Gift";
-}
+*/
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
@@ -30,8 +28,9 @@
         
         NSURL *imageUrl = [NSURL URLWithString:dictionary[@"thumbnail"]];
         NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
+        self.image = [UIImage imageWithData: imageData];
         // UIImage *image = [UIImage imageWithData:imageData];
-        self.image = [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+        // self.image = [PFFileObject fileObjectWithName:@"image.png" data:imageData];
         
         self.link = dictionary[@"url"];
     }

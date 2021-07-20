@@ -11,12 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Gift : PFObject<PFSubclassing>
+@interface Gift : NSObject
 
 @property (nonatomic, strong) NSString *asin;
 @property (nonatomic, strong) NSString *descrip;
-@property (nonatomic, strong) NSString *price;
-@property (nonatomic, strong) PFFileObject *image;
+@property (nonatomic, strong) NSNumber *price;
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSString *link;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
