@@ -317,7 +317,7 @@
         <!--Gift Baskets-->
         <scene sceneID="vnA-Of-GZK">
             <objects>
-                <viewController id="GO8-Ma-8Lp" sceneMemberID="viewController">
+                <viewController id="GO8-Ma-8Lp" customClass="GiftBasketsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PZa-aV-yJC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -325,7 +325,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Gift Baskets" id="WvS-EI-z2y">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Lqh-C4-Lve"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Lqh-C4-Lve">
+                            <connections>
+                                <action selector="didTapBackButton:" destination="GO8-Ma-8Lp" id="y3f-Mq-0LO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaN-gw-saN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
