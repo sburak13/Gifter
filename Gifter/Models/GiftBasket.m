@@ -7,6 +7,7 @@
 
 #import "GiftBasket.h"
 #import "Gift.h"
+#import <math.h>
 
 @implementation GiftBasket
 
@@ -20,6 +21,7 @@
         for (Gift* gift in gifts) {
             self.totalPrice += [gift.price doubleValue];
         }
+        self.totalPrice = trunc(self.totalPrice * 100) / 100;
 
     }
     
