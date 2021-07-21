@@ -28,20 +28,6 @@
     self.priceLabel.text = priceString;
     
     self.giftImageView.image = gift.image;
-    //[NSString gift.price stringValue];
-    
-    // self.giftImageView.image = gift.image;
-    
-    /*
-    self.postImageView.file = post.image;
-    [self.postImageView loadInBackground];
-    
-    self.usernameLabel.text = post.author.username;
-    self.captionLabel.text = post.caption;
-    
-    NSDate *createdAt = post.createdAt;
-    self.timeLabel.text = createdAt.timeAgoSinceNow;
-     */
 }
 
 @end

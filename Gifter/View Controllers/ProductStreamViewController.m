@@ -84,12 +84,6 @@
     }
 }
 
-- (void)passGiftDataToGiftBasketTab {
-    GiftBasketsViewController *secondViewController = [[GiftBasketsViewController alloc] init];
-    secondViewController.arrayOfGifts = self.arrayOfGifts; // Set the exposed property
-    // [self.navigationController pushViewController:secondViewController animated:YES];
-}
-
 - (IBAction)didTapBackButton:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -112,18 +106,14 @@
     return self.arrayOfGifts.count;
 }
 
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([[segue destinationViewController] class] == [GiftBasketsViewController class]) {
-        GiftBasketsViewController *secondViewController = [segue destinationViewController];
-        NSLog(@"hiiiii");
-        secondViewController.arrayOfGifts = self.arrayOfGifts;
-    }
 }
-
+*/
 
 @end
