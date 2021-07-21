@@ -69,6 +69,7 @@
                 }
                 // NSLog(@"Gifts: %@", giftsDictionaryArray);
                 self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
+                self.person.giftSuggestions = self.arrayOfGifts;
                 // NSLog(@"More Gifts: %@", self.arrayOfGifts);
                 dispatch_async(dispatch_get_main_queue(), ^{
                        // whatever code you need to be run on the main queue such as reloadData

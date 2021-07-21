@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GiftBasket : NSObject
 
 @property (nonatomic) int numItems;
-@property (nonatomic) int totalPrice;
+@property (nonatomic) double totalPrice;
 @property (strong, nonatomic) NSMutableArray *gifts;
 
 - (instancetype)init:(NSMutableArray *)gifts;

@@ -11,6 +11,7 @@
 
 @dynamic name;
 @dynamic interests;
+@dynamic giftSuggestions;
 
 + (nonnull NSString *)parseClassName {
     return @"Person";

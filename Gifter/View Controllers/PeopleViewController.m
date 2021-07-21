@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "PersonCell.h"
 #import "ProductStreamViewController.h"
+#import "GiftBasketsViewController.h"
 
 @interface PeopleViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -138,6 +139,11 @@
         UINavigationController *navController = tabBarController.viewControllers.firstObject;
         ProductStreamViewController *productStreamViewController = navController.topViewController;
         productStreamViewController.person = person;
+        
+        UINavigationController *navController2 = tabBarController.viewControllers.lastObject;
+        GiftBasketsViewController *giftBasketsViewController = navController2.topViewController;
+        giftBasketsViewController.person = person;
+        
         
         /* Nav Controller Code
         UINavigationController *navController = segue.destinationViewController;

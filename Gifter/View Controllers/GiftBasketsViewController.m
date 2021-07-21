@@ -27,6 +27,7 @@
     // ProductStreamViewController *productStreamViewController =[[ProductStreamViewController alloc] init];
     // NSMutableArray *allGifts = productStreamViewController.arrayOfGifts;
     self.numItemsInBasket = 2;
+    self.arrayOfGifts = self.person.giftSuggestions;
     NSLog(@"GIFTS!!!!: %@", self.arrayOfGifts);
     [self loadGiftBaskets];
     NSLog(@"Gift Baskets: %@", self.arrayOfGiftBaskets);
@@ -42,6 +43,7 @@
 }
 
 - (void)loadGiftBaskets {
+    self.arrayOfGiftBaskets = [NSMutableArray array];
     while (self.arrayOfGifts.count >= self.numItemsInBasket) {
         NSMutableArray *gifts = [NSMutableArray new];
         while (gifts.count < self.numItemsInBasket) {
