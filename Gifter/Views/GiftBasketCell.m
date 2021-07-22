@@ -26,7 +26,12 @@
 - (void)setGiftBasket:(GiftBasket *)giftBasket {
     _giftBasket = giftBasket;
     
-    self.totalPriceLabel.text = [@"$" stringByAppendingString:[[NSNumber numberWithDouble:giftBasket.totalPrice] stringValue]];
+    
+    NSString *priceString = [@"$" stringByAppendingString:[[NSNumber numberWithDouble:giftBasket.totalPrice] stringValue]];
+    if ([priceString isEqualToString:@"$0"]) {
+        priceString = @"See price in cart";
+    }
+    self.totalPriceLabel.text = priceString;
     
     Gift *gift1 = [giftBasket.gifts objectAtIndex:0];
     Gift *gift2 = [giftBasket.gifts objectAtIndex:1];

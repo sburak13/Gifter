@@ -24,7 +24,10 @@
     _gift = gift;
     
     self.descriptionLabel.text = gift.descrip;
-    NSString *priceString = [gift.price stringValue];
+    NSString *priceString = [@"$" stringByAppendingString:[gift.price stringValue]];
+    if ([priceString isEqualToString:@"$0"]) {
+        priceString = @"See price in cart";
+    }
     self.priceLabel.text = priceString;
     
     self.giftImageView.image = gift.image;

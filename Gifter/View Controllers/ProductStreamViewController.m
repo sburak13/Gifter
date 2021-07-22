@@ -67,7 +67,7 @@
                 for (NSDictionary* gift in giftDetails) {
                     [giftsDictionaryArray addObject:gift];
                 }
-                // NSLog(@"Gifts: %@", giftsDictionaryArray);
+                NSLog(@"Gifts: %@", giftsDictionaryArray);
                 self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
                 self.person.giftSuggestions = self.arrayOfGifts;
                 // NSLog(@"More Gifts: %@", self.arrayOfGifts);
