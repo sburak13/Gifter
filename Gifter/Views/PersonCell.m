@@ -25,7 +25,18 @@
     
     self.nameLabel.text = person.name;
     NSString *interests = [[person.interests valueForKey:@"description"] componentsJoinedByString:@", "];
-    self.interestsLabel.text = interests;
+    if (interests) {
+        self.interestsLabel.text = [@"Interests: " stringByAppendingString:interests];
+    }
+    
+    if (person.budgetAmt) {
+        NSLog(@"hiii");
+        self.budgetLabel.text = [@"Budget: $" stringByAppendingString:[person.budgetAmt stringValue]];
+        // NSLog(@"hiii");
+    } else {
+        self.budgetLabel.text = @"Budget: None";
+    }
+    
 }
 
 @end

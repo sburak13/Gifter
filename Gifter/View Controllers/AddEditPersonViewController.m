@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *interestsTableView;
 @property (nonatomic) NSMutableArray *interestsArray;
 @property (weak, nonatomic) IBOutlet UITextField *addInterestTextField;
+@property (weak, nonatomic) IBOutlet UITextField *budgetTextField;
 
 @end
 
@@ -45,7 +46,10 @@
 }
 
 - (IBAction)didTapDone:(id)sender {
-    [Person createPerson:self.nameTextField.text withInterests:self.interestsArray withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *budgetNum = [f numberFromString:self.budgetTextField.text];
+    [Person createPerson:self.nameTextField.text withInterests:self.interestsArray withBudget:budgetNum withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         
         if (succeeded) {
             NSLog(@"Succesfully created person");
@@ -67,6 +71,7 @@
     NSString *interest = self.addInterestTextField.text;
     if (![interest isEqualToString:@""]) {
         [self.interestsArray insertObject:interest atIndex:0];
+        self.addInterestTextField.text = @"";
         [self.interestsTableView reloadData];
     }
 }
