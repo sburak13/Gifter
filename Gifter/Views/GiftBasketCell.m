@@ -28,9 +28,11 @@
     
     
     NSString *priceString = [@"$" stringByAppendingString:[[NSNumber numberWithDouble:giftBasket.totalPrice] stringValue]];
+    /*
     if ([priceString isEqualToString:@"$0"]) {
         priceString = @"See price in cart";
     }
+    */
     self.totalPriceLabel.text = priceString;
     
     Gift *gift1 = [giftBasket.gifts objectAtIndex:0];

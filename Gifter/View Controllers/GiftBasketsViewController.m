@@ -74,7 +74,9 @@
                 // NSLog(@"Items in array: %@", giftDetails.count);
                 NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
                 for (NSDictionary* gift in giftDetails) {
-                    [giftsDictionaryArray addObject:gift];
+                    if (!([gift[@"price"][@"current_price"] isEqualToNumber:@(0)])) {
+                        [giftsDictionaryArray addObject:gift];
+                    }
                 }
                 NSLog(@"Gifts: %@", giftsDictionaryArray);
                 self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
