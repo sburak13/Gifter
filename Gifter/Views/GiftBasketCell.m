@@ -34,15 +34,16 @@
     self.totalPriceLabel.text = priceString;
     
     Gift *gift1 = [giftBasket.gifts objectAtIndex:0];
-    Gift *gift2 = [giftBasket.gifts objectAtIndex:1];
-    
     self.description1.text = gift1.descrip;
-    self.description2.text = gift2.descrip;
-    
     self.image1.image = gift1.image;
-    self.image2.image = gift2.image;
     
     int numItems = giftBasket.numItems;
+    
+    if (numItems >= 2) {
+        Gift *gift2 = [giftBasket.gifts objectAtIndex:1];
+        self.description2.text = gift2.descrip;
+        self.image2.image = gift2.image;
+    }
     
     if (numItems >= 3) {
         Gift *gift3 = [giftBasket.gifts objectAtIndex:2];
@@ -66,34 +67,52 @@
 }
 
 - (void) hideUnhideUI:(int)numItems {
-    if (numItems == 2) {
+    if (numItems == 1) {
+        self.description2.hidden = YES;
         self.description3.hidden = YES;
         self.description4.hidden = YES;
         self.description5.hidden = YES;
+        self.image2.hidden = YES;
+        self.image3.hidden = YES;
+        self.image4.hidden = YES;
+        self.image5.hidden = YES;
+        
+    } else if (numItems == 2) {
+        self.description2.hidden = NO;
+        self.description3.hidden = YES;
+        self.description4.hidden = YES;
+        self.description5.hidden = YES;
+        self.image2.hidden = NO;
         self.image3.hidden = YES;
         self.image4.hidden = YES;
         self.image5.hidden = YES;
         
     } else if (numItems == 3) {
+        self.description2.hidden = NO;
         self.description3.hidden = NO;
         self.description4.hidden = YES;
         self.description5.hidden = YES;
+        self.image2.hidden = NO;
         self.image3.hidden = NO;
         self.image4.hidden = YES;
         self.image5.hidden = YES;
         
     } else if (numItems == 4) {
+        self.description2.hidden = NO;
         self.description3.hidden = NO;
         self.description4.hidden = NO;
         self.description5.hidden = YES;
+        self.image2.hidden = NO;
         self.image3.hidden = NO;
         self.image4.hidden = NO;
         self.image5.hidden = YES;
         
     } else if (numItems == 5) {
+        self.description2.hidden = NO;
         self.description3.hidden = NO;
         self.description4.hidden = NO;
         self.description5.hidden = NO;
+        self.image2.hidden = NO;
         self.image3.hidden = NO;
         self.image4.hidden = NO;
         self.image5.hidden = NO;

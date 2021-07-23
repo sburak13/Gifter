@@ -12,6 +12,7 @@
 #import "GiftBasket.h"
 #import "Gift.h"
 #import "GiftBasketCell.h"
+#import "APIManager.h"
 
 @interface GiftBasketsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) NSArray *pickerData;
 @property (weak, nonatomic) IBOutlet UITableView *giftBasketTableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -39,7 +41,57 @@
     
     // self.numItemsInBasket = 2;
     
-    self.arrayOfGifts = self.person.giftSuggestions;
+    // self.arrayOfGifts = self.person.giftSuggestions;
+    [self.activityIndicator startAnimating];
+    self.activityIndicator.layer.zPosition = 1;
+    
+    [self loadGifts];
+    NSLog(@"after load gifts");
+}
+
+- (void)loadGifts {
+    
+    NSMutableArray *interests = self.person.interests;
+    NSLog(@"Name %@", self.person.name);
+    
+    for (NSString* interest in interests) {
+        NSLog(@"INTEREST %@", interest);
+        /*
+        NSData * data =[interest dataUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@"Data = %@",data);
+        NSString * convertedStr =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"Converted String = %@",convertedStr);
+        */
+        // NSString *editedInterest = [interest stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        NSString *editedInterest = [interest stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+        [[APIManager shared] getSearchResultsFor:editedInterest completion:^(NSDictionary *gifts, NSError *error) {
+            if(error){
+                NSLog(@"Error getting search results: %@", error.localizedDescription);
+            }
+            else{
+                NSArray *giftDetails = gifts[@"products"];
+                // NSLog(@"Search data: %@", giftDetails);
+                // NSLog(@"Items in array: %@", giftDetails.count);
+                NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
+                for (NSDictionary* gift in giftDetails) {
+                    [giftsDictionaryArray addObject:gift];
+                }
+                NSLog(@"Gifts: %@", giftsDictionaryArray);
+                self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
+                // self.person.giftSuggestions = self.arrayOfGifts;
+                // NSLog(@"More Gifts: %@", self.arrayOfGifts);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                       // whatever code you need to be run on the main queue such as reloadData
+                    // [self.giftBasketTableView reloadData];
+                    self.picker.hidden = NO;
+                    [self.activityIndicator stopAnimating];
+                });
+                
+            }
+            
+        }];
+        
+    }
 }
 
 - (IBAction)didTapBackButton:(id)sender {
@@ -72,7 +124,7 @@
 -(NSArray *)createPickerData {
     NSMutableArray *choices = [NSMutableArray array];
     [choices addObject: @"--Select--"];
-    int lowBound = 2;
+    int lowBound = 1;
     int highBound = 5;
     for (int i = lowBound; i <= highBound; i++) {
         [choices addObject:[NSString stringWithFormat:@"Basket of %d", i]];
