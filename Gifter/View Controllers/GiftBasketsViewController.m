@@ -74,7 +74,8 @@
                 // NSLog(@"Items in array: %@", giftDetails.count);
                 NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
                 for (NSDictionary* gift in giftDetails) {
-                    if (!([gift[@"price"][@"current_price"] isEqualToNumber:@(0)])) {
+                    NSNumber *giftPrice = gift[@"price"][@"current_price"];
+                    if (!([giftPrice isEqualToNumber:@(0)])) {
                         [giftsDictionaryArray addObject:gift];
                     }
                 }
@@ -119,6 +120,7 @@
             [tempArray removeObject:gift];
         }
         GiftBasket *giftBasket = [[GiftBasket alloc] init:gifts];
+        if (giftBasket.totalPrice < [self.person.budgetAmt floatValue])
         [self.arrayOfGiftBaskets addObject:giftBasket];
     }
 }
