@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Gift.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) double totalPrice;
 @property (strong, nonatomic) NSMutableArray *gifts;
 
-- (instancetype)init:(NSMutableArray *)gifts;
+- (instancetype)init;
+
+- (void)addGift:(Gift*)gift;
 
 @end
 
