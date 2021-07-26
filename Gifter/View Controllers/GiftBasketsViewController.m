@@ -76,7 +76,10 @@
                 for (NSDictionary* gift in giftDetails) {
                     NSNumber *giftPrice = gift[@"price"][@"current_price"];
                     if (!([giftPrice isEqualToNumber:@(0)])) {
-                        [giftsDictionaryArray addObject:gift];
+                        NSString *giftTitle = gift[@"title"];
+                        if (!([[giftTitle substringToIndex:9] isEqualToString: @"Sponsored"])) {
+                            [giftsDictionaryArray addObject:gift];
+                        }
                     }
                 }
                 NSLog(@"Gifts: %@", giftsDictionaryArray);
@@ -108,14 +111,10 @@
 
 - (void) combination: (NSMutableArray*)arr data: (NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
     if(index == r) {
-        /*for(int j = 0; j < r; j++)
-            System.out.print(data[j]+" ");
-        System.out.println();
-         */
-        // NSArray *gifts = [NSArray initWithArray:data];
-        
         GiftBasket *basket = [[GiftBasket alloc] init:[NSMutableArray arrayWithArray:data]];
-        [self.arrayOfGiftBaskets addObject:basket];
+        if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
+            [self.arrayOfGiftBaskets addObject:basket];
+        }
         return;
     }
     
@@ -126,213 +125,20 @@
         // combination(arr, data, i+1, end, index+1, r);
         [self combination:arr data:data start:i+1 end:end index:index+1 r:r];
     }
-    
 }
 
 
 - (void)loadGiftBaskets {
-    /*
-     NSMutableArray *tempArray = [NSMutableArray array]; //[[NSMutableArray alloc] initWithCapacity:self.arrayOfGifts.count];
-    for (Gift* element in self.arrayOfGifts) {
-        [tempArray addObject:element];
-    }
-     */
     self.arrayOfGiftBaskets = [NSMutableArray array];
-    //[self permute:self.arrayOfGifts range:NSMakeRange(0, self.arrayOfGiftBaskets.count)];
-    // NSLog(@"%@", self.arrayOfGiftBaskets);
     
     NSMutableArray *combo = [NSMutableArray array];
     for (int i = 0; i < self.numItemsInBasket; i++) {
         [combo addObject:@"blank"];
     }
+    
     [self combination:self.arrayOfGifts data:combo start:0 end:self.arrayOfGifts.count-1 index:0 r:self.numItemsInBasket];
     NSLog(@"%@", self.arrayOfGiftBaskets);
-    
 }
-    
-    /*
-    for (int i = 0; i < self.arrayOfGifts.count; i++) {
-        NSLog(@"running");
-        if (self.numItemsInBasket >= 2) {
-            for (int j = 1; j < self.arrayOfGifts.count; j++) {
-                if (self.numItemsInBasket >= 3) {
-                    for (int k = 2; k < self.arrayOfGifts.count; k++) {
-                        if (self.numItemsInBasket >= 4) {
-                            for (int l = 3; l < self.arrayOfGifts.count; l++) {
-                                if (self.numItemsInBasket >= 5) {
-                                    for (int m = 4; m < self.arrayOfGifts.count; m++) {
-                                        GiftBasket *basket = [[GiftBasket alloc] init];
-                                        [basket addGift:self.arrayOfGifts[i]];
-                                        [basket addGift:self.arrayOfGifts[j]];
-                                        [basket addGift:self.arrayOfGifts[k]];
-                                        [basket addGift:self.arrayOfGifts[l]];
-                                        [basket addGift:self.arrayOfGifts[m]];
-                                        if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
-                                            [self.arrayOfGiftBaskets addObject:basket];
-                                        }
-                                    }
-                                } else {
-                                    GiftBasket *basket = [[GiftBasket alloc] init];
-                                    [basket addGift:self.arrayOfGifts[i]];
-                                    [basket addGift:self.arrayOfGifts[j]];
-                                    [basket addGift:self.arrayOfGifts[k]];
-                                    [basket addGift:self.arrayOfGifts[l]];
-                                    if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
-                                        [self.arrayOfGiftBaskets addObject:basket];
-                                    }
-                                }
-                            }
-                        } else {
-                            GiftBasket *basket = [[GiftBasket alloc] init];
-                            [basket addGift:self.arrayOfGifts[i]];
-                            [basket addGift:self.arrayOfGifts[j]];
-                            [basket addGift:self.arrayOfGifts[k]];
-                            if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
-                                [self.arrayOfGiftBaskets addObject:basket];
-                            }
-                        }
-                    }
-                } else {
-                    GiftBasket *basket = [[GiftBasket alloc] init];
-                    [basket addGift:self.arrayOfGifts[i]];
-                    [basket addGift:self.arrayOfGifts[j]];
-                    if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
-                        [self.arrayOfGiftBaskets addObject:basket];
-                    }
-                }
-            }
-        } else {
-            GiftBasket *basket = [[GiftBasket alloc] init];
-            [basket addGift:self.arrayOfGifts[i]];
-            if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
-                [self.arrayOfGiftBaskets addObject:basket];
-            }
-        }
-    }
-    
-    
-    NSLog(@"No gifts in gift basket");
-    */
-    
-    /*
-    
-    
-    NSMutableArray * combos = [NSMutableArray array];
-    // Loop through all possible index subsets
-    for( uint64_t index_mask = 0; index_mask < UINT64_MAX; index_mask++ ){
-        // Check the size of this subset; pass if it's not right.
-        uint64_t num_set_bits = __builtin_popcountll(index_mask);
-        if( num_set_bits != self.numItemsInBasket ){
-            continue;
-        }
-
-        // If the size is correct, collect the subarray
-        NSIndexSet * indexes = [NSIndexSet WSSIndexSetFromMask:index_mask];
-        GiftBasket *basket = [[GiftBasket alloc] init:[self.arrayOfGifts objectsAtIndexes:indexes]];
-    }
-     */
-    
-    
-    
-    // [self getCombosOfLength:self.numItemsInBasket withTotalArrayLenth:self.arrayOfGifts.count withGiftBasket:basket];
-    /*
-     while (tempArray.count >= self.numItemsInBasket) {
-        NSMutableArray *gifts = [NSMutableArray new];
-        while (gifts.count < self.numItemsInBasket) {
-            id gift = tempArray[arc4random_uniform(tempArray.count)];
-            [gifts addObject:gift];
-            [tempArray removeObject:gift];
-        }
-        GiftBasket *giftBasket = [[GiftBasket alloc] init:gifts];
-        if (giftBasket.totalPrice < [self.person.budgetAmt floatValue])
-        [self.arrayOfGiftBaskets addObject:giftBasket];
-    }
-     */
-    
-    /*
-    [1 2 3 4 5] choose 2
-    
-    1 2
-    1 3
-    1 4
-    1 5
-    
-    [2 3 4 5] choose 2
-    
-    2 3
-    2 4
-    2 5
-    
-    [3 4 5] choose 2
-    
-    3 4
-    3 5
-    
-    [4 5] choose 2
-    4 5
-    
-    
-    while (tempArray.count >= self.numItemsInBasket) {
-        for (int i = 0; i < tempArray.count; i++) {
-            for (int j = i + 1; j < tempArray.count; j++) {
-                id gift = tempArray[j];
-            }
-        }
-    }
-     */
-
-
-
-/*
--(void)getCombosOfLength:(int)k withTotalArrayLenth:(int)n withGiftBasket:(GiftBasket *)basket {
-    // invalid input
-    if (k > n) {
-        NSLog(@"Invalid input");
-        return;
-    }
-    
-    // base case: combination size is `k`
-    if (k == 0) {
-        NSLog(@"Base case reached");
-        [self.arrayOfGiftBaskets addObject:basket];
-        basket = [[GiftBasket alloc] init];
-        return;
-    }
-    
-    // start from the next index till the first index
-    for (int i = n - 1; i >= 0; i--)
-    {
-        // add current element `arr[i]` to the output and recur for next index
-        // `i-1` with one less element `k-1`
-        id gift = self.arrayOfGifts[i];
-        [basket addGift:gift];
-        [self getCombosOfLength:k - 1 withTotalArrayLenth:i withGiftBasket:basket];
-    }
-     
-}
- */
-
-
-/*- (void)permute:(NSMutableArray *)word range:(NSRange)range {
-    static NSMutableArray *copyOfWord;
-    if (!copyOfWord) {
-        copyOfWord = [word copy];
-    }
-    if (range.location == range.length) {
-        GiftBasket *basket = [[GiftBasket alloc] init:copyOfWord];
-        [self.arrayOfGiftBaskets addObject:basket];
-        copyOfWord = nil; // We're done now.  Set back to `nil` so next call can use it
-    } else {
-        for (int i = range.location; i < range.length; ++i) {
-            NSString *currentWord = copyOfWord[range.location];
-            copyOfWord[range.location] = copyOfWord[range.length];
-            copyOfWord[range.length] = currentWord;
-
-            [self permute:copyOfWord range:NSMakeRange(range.location + 1, range.length)];
-        }
-    }
-}
-*/
 
 -(NSArray *)createPickerData {
     NSMutableArray *choices = [NSMutableArray array];

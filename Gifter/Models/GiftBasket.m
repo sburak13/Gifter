@@ -16,7 +16,7 @@
     
     if (self) {
         self.gifts = gifts; // [NSMutableArray array];
-        self.numItems = 0; // gifts.count;
+        self.numItems = gifts.count;
         self.totalPrice = 0;
         
         
