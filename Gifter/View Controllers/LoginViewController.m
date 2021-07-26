@@ -31,6 +31,7 @@
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * _Nonnull action) {}];
     [self.loginAlert addAction:okAction];
+    
 }
 
 - (IBAction)didTapLogin:(id)sender {
@@ -52,12 +53,11 @@
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
             
-            self.loginAlert.message = [@"Error: " stringByAppendingString:error.localizedDescription];
+            self.loginAlert.message = [@"User log in error: " stringByAppendingString:error.localizedDescription];
             [self presentViewController:self.loginAlert animated:YES completion:^{}];
         } else {
             NSLog(@"User logged in successfully");
             
-            // display view controller that needs to shown after successful login
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
@@ -67,8 +67,6 @@
 - (IBAction)didTapSignUp:(id)sender {
     [self performSegueWithIdentifier:@"registerSegue" sender:nil];
 }
-
-// Test the function below on phone
 
 
 /*

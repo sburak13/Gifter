@@ -16,14 +16,16 @@
 
 @interface GiftBasketsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
+@property UIAlertController *giftsAlert;
 @property (strong, nonatomic) NSMutableArray *arrayOfGifts;
 @property (strong, nonatomic) NSMutableArray *arrayOfGiftBaskets;
 @property (nonatomic) int numItemsInBasket;
-@property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) NSArray *pickerData;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UITableView *giftBasketTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *noGiftBasketsLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *sortingSegmentedControl;
 
 @end
 
@@ -32,75 +34,66 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.giftsAlert = [UIAlertController alertControllerWithTitle:@"Invalid Gift Search"
+                                                          message:@"message"
+                                                   preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {}];
+    [self.giftsAlert addAction:okAction];
+    
     self.giftBasketTableView.dataSource = self;
     self.giftBasketTableView.delegate = self;
     
-    self.pickerData = [self createPickerData]; // @[@"Basket of 2", @"Basket of 3", @"Basket of 4", @"Basket of 5"];
+    self.pickerData = [self createPickerData];
     
     self.picker.dataSource = self;
     self.picker.delegate = self;
     
-    // self.numItemsInBasket = 2;
-    
-    // self.arrayOfGifts = self.person.giftSuggestions;
     [self.activityIndicator startAnimating];
     self.activityIndicator.layer.zPosition = 1;
     
     self.noGiftBasketsLabel.layer.zPosition = 1;
     
     [self loadGifts];
-    
-    
 }
 
 - (void)loadGifts {
-    
     NSMutableArray *interests = self.person.interests;
-    NSLog(@"Name %@", self.person.name);
     
     for (NSString* interest in interests) {
-        NSLog(@"INTEREST %@", interest);
-        /*
-        NSData * data =[interest dataUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@"Data = %@",data);
-        NSString * convertedStr =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"Converted String = %@",convertedStr);
-        */
-        // NSString *editedInterest = [interest stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         NSString *editedInterest = [interest stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+        
         [[APIManager shared] getSearchResultsFor:editedInterest completion:^(NSDictionary *gifts, NSError *error) {
-            if(error){
+            if(error) {
                 NSLog(@"Error getting search results: %@", error.localizedDescription);
+                
+                self.giftsAlert.message = [@"Gift search error: " stringByAppendingString:error.localizedDescription];
             }
-            else{
+            else {
                 NSArray *giftDetails = gifts[@"products"];
-                // NSLog(@"Search data: %@", giftDetails);
-                // NSLog(@"Items in array: %@", giftDetails.count);
                 NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
+                
                 for (NSDictionary* gift in giftDetails) {
                     NSNumber *giftPrice = gift[@"price"][@"current_price"];
+                    
                     if (!([giftPrice isEqualToNumber:@(0)])) {
                         NSString *giftTitle = gift[@"title"];
+                        
                         if (!([[giftTitle substringToIndex:9] isEqualToString: @"Sponsored"])) {
                             [giftsDictionaryArray addObject:gift];
                         }
                     }
                 }
-                NSLog(@"Gifts: %@", giftsDictionaryArray);
+                
                 self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
-                // self.person.giftSuggestions = self.arrayOfGifts;
-                // NSLog(@"More Gifts: %@", self.arrayOfGifts);
+            
                 dispatch_async(dispatch_get_main_queue(), ^{
-                       // whatever code you need to be run on the main queue such as reloadData
-                    // [self.giftBasketTableView reloadData];
                     self.picker.hidden = NO;
                     [self.activityIndicator stopAnimating];
                 });
-                
             }
-            
         }];
-        
     }
 }
 
@@ -108,13 +101,12 @@
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    // Remember to set the Storyboard ID to LoginViewController
     PeopleViewController *peopleViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeTabBarViewController"];
     sceneDelegate.window.rootViewController = peopleViewController;
 }
 
 - (void) combination: (NSMutableArray*)arr data: (NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
-    if(index == r) {
+    if (index == r) {
         GiftBasket *basket = [[GiftBasket alloc] init:[NSMutableArray arrayWithArray:data]];
         if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
             [self.arrayOfGiftBaskets addObject:basket];
@@ -123,14 +115,10 @@
     }
     
     for(int i = start; i <= end && end - i + 1 >= r - index; i++) {
-        // data[index] = arr[i];
         [data replaceObjectAtIndex:index withObject:arr[i]];
-        
-        // combination(arr, data, i+1, end, index+1, r);
         [self combination:arr data:data start:i+1 end:end index:index+1 r:r];
     }
 }
-
 
 - (void)loadGiftBaskets {
     self.arrayOfGiftBaskets = [NSMutableArray array];
@@ -141,10 +129,36 @@
     }
     
     [self combination:self.arrayOfGifts data:combo start:0 end:self.arrayOfGifts.count-1 index:0 r:self.numItemsInBasket];
-    NSLog(@"%@", self.arrayOfGiftBaskets);
 }
 
--(NSArray *)createPickerData {
+- (IBAction)segmentSwitch:(id)sender {
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    NSInteger selectedSegment = segmentedControl.selectedSegmentIndex;
+    
+    if (selectedSegment == 0) {
+        [self sortAscendingPrice];
+    } else {
+        [self sortDescendingPrice];
+    }
+}
+
+- (void) sortAscendingPrice {
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"totalPrice"
+                                               ascending:YES];
+    self.arrayOfGiftBaskets = [self.arrayOfGiftBaskets sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+}
+
+- (void) sortDescendingPrice {
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"totalPrice"
+                                               ascending:NO];
+    self.arrayOfGiftBaskets = [self.arrayOfGiftBaskets sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+}
+
+- (NSArray *)createPickerData {
     NSMutableArray *choices = [NSMutableArray array];
     [choices addObject: @"--Select--"];
     int lowBound = 1;
@@ -177,10 +191,7 @@
         
         [self loadGiftBaskets];
         
-        NSSortDescriptor *sortDescriptor;
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"totalPrice"
-                                                   ascending:YES];
-        self.arrayOfGiftBaskets = [self.arrayOfGiftBaskets sortedArrayUsingDescriptors:@[sortDescriptor]];
+        [self sortAscendingPrice];
         
         [self.giftBasketTableView reloadData];
         

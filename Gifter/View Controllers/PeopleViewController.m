@@ -15,6 +15,8 @@
 
 @interface PeopleViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property UIAlertController *peopleAlert;
+@property UIAlertController *logoutAlert;
 @property (nonatomic) NSMutableArray *peopleArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
@@ -24,6 +26,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.peopleAlert = [UIAlertController alertControllerWithTitle:@"People Screen Error"
+                                                          message:@"message"
+                                                   preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {}];
+    [self.peopleAlert addAction:okAction];
+    
+    self.logoutAlert = [UIAlertController alertControllerWithTitle:@"Invalid Logout"
+                                                          message:@"message"
+                                                   preferredStyle:(UIAlertControllerStyleAlert)];
+
+    [self.logoutAlert addAction:okAction];
     
     self.peopleTableView.dataSource = self;
     self.peopleTableView.delegate = self;
@@ -36,28 +52,26 @@
 }
 
 - (void)loadPeople {
-    // construct PFQuery
     PFQuery *personQuery = [Person query];
     [personQuery orderByDescending:@"createdAt"];
     personQuery.limit = 20;
 
-    // fetch data asynchronously
     [personQuery findObjectsInBackgroundWithBlock:^(NSArray<Person *> * _Nullable people, NSError * _Nullable error) {
         if (people) {
-            // do something with the data fetched
             self.peopleArray = people;
             [self.peopleTableView reloadData];
             [self.refreshControl endRefreshing];
         }
         else {
-            // handle error
-            NSLog(@"%@", error.localizedDescription);
+            NSLog(@"Error getting people%@", error.localizedDescription);
+            
+            self.peopleAlert.message = [@"Error: " stringByAppendingString:error.localizedDescription];
         }
     }];
 }
 
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
-        // Create NSURL and NSURLRequest
+        
         NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                                                               delegate:nil
                                                          delegateQueue:[NSOperationQueue mainQueue]];
@@ -66,12 +80,8 @@
         NSURLSessionDataTask *task = [session dataTaskWithRequest:self.peopleArray
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     
-           // ... Use the new data to update the data source ...
-
-           // Reload the tableView now that there is new data
             [self.peopleTableView reloadData];
 
-           // Tell the refreshControl to stop spinning
             [refreshControl endRefreshing];
 
         }];
@@ -85,20 +95,19 @@
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    // Remember to set the Storyboard ID to LoginViewController
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = loginViewController;
     
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
-        
+
         if (error){
-            NSLog(@"Error when logging out");
+            NSLog(@"User log out failed: %@", error.localizedDescription);
+            
+            self.logoutAlert.message = [@"User log out error: " stringByAppendingString:error.localizedDescription];
         } else {
             NSLog(@"Logout succeeded");
         }
-        
-        // If above didn't work, add: [[UIApplication sharedApplication].keyWindow setRootViewController: loginViewController];
+
     }];
 }
 

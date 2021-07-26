@@ -313,7 +313,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Found no gift baskets in price range." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-ch-4vP">
-                                <rect key="frame" x="56" y="411" width="278" height="21"/>
+                                <rect key="frame" x="56" y="350" width="278" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -419,6 +419,17 @@
                                 <rect key="frame" x="0.0" y="88" width="390" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="krI-xh-9QM">
+                                <rect key="frame" x="78" y="219" width="235" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Price Ascending"/>
+                                    <segment title="Price Descending"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentSwitch:" destination="GO8-Ma-8Lp" eventType="valueChanged" id="Jdg-FD-mra"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IQ7-k4-JBg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -435,6 +446,7 @@
                         <outlet property="giftBasketTableView" destination="o1h-CK-hgK" id="EAF-6t-sv5"/>
                         <outlet property="noGiftBasketsLabel" destination="chN-ch-4vP" id="kMU-nM-dnr"/>
                         <outlet property="picker" destination="FEL-8g-Ox0" id="Mse-rc-YZB"/>
+                        <outlet property="sortingSegmentedControl" destination="krI-xh-9QM" id="aF5-sn-b10"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaN-gw-saN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
