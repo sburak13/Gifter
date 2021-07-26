@@ -11,31 +11,32 @@
 
 @implementation GiftBasket
 
-- (instancetype)init {
+- (instancetype)init:(NSMutableArray*)gifts {
     self = [super init];
     
     if (self) {
-        self.gifts = [NSMutableArray array]; // gifts;
+        self.gifts = gifts; // [NSMutableArray array];
         self.numItems = 0; // gifts.count;
         self.totalPrice = 0;
-        /*
-         for (Gift* gift in gifts) {
+        
+        
+        for (Gift* gift in gifts) {
             self.totalPrice += [gift.price doubleValue];
         }
         
         self.totalPrice = trunc(self.totalPrice * 100) / 100;
-         */
+         
 
     }
     
     return self;
 }
 
-
+/*
  - (void)addGift:(Gift*)gift {
      [self.gifts addObject:gift];
      self.numItems++;
      self.totalPrice += [gift.price doubleValue];
  }
- 
+ */
 @end

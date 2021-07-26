@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) double totalPrice;
 @property (strong, nonatomic) NSMutableArray *gifts;
 
-- (instancetype)init;
+- (instancetype)init:(NSMutableArray*)gifts;
 
 - (void)addGift:(Gift*)gift;
 

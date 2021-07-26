@@ -106,6 +106,30 @@
     sceneDelegate.window.rootViewController = peopleViewController;
 }
 
+- (void) combination: (NSMutableArray*)arr data: (NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
+    if(index == r) {
+        /*for(int j = 0; j < r; j++)
+            System.out.print(data[j]+" ");
+        System.out.println();
+         */
+        // NSArray *gifts = [NSArray initWithArray:data];
+        
+        GiftBasket *basket = [[GiftBasket alloc] init:[NSMutableArray arrayWithArray:data]];
+        [self.arrayOfGiftBaskets addObject:basket];
+        return;
+    }
+    
+    for(int i = start; i <= end && end - i + 1 >= r - index; i++) {
+        // data[index] = arr[i];
+        [data replaceObjectAtIndex:index withObject:arr[i]];
+        
+        // combination(arr, data, i+1, end, index+1, r);
+        [self combination:arr data:data start:i+1 end:end index:index+1 r:r];
+    }
+    
+}
+
+
 - (void)loadGiftBaskets {
     /*
      NSMutableArray *tempArray = [NSMutableArray array]; //[[NSMutableArray alloc] initWithCapacity:self.arrayOfGifts.count];
@@ -114,7 +138,19 @@
     }
      */
     self.arrayOfGiftBaskets = [NSMutableArray array];
+    //[self permute:self.arrayOfGifts range:NSMakeRange(0, self.arrayOfGiftBaskets.count)];
+    // NSLog(@"%@", self.arrayOfGiftBaskets);
     
+    NSMutableArray *combo = [NSMutableArray array];
+    for (int i = 0; i < self.numItemsInBasket; i++) {
+        [combo addObject:@"blank"];
+    }
+    [self combination:self.arrayOfGifts data:combo start:0 end:self.arrayOfGifts.count-1 index:0 r:self.numItemsInBasket];
+    NSLog(@"%@", self.arrayOfGiftBaskets);
+    
+}
+    
+    /*
     for (int i = 0; i < self.arrayOfGifts.count; i++) {
         NSLog(@"running");
         if (self.numItemsInBasket >= 2) {
@@ -174,7 +210,9 @@
         }
     }
     
+    
     NSLog(@"No gifts in gift basket");
+    */
     
     /*
     
@@ -242,7 +280,7 @@
         }
     }
      */
-}
+
 
 
 /*
@@ -274,6 +312,27 @@
 }
  */
 
+
+/*- (void)permute:(NSMutableArray *)word range:(NSRange)range {
+    static NSMutableArray *copyOfWord;
+    if (!copyOfWord) {
+        copyOfWord = [word copy];
+    }
+    if (range.location == range.length) {
+        GiftBasket *basket = [[GiftBasket alloc] init:copyOfWord];
+        [self.arrayOfGiftBaskets addObject:basket];
+        copyOfWord = nil; // We're done now.  Set back to `nil` so next call can use it
+    } else {
+        for (int i = range.location; i < range.length; ++i) {
+            NSString *currentWord = copyOfWord[range.location];
+            copyOfWord[range.location] = copyOfWord[range.length];
+            copyOfWord[range.length] = currentWord;
+
+            [self permute:copyOfWord range:NSMakeRange(range.location + 1, range.length)];
+        }
+    }
+}
+*/
 
 -(NSArray *)createPickerData {
     NSMutableArray *choices = [NSMutableArray array];
