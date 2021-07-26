@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSArray *pickerData;
 @property (weak, nonatomic) IBOutlet UITableView *giftBasketTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *noGiftBasketsLabel;
 
 @end
 
@@ -45,8 +46,11 @@
     [self.activityIndicator startAnimating];
     self.activityIndicator.layer.zPosition = 1;
     
+    self.noGiftBasketsLabel.layer.zPosition = 1;
+    
     [self loadGifts];
-    NSLog(@"after load gifts");
+    
+    
 }
 
 - (void)loadGifts {
@@ -167,11 +171,24 @@
     if (row != 0) {
         NSString *selectedEntry = [self.pickerData objectAtIndex:row];
         NSString *stringNum = [selectedEntry substringFromIndex: [selectedEntry length] - 1];
+        
         self.numItemsInBasket = [stringNum intValue];
         NSLog([NSString stringWithFormat:@"Num Items %d", self.numItemsInBasket]);
+        
         [self loadGiftBaskets];
-        NSLog(@"Gift Baskets: %@", self.arrayOfGiftBaskets);
+        
+        NSSortDescriptor *sortDescriptor;
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"totalPrice"
+                                                   ascending:YES];
+        self.arrayOfGiftBaskets = [self.arrayOfGiftBaskets sortedArrayUsingDescriptors:@[sortDescriptor]];
+        
         [self.giftBasketTableView reloadData];
+        
+        if (self.arrayOfGiftBaskets.count == 0) {
+            self.noGiftBasketsLabel.hidden = NO;
+        } else {
+            self.noGiftBasketsLabel.hidden = YES;
+        }
     }
 }
 

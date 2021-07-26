@@ -312,6 +312,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Found no gift baskets in price range." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-ch-4vP">
+                                <rect key="frame" x="56" y="411" width="278" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="7WT-QG-KOl">
                                 <rect key="frame" x="185" y="412" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -426,6 +433,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="7WT-QG-KOl" id="ABu-s9-IHm"/>
                         <outlet property="giftBasketTableView" destination="o1h-CK-hgK" id="EAF-6t-sv5"/>
+                        <outlet property="noGiftBasketsLabel" destination="chN-ch-4vP" id="kMU-nM-dnr"/>
                         <outlet property="picker" destination="FEL-8g-Ox0" id="Mse-rc-YZB"/>
                     </connections>
                 </viewController>
