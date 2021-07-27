@@ -32,28 +32,31 @@
     self.interestsArray = [NSMutableArray array];
 }
 
-- (void)goToFriendsScreen {
+- (void)goToPeopleScreen {
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    // Remember to set the Storyboard ID to LoginViewController
     PeopleViewController *peopleViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeTabBarViewController"];
     sceneDelegate.window.rootViewController = peopleViewController;
 }
 
 - (IBAction)didTapBackButton:(id)sender {
-    [self goToFriendsScreen];
+    [self goToPeopleScreen];
 }
 
 - (IBAction)didTapDone:(id)sender {
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.numberStyle = NSNumberFormatterDecimalStyle;
     NSNumber *budgetNum = [f numberFromString:self.budgetTextField.text];
+    __weak AddEditPersonViewController *weakSelf = self;
     [Person createPerson:self.nameTextField.text withInterests:self.interestsArray withBudget:budgetNum withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        
+        AddEditPersonViewController *strongSelf = weakSelf;
+        if (!strongSelf) {
+            return;
+        }
         if (succeeded) {
             NSLog(@"Succesfully created person");
-            [self goToFriendsScreen];
+            [strongSelf goToPeopleScreen];
             
         } else {
             UIAlertController *createPersonAlert = [UIAlertController alertControllerWithTitle:@"Could Not Create Person"
@@ -61,18 +64,38 @@
                                                                                 preferredStyle:(UIAlertControllerStyleAlert)];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                                style:UIAlertActionStyleDefault
-                                                             handler:^(UIAlertAction * _Nonnull action) {}];
+                                                             handler:nil];
             [createPersonAlert addAction:okAction];
+            [self presentViewController:createPersonAlert animated:YES completion:^{}];
+            
         }
     }];
 }
 
 - (IBAction)didTapAddInterest:(id)sender {
+    UIAlertController *addInterestAlert = [UIAlertController alertControllerWithTitle:@"Add Interest Error"
+                                                                              message: @"Error"
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:nil];
+    
     NSString *interest = self.addInterestTextField.text;
-    if (![interest isEqualToString:@""]) {
+    
+    if (self.interestsArray.count < 10 && ![interest isEqualToString:@""]) {
         [self.interestsArray insertObject:interest atIndex:0];
         self.addInterestTextField.text = @"";
         [self.interestsTableView reloadData];
+        
+    } else if ([interest isEqualToString:@""]) {
+        addInterestAlert.message = @"Can't add empty interest";
+        [addInterestAlert addAction:okAction];
+        [self presentViewController:addInterestAlert animated:YES completion:^{}];
+        
+    } else if (self.interestsArray.count >= 10) {
+        addInterestAlert.message = @"Can't add more than 10 interests";
+        [addInterestAlert addAction:okAction];
+        [self presentViewController:addInterestAlert animated:YES completion:^{}];
     }
 }
 
@@ -84,9 +107,6 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.interestsArray.count > 10) {
-        return 10;
-    }
     return self.interestsArray.count;
 }
 

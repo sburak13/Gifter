@@ -25,7 +25,6 @@
 		72B735A8269D62FD00EC3322 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735A7269D62FD00EC3322 /* PeopleViewController.m */; };
 		72B735B1269DF68800EC3322 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B0269DF68800EC3322 /* Person.m */; };
 		72B735B4269E172600EC3322 /* AddEditPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B3269E172600EC3322 /* AddEditPersonViewController.m */; };
-		72B735B7269E176100EC3322 /* ProductStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B6269E176100EC3322 /* ProductStreamViewController.m */; };
 		72B735BA269E177100EC3322 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B9269E177100EC3322 /* DetailsViewController.m */; };
 		72B735BD269E302100EC3322 /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735BC269E302100EC3322 /* PersonCell.m */; };
 		72B735C0269E7FF500EC3322 /* InterestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735BF269E7FF500EC3322 /* InterestCell.m */; };
@@ -89,8 +88,6 @@
 		72B735B0269DF68800EC3322 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		72B735B2269E172600EC3322 /* AddEditPersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddEditPersonViewController.h; sourceTree = "<group>"; };
 		72B735B3269E172600EC3322 /* AddEditPersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddEditPersonViewController.m; sourceTree = "<group>"; };
-		72B735B5269E176100EC3322 /* ProductStreamViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductStreamViewController.h; sourceTree = "<group>"; };
-		72B735B6269E176100EC3322 /* ProductStreamViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductStreamViewController.m; sourceTree = "<group>"; };
 		72B735B8269E177100EC3322 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		72B735B9269E177100EC3322 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		72B735BB269E302100EC3322 /* PersonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCell.h; sourceTree = "<group>"; };
@@ -253,8 +250,6 @@
 				72B735A7269D62FD00EC3322 /* PeopleViewController.m */,
 				72B735B2269E172600EC3322 /* AddEditPersonViewController.h */,
 				72B735B3269E172600EC3322 /* AddEditPersonViewController.m */,
-				72B735B5269E176100EC3322 /* ProductStreamViewController.h */,
-				72B735B6269E176100EC3322 /* ProductStreamViewController.m */,
 				72B735B8269E177100EC3322 /* DetailsViewController.h */,
 				72B735B9269E177100EC3322 /* DetailsViewController.m */,
 				72A0C5D226A7756D007AE20B /* GiftBasketsViewController.h */,
@@ -530,7 +525,6 @@
 				72B735A8269D62FD00EC3322 /* PeopleViewController.m in Sources */,
 				72B735B4269E172600EC3322 /* AddEditPersonViewController.m in Sources */,
 				72A0C5D726A8CD44007AE20B /* GiftBasketCell.m in Sources */,
-				72B735B7269E176100EC3322 /* ProductStreamViewController.m in Sources */,
 				72B735C4269FF71400EC3322 /* APIManager.m in Sources */,
 				72A0C5D126A76C64007AE20B /* GiftBasket.m in Sources */,
 				72B735CC26A0B59B00EC3322 /* GiftCell.m in Sources */,

@@ -29,7 +29,7 @@
                                                    preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                        style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {}];
+                                                     handler:nil];
     [self.loginAlert addAction:okAction];
     
 }

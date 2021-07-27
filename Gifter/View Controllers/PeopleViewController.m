@@ -32,7 +32,7 @@
                                                    preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                        style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {}];
+                                                     handler:nil];
     [self.peopleAlert addAction:okAction];
     
     self.logoutAlert = [UIAlertController alertControllerWithTitle:@"Invalid Logout"
@@ -66,6 +66,7 @@
             NSLog(@"Error getting people%@", error.localizedDescription);
             
             self.peopleAlert.message = [@"Error: " stringByAppendingString:error.localizedDescription];
+            [self presentViewController:self.peopleAlert animated:YES completion:^{}];
         }
     }];
 }
@@ -104,6 +105,7 @@
             NSLog(@"User log out failed: %@", error.localizedDescription);
             
             self.logoutAlert.message = [@"User log out error: " stringByAppendingString:error.localizedDescription];
+            [self presentViewController:self.logoutAlert animated:YES completion:^{}];
         } else {
             NSLog(@"Logout succeeded");
         }

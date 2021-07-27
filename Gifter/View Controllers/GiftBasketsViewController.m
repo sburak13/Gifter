@@ -40,7 +40,7 @@
                                                    preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                        style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {}];
+                                                     handler:nil];
     [self.giftsAlert addAction:okAction];
     
     self.giftBasketTableView.dataSource = self;
@@ -71,9 +71,11 @@
         
         [[APIManager shared] getSearchResultsFor:editedInterest completion:^(NSDictionary *gifts, NSError *error) {
             if(error) {
-                NSLog(@"Error getting search results: %@", error.localizedDescription);
-                
-                self.giftsAlert.message = [@"Gift search error: " stringByAppendingString:error.localizedDescription];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"Error getting search results: %@", error.localizedDescription);
+                    self.giftsAlert.message = [@"Gift search error: " stringByAppendingString:error.localizedDescription];
+                    [self presentViewController:self.giftsAlert animated:YES completion:^{}];
+                }
             }
             else {
                 NSArray *giftDetails = gifts[@"products"];
