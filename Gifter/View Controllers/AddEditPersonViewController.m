@@ -57,8 +57,8 @@
             
         } else {
             UIAlertController *createPersonAlert = [UIAlertController alertControllerWithTitle:@"Could Not Create Person"
-                                                                               message: [@"Error: " stringByAppendingString:error.localizedDescription]
-                                                           preferredStyle:(UIAlertControllerStyleAlert)];
+                                                                                       message: [@"Error: " stringByAppendingString:error.localizedDescription]
+                                                                                preferredStyle:(UIAlertControllerStyleAlert)];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                                style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction * _Nonnull action) {}];

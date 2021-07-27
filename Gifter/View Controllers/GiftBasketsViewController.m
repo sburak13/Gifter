@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *giftBasketTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *noGiftBasketsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *loadingGiftsLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortingSegmentedControl;
 
 @end
@@ -53,9 +54,13 @@
     [self.activityIndicator startAnimating];
     self.activityIndicator.layer.zPosition = 1;
     
+    self.loadingGiftsLabel.hidden = NO;
+    self.loadingGiftsLabel.layer.zPosition = 1;
+    
     self.noGiftBasketsLabel.layer.zPosition = 1;
     
     [self loadGifts];
+    
 }
 
 - (void)loadGifts {
@@ -80,7 +85,7 @@
                     if (!([giftPrice isEqualToNumber:@(0)])) {
                         NSString *giftTitle = gift[@"title"];
                         
-                        if (!([[giftTitle substringToIndex:9] isEqualToString: @"Sponsored"])) {
+                        if (!(giftTitle.length > 9 && [[giftTitle substringToIndex:9] isEqualToString: @"Sponsored"])) {
                             [giftsDictionaryArray addObject:gift];
                         }
                     }
@@ -90,7 +95,13 @@
             
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.picker.hidden = NO;
+                    self.sortingSegmentedControl.hidden = NO;
+                    self.loadingGiftsLabel.hidden = YES;
                     [self.activityIndicator stopAnimating];
+                    self.numItemsInBasket = 1;
+                    [self loadGiftBaskets];
+                    [self sortAscendingPrice];
+                    [self.giftBasketTableView reloadData];
                 });
             }
         }];
@@ -140,6 +151,8 @@
     } else {
         [self sortDescendingPrice];
     }
+    
+    [self.giftBasketTableView reloadData];
 }
 
 - (void) sortAscendingPrice {
@@ -160,7 +173,6 @@
 
 - (NSArray *)createPickerData {
     NSMutableArray *choices = [NSMutableArray array];
-    [choices addObject: @"--Select--"];
     int lowBound = 1;
     int highBound = 5;
     for (int i = lowBound; i <= highBound; i++) {
@@ -182,25 +194,30 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if (row != 0) {
-        NSString *selectedEntry = [self.pickerData objectAtIndex:row];
-        NSString *stringNum = [selectedEntry substringFromIndex: [selectedEntry length] - 1];
-        
-        self.numItemsInBasket = [stringNum intValue];
-        NSLog([NSString stringWithFormat:@"Num Items %d", self.numItemsInBasket]);
-        
-        [self loadGiftBaskets];
-        
+    
+    NSString *selectedEntry = [self.pickerData objectAtIndex:row];
+    NSString *stringNum = [selectedEntry substringFromIndex: [selectedEntry length] - 1];
+    
+    self.numItemsInBasket = [stringNum intValue];
+    NSLog([NSString stringWithFormat:@"Num Items %d", self.numItemsInBasket]);
+    
+    [self loadGiftBaskets];
+    
+    NSInteger selectedSegment = self.sortingSegmentedControl.selectedSegmentIndex;
+    if (selectedSegment == 0) {
         [self sortAscendingPrice];
-        
-        [self.giftBasketTableView reloadData];
-        
-        if (self.arrayOfGiftBaskets.count == 0) {
-            self.noGiftBasketsLabel.hidden = NO;
-        } else {
-            self.noGiftBasketsLabel.hidden = YES;
-        }
+    } else {
+        [self sortDescendingPrice];
     }
+    
+    [self.giftBasketTableView reloadData];
+    
+    if (self.arrayOfGiftBaskets.count == 0) {
+        self.noGiftBasketsLabel.hidden = NO;
+    } else {
+        self.noGiftBasketsLabel.hidden = YES;
+    }
+
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
