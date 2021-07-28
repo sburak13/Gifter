@@ -54,7 +54,7 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
             
             self.loginAlert.message = [@"User log in error: " stringByAppendingString:error.localizedDescription];
-            [self presentViewController:self.loginAlert animated:YES completion:^{}];
+            [self presentViewController:self.loginAlert animated:YES completion:nil];
         } else {
             NSLog(@"User logged in successfully");
             

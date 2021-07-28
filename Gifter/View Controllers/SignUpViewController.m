@@ -48,7 +48,7 @@
     
     if ([self.usernameTextField.text isEqual:@""] || [self.passwordTextField.text isEqual:@""]) {
         self.signupAlert.message = @"Username or Password field is blank.";
-        [self presentViewController:self.signupAlert animated:YES completion:^{}];
+        [self presentViewController:self.signupAlert animated:YES completion:nil];
     } else {
         // initialize a user object
         PFUser *newUser = [PFUser user];
@@ -63,7 +63,7 @@
                 NSLog(@"Error: %@", error.localizedDescription);
                 
                 self.signupAlert.message = [@"Error: " stringByAppendingString:error.localizedDescription];
-                [self presentViewController:self.signupAlert animated:YES completion:^{}];
+                [self presentViewController:self.signupAlert animated:YES completion:nil];
             } else {
                 NSLog(@"User registered successfully");
                 // manually segue to logged in view

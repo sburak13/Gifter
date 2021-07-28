@@ -65,7 +65,7 @@
             NSLog(@"Error getting people%@", error.localizedDescription);
             
             self.peopleAlert.message = [@"Error: " stringByAppendingString:error.localizedDescription];
-            [self presentViewController:self.peopleAlert animated:YES completion:^{}];
+            [self presentViewController:self.peopleAlert animated:YES completion:nil];
         }
     }];
 }
@@ -104,7 +104,7 @@
             NSLog(@"User log out failed: %@", error.localizedDescription);
             
             self.logoutAlert.message = [@"User log out error: " stringByAppendingString:error.localizedDescription];
-            [self presentViewController:self.logoutAlert animated:YES completion:^{}];
+            [self presentViewController:self.logoutAlert animated:YES completion:nil];
         } else {
             NSLog(@"Logout succeeded");
         }

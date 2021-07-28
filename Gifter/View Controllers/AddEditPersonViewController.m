@@ -66,7 +66,7 @@
                                                                style:UIAlertActionStyleDefault
                                                              handler:nil];
             [createPersonAlert addAction:okAction];
-            [self presentViewController:createPersonAlert animated:YES completion:^{}];
+            [self presentViewController:createPersonAlert animated:YES completion:nil];
             
         }
     }];
@@ -90,12 +90,12 @@
     } else if ([interest isEqualToString:@""]) {
         addInterestAlert.message = @"Can't add empty interest";
         [addInterestAlert addAction:okAction];
-        [self presentViewController:addInterestAlert animated:YES completion:^{}];
+        [self presentViewController:addInterestAlert animated:YES completion:nil];
         
     } else if (self.interestsArray.count >= 10) {
         addInterestAlert.message = @"Can't add more than 10 interests";
         [addInterestAlert addAction:okAction];
-        [self presentViewController:addInterestAlert animated:YES completion:^{}];
+        [self presentViewController:addInterestAlert animated:YES completion:nil];
     }
 }
 

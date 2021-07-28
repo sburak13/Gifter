@@ -61,59 +61,6 @@
     [self loadGifts];
     
 }
-/*
-- (void)loadGifts {
-    
-    // BOOL runningLoadGifts = NO;
-    NSMutableArray *interests = self.person.interests;
-    
-    for (NSString* interest in interests) {
-        NSString *editedInterest = [interest stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-        
-        [[APIManager shared] getSearchResultsFor:editedInterest completion:^(NSDictionary *gifts, NSError *error) {
-            // __block runningLoadGifts = YES;
-            if(error) {
-                NSLog(@"Error getting search results: %@", error.localizedDescription);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.giftsAlert.message = [@"Gift search error: " stringByAppendingString:error.localizedDescription];
-                    [self presentViewController:self.giftsAlert animated:YES completion:^{}];
-                });
-            }
-            else {
-                NSArray *giftDetails = gifts[@"products"];
-                NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
-                
-                for (NSDictionary* gift in giftDetails) {
-                    NSNumber *giftPrice = gift[@"price"][@"current_price"];
-                    
-                    if (!([giftPrice isEqualToNumber:@(0)])) {
-                        NSString *giftTitle = gift[@"title"];
-                        
-                        if (!(giftTitle.length > 9 && [[giftTitle substringToIndex:9] isEqualToString: @"Sponsored"])) {
-                            [giftsDictionaryArray addObject:gift];
-                        }
-                    }
-                }
-                
-                // __block runningLoadGifts = NO;
-                
-                self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
-            
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.picker.hidden = NO;
-                    self.sortingSegmentedControl.hidden = NO;
-                    self.loadingGiftsLabel.hidden = YES;
-                    [self.activityIndicator stopAnimating];
-                    self.numItemsInBasket = 1;
-                    [self loadGiftBaskets];
-                    [self sortAscendingPrice];
-                    [self.giftBasketTableView reloadData];
-                });
-            }
-        }];
-    }
-}
-*/
 
 - (void)loadGifts {
     NSMutableArray *interests = self.person.interests;
@@ -126,7 +73,7 @@
                 NSLog(@"Error getting search results: %@", error.localizedDescription);
                 
                 self.giftsAlert.message = [@"Gift search error: " stringByAppendingString:error.localizedDescription];
-                [self presentViewController:self.giftsAlert animated:YES completion:^{}];
+                [self presentViewController:self.giftsAlert animated:YES completion:nil];
             }
             else {
                 NSArray *giftDetails = gifts[@"products"];
@@ -171,7 +118,7 @@
     sceneDelegate.window.rootViewController = peopleViewController;
 }
 
-- (void)combination: (NSMutableArray*)arr data: (NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
+- (void)combination:(NSMutableArray*)arr data:(NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
     if (index == r) {
         GiftBasket *basket = [[GiftBasket alloc] init:[NSMutableArray arrayWithArray:data]];
         if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
