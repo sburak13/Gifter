@@ -7,7 +7,6 @@
 
 #import "DetailsViewController.h"
 #import "SceneDelegate.h"
-#import "ProductStreamViewController.h"
 
 @interface DetailsViewController ()
 
@@ -25,8 +24,8 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     // Remember to set the Storyboard ID to LoginViewController
-    ProductStreamViewController *productStreamViewController = [storyboard instantiateViewControllerWithIdentifier:@"StreamNavViewController"];
-    sceneDelegate.window.rootViewController = productStreamViewController;
+    // ProductStreamViewController *productStreamViewController = [storyboard instantiateViewControllerWithIdentifier:@"StreamNavViewController"];
+    // sceneDelegate.window.rootViewController = productStreamViewController;
 }
 
 /*

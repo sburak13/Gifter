@@ -10,7 +10,6 @@
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 #import "PersonCell.h"
-#import "ProductStreamViewController.h"
 #import "GiftBasketsViewController.h"
 
 @interface PeopleViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -136,10 +135,7 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"streamSegue"]) {
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.peopleTableView indexPathForCell:tappedCell];
@@ -148,25 +144,6 @@
         UINavigationController *navController = segue.destinationViewController;
         GiftBasketsViewController *giftBasketsViewController = navController.topViewController;
         giftBasketsViewController.person = person;
-        
-        /*
-        UITabBarController *tabBarController = segue.destinationViewController;
-        UINavigationController *navController = tabBarController.viewControllers.firstObject;
-        ProductStreamViewController *productStreamViewController = navController.topViewController;
-        productStreamViewController.person = person;
-        */
-        
-        /*
-        UINavigationController *navController2 = tabBarController.viewControllers.lastObject;
-        GiftBasketsViewController *giftBasketsViewController = navController2.topViewController;
-        giftBasketsViewController.person = person;
-        */
-        
-        /* Nav Controller Code
-        UINavigationController *navController = segue.destinationViewController;
-        ProductStreamViewController *productStreamViewController = navController.topViewController;
-        productStreamViewController.person = person;
-        */
     }
 }
 

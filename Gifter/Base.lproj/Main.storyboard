@@ -231,10 +231,10 @@
             </objects>
             <point key="canvasLocation" x="-1335.3846153846152" y="1590.995260663507"/>
         </scene>
-        <!--Product Stream View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="iUJ-he-3Bh">
             <objects>
-                <viewController storyboardIdentifier="ProductStreamViewController" id="vcw-9t-2ex" customClass="ProductStreamViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductStreamViewController" id="vcw-9t-2ex" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sVN-Jt-1EC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
