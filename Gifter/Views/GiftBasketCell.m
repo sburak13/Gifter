@@ -14,6 +14,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.imageViews = @[self.image1, self.image2, self.image3, self.image4, self.image5];
+    self.descriptionLabels = @[self.description1, self.description2, self.description3, self.description4, self.description5];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -26,13 +30,7 @@
 - (void)setGiftBasket:(GiftBasket *)giftBasket {
     _giftBasket = giftBasket;
     
-    
     NSString *priceString = [@"$" stringByAppendingString:[[NSNumber numberWithDouble:giftBasket.totalPrice] stringValue]];
-    /*
-    if ([priceString isEqualToString:@"$0"]) {
-        priceString = @"See price in cart";
-    }
-    */
     self.totalPriceLabel.text = priceString;
     
     Gift *gift1 = [giftBasket.gifts objectAtIndex:0];
@@ -68,56 +66,19 @@
     [self hideUnhideUI:numItems];
 }
 
-- (void) hideUnhideUI:(int)numItems {
-    if (numItems == 1) {
-        self.description2.hidden = YES;
-        self.description3.hidden = YES;
-        self.description4.hidden = YES;
-        self.description5.hidden = YES;
-        self.image2.hidden = YES;
-        self.image3.hidden = YES;
-        self.image4.hidden = YES;
-        self.image5.hidden = YES;
-        
-    } else if (numItems == 2) {
-        self.description2.hidden = NO;
-        self.description3.hidden = YES;
-        self.description4.hidden = YES;
-        self.description5.hidden = YES;
-        self.image2.hidden = NO;
-        self.image3.hidden = YES;
-        self.image4.hidden = YES;
-        self.image5.hidden = YES;
-        
-    } else if (numItems == 3) {
-        self.description2.hidden = NO;
-        self.description3.hidden = NO;
-        self.description4.hidden = YES;
-        self.description5.hidden = YES;
-        self.image2.hidden = NO;
-        self.image3.hidden = NO;
-        self.image4.hidden = YES;
-        self.image5.hidden = YES;
-        
-    } else if (numItems == 4) {
-        self.description2.hidden = NO;
-        self.description3.hidden = NO;
-        self.description4.hidden = NO;
-        self.description5.hidden = YES;
-        self.image2.hidden = NO;
-        self.image3.hidden = NO;
-        self.image4.hidden = NO;
-        self.image5.hidden = YES;
-        
-    } else if (numItems == 5) {
-        self.description2.hidden = NO;
-        self.description3.hidden = NO;
-        self.description4.hidden = NO;
-        self.description5.hidden = NO;
-        self.image2.hidden = NO;
-        self.image3.hidden = NO;
-        self.image4.hidden = NO;
-        self.image5.hidden = NO;
+- (void)hideUnhideUI:(int)numItems {
+    self.description2.hidden = YES;
+    self.description3.hidden = YES;
+    self.description4.hidden = YES;
+    self.description5.hidden = YES;
+    self.image2.hidden = YES;
+    self.image3.hidden = YES;
+    self.image4.hidden = YES;
+    self.image5.hidden = YES;
+    
+    for (int i = 0; i < numItems; i++) {
+        ((UIImageView*)[self.imageViews objectAtIndex: i]).hidden = NO;
+        ((UILabel*)[self.descriptionLabels objectAtIndex: i]).hidden = NO;
     }
 }
 

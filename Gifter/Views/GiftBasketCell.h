@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 
 @property (strong, nonatomic) GiftBasket *giftBasket;
+@property (strong, nonatomic) NSArray *imageViews;
+@property (strong, nonatomic) NSArray *descriptionLabels; 
 
 @end
 
