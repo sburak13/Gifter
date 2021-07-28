@@ -17,7 +17,8 @@
     
     self.imageViews = @[self.image1, self.image2, self.image3, self.image4, self.image5];
     self.descriptionLabels = @[self.description1, self.description2, self.description3, self.description4, self.description5];
-
+    self.heightConstraints = @[self.image1Height, self.image2Height, self.image3Height, self.image4Height, self.image5Height];
+    self.widthConstraints = @[self.image1Width, self.image2Width, self.image3Width, self.image4Width, self.image5Width];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -68,51 +69,59 @@
 
 - (void)hideUnhideUI:(int)numItems {
     
+    for (int i = 0; i < self.imageViews.count; i++) {
+        UIImageView *imageView = (UIImageView*)[self.imageViews objectAtIndex: i];
+        UILabel *descriptionLabel = (UILabel*)[self.descriptionLabels objectAtIndex: i];
+        NSLayoutConstraint *heightConstraint = (NSLayoutConstraint*)[self.heightConstraints objectAtIndex: i];
+        NSLayoutConstraint *widthConstraint = (NSLayoutConstraint*)[self.widthConstraints objectAtIndex: i];
+        
+        if (i >= numItems) {
+            imageView.hidden = YES;
+            descriptionLabel.hidden = YES;
+            
+            widthConstraint.constant = 0;
+            heightConstraint.constant = 0;
+            
+        } else {
+            imageView.hidden = NO;
+            descriptionLabel.hidden = NO;
+            
+            widthConstraint.constant = 70;
+            heightConstraint.constant = 75;
+        }
+        
+       
+    }
+    
     /*
     for (int i = 0; i < self.imageViews.count; i++) {
         UIImageView *imageView = (UIImageView*)[self.imageViews objectAtIndex: i];
         UILabel *descriptionLabel = (UILabel*)[self.descriptionLabels objectAtIndex: i];
+        NSLayoutConstraint *heightConstraint = (NSLayoutConstraint*)[self.heightConstraints objectAtIndex: i];
+        NSLayoutConstraint *widthConstraint = (NSLayoutConstraint*)[self.widthConstraints objectAtIndex: i];
         
         imageView.hidden = NO;
         descriptionLabel.hidden = NO;
         
-        imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y, 70, 70);
-        descriptionLabel.frame = CGRectMake(descriptionLabel.frame.origin.x, descriptionLabel.frame.origin.y, 210, 70);
+        widthConstraint.constant = 70;
+        heightConstraint.constant = 75;
     }
-     */
-    
-    
-    if (numItems != 5) {
-        self.image5Width.constant = 0;
-        self.image5Height.constant = 0;
-    } else {
-        self.image5Width.constant = 70;
-        self.image5Height.constant = 70;
-    }
-    
-    /*
+     
     for (int i = numItems; i < self.imageViews.count; i++) {
         UIImageView *imageView = (UIImageView*)[self.imageViews objectAtIndex: i];
         UILabel *descriptionLabel = (UILabel*)[self.descriptionLabels objectAtIndex: i];
+        NSLayoutConstraint *heightConstraint = (NSLayoutConstraint*)[self.heightConstraints objectAtIndex: i];
+        NSLayoutConstraint *widthConstraint = (NSLayoutConstraint*)[self.widthConstraints objectAtIndex: i];
         
         imageView.hidden = YES;
         descriptionLabel.hidden = YES;
         
-        descriptionLabel.text = @"";
-        
-        imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y, 0, 0);
-        imageView.backgroundColor = [UIColor greenColor];
-        descriptionLabel.frame = CGRectMake(descriptionLabel.frame.origin.x, descriptionLabel.frame.origin.y, 0, 0);
-        descriptionLabel.backgroundColor = [UIColor greenColor];
-        
-        
+        widthConstraint.constant = 0;
+        heightConstraint.constant = 0;
     }
-     */
-    
-    
+     
     [self layoutSubviews];
-    // self.image1.frame = CGRectMake(self.image1.frame.origin.x, self.image1.frame.origin.y, 20, 20);
-    // self.description1.frame = CGRectMake(self.description1.frame.origin.x, self.description1.frame.origin.y, 20, 20);
+    */
 }
 
 

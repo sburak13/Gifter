@@ -273,8 +273,10 @@
 - (void)checkNoGiftBaskets {
     if (self.arrayOfGiftBaskets.count == 0) {
         self.noGiftBasketsLabel.hidden = NO;
+        self.giftBasketTableView.hidden = YES;
     } else {
         self.noGiftBasketsLabel.hidden = YES;
+        self.giftBasketTableView.hidden = NO;
     }
 }
 

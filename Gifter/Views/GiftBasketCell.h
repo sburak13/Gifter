@@ -27,6 +27,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) GiftBasket *giftBasket;
 @property (strong, nonatomic) NSArray *imageViews;
 @property (strong, nonatomic) NSArray *descriptionLabels;
+@property (strong, nonatomic) NSArray *heightConstraints;
+@property (strong, nonatomic) NSArray *widthConstraints;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image1Height;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image1Width;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image2Height;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image2Width;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image3Height;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image3Width;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image4Height;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image4Width;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image5Height;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image5Width;
