@@ -126,6 +126,7 @@
                 NSLog(@"Error getting search results: %@", error.localizedDescription);
                 
                 self.giftsAlert.message = [@"Gift search error: " stringByAppendingString:error.localizedDescription];
+                [self presentViewController:self.giftsAlert animated:YES completion:^{}];
             }
             else {
                 NSArray *giftDetails = gifts[@"products"];
@@ -146,6 +147,7 @@
                 self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
             
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    self.giftBasketTableView.hidden = NO;
                     self.picker.hidden = NO;
                     self.sortingSegmentedControl.hidden = NO;
                     self.loadingGiftsLabel.hidden = YES;

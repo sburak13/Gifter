@@ -67,19 +67,54 @@
 }
 
 - (void)hideUnhideUI:(int)numItems {
-    self.description2.hidden = YES;
-    self.description3.hidden = YES;
-    self.description4.hidden = YES;
-    self.description5.hidden = YES;
-    self.image2.hidden = YES;
-    self.image3.hidden = YES;
-    self.image4.hidden = YES;
-    self.image5.hidden = YES;
     
-    for (int i = 0; i < numItems; i++) {
-        ((UIImageView*)[self.imageViews objectAtIndex: i]).hidden = NO;
-        ((UILabel*)[self.descriptionLabels objectAtIndex: i]).hidden = NO;
+    /*
+    for (int i = 0; i < self.imageViews.count; i++) {
+        UIImageView *imageView = (UIImageView*)[self.imageViews objectAtIndex: i];
+        UILabel *descriptionLabel = (UILabel*)[self.descriptionLabels objectAtIndex: i];
+        
+        imageView.hidden = NO;
+        descriptionLabel.hidden = NO;
+        
+        imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y, 70, 70);
+        descriptionLabel.frame = CGRectMake(descriptionLabel.frame.origin.x, descriptionLabel.frame.origin.y, 210, 70);
     }
+     */
+    
+    
+    if (numItems != 5) {
+        self.image5Width.constant = 0;
+        self.image5Height.constant = 0;
+    } else {
+        self.image5Width.constant = 70;
+        self.image5Height.constant = 70;
+    }
+    
+    /*
+    for (int i = numItems; i < self.imageViews.count; i++) {
+        UIImageView *imageView = (UIImageView*)[self.imageViews objectAtIndex: i];
+        UILabel *descriptionLabel = (UILabel*)[self.descriptionLabels objectAtIndex: i];
+        
+        imageView.hidden = YES;
+        descriptionLabel.hidden = YES;
+        
+        descriptionLabel.text = @"";
+        
+        imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y, 0, 0);
+        imageView.backgroundColor = [UIColor greenColor];
+        descriptionLabel.frame = CGRectMake(descriptionLabel.frame.origin.x, descriptionLabel.frame.origin.y, 0, 0);
+        descriptionLabel.backgroundColor = [UIColor greenColor];
+        
+        
+    }
+     */
+    
+    
+    [self layoutSubviews];
+    // self.image1.frame = CGRectMake(self.image1.frame.origin.x, self.image1.frame.origin.y, 20, 20);
+    // self.description1.frame = CGRectMake(self.description1.frame.origin.x, self.description1.frame.origin.y, 20, 20);
 }
+
+
 
 @end
