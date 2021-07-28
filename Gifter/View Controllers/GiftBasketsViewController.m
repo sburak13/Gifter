@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *noGiftBasketsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *loadingGiftsLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortingSegmentedControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *secondActivityIndicator;
 
 @end
 
@@ -49,6 +50,9 @@
     
     self.picker.dataSource = self;
     self.picker.delegate = self;
+    
+    // [self.secondActivityIndicator startAnimating];
+    // self.secondActivityIndicator.layer.zPosition = 1;
     
     [self.activityIndicator startAnimating];
     self.activityIndicator.layer.zPosition = 1;
@@ -134,6 +138,7 @@
 }
 
 - (void)loadGiftBaskets {
+    
     self.arrayOfGiftBaskets = [NSMutableArray array];
     
     NSMutableArray *combo = [NSMutableArray array];
@@ -142,6 +147,7 @@
     }
     
     [self combination:self.arrayOfGifts data:combo start:0 end:self.arrayOfGifts.count-1 index:0 r:self.numItemsInBasket];
+
 }
 
 - (IBAction)segmentSwitch:(id)sender {
@@ -196,7 +202,8 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
+    // [self performSelectorOnMainThread:@selector(startSecondActivityIndicator) withObject:nil waitUntilDone:YES];
+
     NSString *selectedEntry = [self.pickerData objectAtIndex:row];
     NSString *stringNum = [selectedEntry substringFromIndex: [selectedEntry length] - 1];
     
@@ -215,6 +222,9 @@
     [self.giftBasketTableView reloadData];
 
     [self checkNoGiftBaskets];
+    
+    // [self.secondActivityIndicator stopAnimating];
+    // [self performSelectorOnMainThread:@selector(endSecondActivityIndicator) withObject:nil waitUntilDone:NO];
 }
 
 - (void)checkNoGiftBaskets {
@@ -225,6 +235,14 @@
         self.noGiftBasketsLabel.hidden = YES;
         self.giftBasketTableView.hidden = NO;
     }
+}
+
+- (void)startSecondActivityIndicator {
+    [self.secondActivityIndicator startAnimating];
+}
+
+- (void)endSecondActivityIndicator {
+    [self.secondActivityIndicator stopAnimating];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
