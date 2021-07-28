@@ -5,6 +5,7 @@
 //  Created by samanthaburak on 7/20/21.
 //
 
+#import "GiftBasketDetailsViewController.h"
 #import "GiftBasketsViewController.h"
 #import "SceneDelegate.h"
 #import "PeopleViewController.h"
@@ -257,14 +258,21 @@
     return self.arrayOfGiftBaskets.count;
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"basketDetailsSegue"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.giftBasketTableView indexPathForCell:tappedCell];
+        GiftBasket *basket = self.arrayOfGiftBaskets[indexPath.row];
+        UINavigationController *navController = segue.destinationViewController;
+        GiftBasketDetailsViewController *giftBasketDetailsViewController = navController.topViewController;
+        giftBasketDetailsViewController.basket = basket;
+    }
+
 }
-*/
 
 @end

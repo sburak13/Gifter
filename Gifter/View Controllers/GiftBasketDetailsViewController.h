@@ -6,10 +6,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Person.h"
+#import "GiftBasket.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GiftBasketDetailsViewController : UIViewController
+
+@property (nonatomic, weak) GiftBasket *basket;
+@property (nonatomic, weak) Person *person;
 
 @end
 
