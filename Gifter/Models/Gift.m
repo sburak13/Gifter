@@ -7,6 +7,7 @@
 
 #import "Gift.h"
 #import "Parse/Parse.h"
+#import "APIManager.h"
 
 @implementation Gift
 
@@ -22,18 +23,37 @@
     self = [super init];
     
     if (self) {
-        self.asin = dictionary[@"asin"];
-        self.descrip = dictionary[@"title"];
-        self.price = dictionary[@"price"][@"current_price"];
-        self.rating = dictionary[@"reviews"][@"rating"];
-        
-        NSURL *imageUrl = [NSURL URLWithString:dictionary[@"thumbnail"]];
-        NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
-        self.image = [UIImage imageWithData: imageData];
-        // UIImage *image = [UIImage imageWithData:imageData];
-        // self.image = [PFFileObject fileObjectWithName:@"image.png" data:imageData];
-        
-        self.link = dictionary[@"url"];
+        if (apiNum == 1) {
+            self.asin = dictionary[@"asin"];
+            // self.descrip = dictionary[@"productDescription"];
+            self.descrip = dictionary[@"title"];
+            // self.price = dictionary[@"price"];
+            self.price = dictionary[@"price"][@"current_price"];
+            // self.rating = dictionary[@"productRating"];
+            self.rating = dictionary[@"reviews"][@"rating"];
+            
+            // NSURL *imageUrl = [NSURL URLWithString:dictionary[@"imgUrl"]];
+            NSURL *imageUrl = [NSURL URLWithString:dictionary[@"thumbnail"]];
+            NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
+            self.image = [UIImage imageWithData: imageData];
+
+            self.link = dictionary[@"url"];
+        } else {
+            // self.asin = dictionary[@"asin"];
+            self.descrip = dictionary[@"productDescription"];
+            // self.descrip = dictionary[@"title"];
+            self.price = dictionary[@"price"];
+            // self.price = dictionary[@"price"][@"current_price"];
+            self.rating = dictionary[@"productRating"];
+            // self.rating = dictionary[@"reviews"][@"rating"];
+            
+            NSURL *imageUrl = [NSURL URLWithString:dictionary[@"imgUrl"]];
+            // NSURL *imageUrl = [NSURL URLWithString:dictionary[@"thumbnail"]];
+            NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
+            self.image = [UIImage imageWithData: imageData];
+
+            self.link = dictionary[@"url"];
+        }
     }
     
     return self;

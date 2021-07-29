@@ -81,22 +81,54 @@
                 [self presentViewController:self.giftsAlert animated:YES completion:nil];
             }
             else {
-                NSArray *giftDetails = gifts[@"products"];
-                NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
-                
-                for (NSDictionary* gift in giftDetails) {
-                    NSNumber *giftPrice = gift[@"price"][@"current_price"];
+            
+                if (apiNum == 1) {
+                    // NSArray *giftDetails = gifts[@"searchProductDetails"];
+                    NSArray *giftDetails = gifts[@"products"];
+                    NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
                     
-                    if (!([giftPrice isEqualToNumber:@(0)])) {
-                        NSString *giftTitle = gift[@"title"];
+                    for (NSDictionary* gift in giftDetails) {
+                        // NSNumber *giftPrice = gift[@"price"];
+                        NSNumber *giftPrice = gift[@"price"][@"current_price"];
                         
-                        if (!(giftTitle.length > 9 && [[giftTitle substringToIndex:9] isEqualToString: @"Sponsored"])) {
-                            [giftsDictionaryArray addObject:gift];
+                        if (!([giftPrice isEqualToNumber:@(0)])) {
+                            // NSString *giftTitle = gift[@"productDescription"];
+                            NSString *giftTitle = gift[@"title"];
+                            
+                            if (!(giftTitle.length > 9 && [[giftTitle substringToIndex:9] isEqualToString: @"Sponsored"])) {
+                                [giftsDictionaryArray addObject:gift];
+                            }
                         }
                     }
+                    
+                    self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
+                } else {
+                    NSArray *giftDetails = gifts[@"searchProductDetails"];
+                    // NSArray *giftDetails = gifts[@"products"];
+                    NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
+                    
+                    for (NSDictionary* gift in giftDetails) {
+                        NSNumber *giftPrice = gift[@"price"];
+                        // NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+                        // f.numberStyle = NSNumberFormatterDecimalStyle;
+                        // NSNumber *giftPriceNumber = [f numberFromString:giftPrice];
+                        // NSNumber *giftPrice = gift[@"price"][@"current_price"];
+                        
+                        if (!([giftPrice isEqualToNumber:@(0)])) {
+                            NSString *giftTitle = gift[@"productDescription"];
+                            // NSString *giftTitle = gift[@"title"];
+                            
+                            if (!(giftTitle.length > 9 && [[giftTitle substringToIndex:9] isEqualToString: @"Sponsored"])) {
+                                [giftsDictionaryArray addObject:gift];
+                            }
+                        }
+                    }
+                    
+                    self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
                 }
                 
-                self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
+                
+    
             
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.giftBasketTableView.hidden = NO;

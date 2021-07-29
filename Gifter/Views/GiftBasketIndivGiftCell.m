@@ -37,12 +37,14 @@
     [priceAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
     [self.priceLabel setAttributedText: priceAttributedString];
     
-    NSString *ratingString = [@"Rating: " stringByAppendingString:[gift.rating stringValue]];
+    NSString *ratingString = [@"Rating: " stringByAppendingString:gift.rating]; // [@"Rating: " stringByAppendingString:[gift.rating stringValue]];
     NSMutableAttributedString *ratingAttributedString = [[NSMutableAttributedString alloc] initWithString:ratingString];
     boldString = @"Rating:";
     boldRange = [ratingString rangeOfString:boldString];
     [ratingAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
     [self.ratingLabel setAttributedText: ratingAttributedString];
+    
+    
 }
 
 

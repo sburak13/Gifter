@@ -70,12 +70,18 @@
 
 - (void)hideUnhideUI:(int)numItems {
     
+    
+    self.image21Space.constant = 0;
+    self.image32Space.constant = 0;
+    self.image43Space.constant = 0;
+    self.image54Space.constant = 0;
+    
+    
     for (int i = 0; i < self.imageViews.count; i++) {
         UIImageView *imageView = (UIImageView*)[self.imageViews objectAtIndex: i];
         UILabel *descriptionLabel = (UILabel*)[self.descriptionLabels objectAtIndex: i];
         NSLayoutConstraint *heightConstraint = (NSLayoutConstraint*)[self.heightConstraints objectAtIndex: i];
         NSLayoutConstraint *widthConstraint = (NSLayoutConstraint*)[self.widthConstraints objectAtIndex: i];
-        NSLayoutConstraint *spaceConstraint = (NSLayoutConstraint*)[self.spaceConstraints objectAtIndex: i];
         
         if (i >= numItems) {
             imageView.hidden = YES;
@@ -92,11 +98,23 @@
             heightConstraint.constant = 75;
         }
         
-        if (i >= numItems - 1) {
-            spaceConstraint.constant = 0;
-        } else {
-            spaceConstraint.constant = 10;
+        /*
+        if (i < self.imageViews.count - 1) {
+            NSLayoutConstraint *spaceConstraint = (NSLayoutConstraint*)[self.spaceConstraints objectAtIndex: i];
+            if (i >= numItems - 1) {
+                spaceConstraint.constant = 0;
+            } else {
+                spaceConstraint.constant = 10;
+            }
         }
+        */
+        
+        
+        /*i = 0
+        i < 4
+        i >= 0
+        */
+        
         
         /*
         if (numItems == 2) {

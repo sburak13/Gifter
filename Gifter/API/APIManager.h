@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface APIManager : NSObject
 
+extern int apiNum;
+
 + (instancetype)shared;
 
 - (void)getSearchResultsFor:(NSString *)text completion:(void (^)(NSDictionary *, NSError *))completion;
