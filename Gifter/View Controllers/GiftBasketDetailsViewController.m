@@ -29,6 +29,11 @@
     self.giftBasketDetailsTableView.delegate = self;
     
     self.arrayOfIndivGifts = self.basket.gifts;
+    for (int i = 1; i <= self.basket.gifts.count; i++) {
+        Gift* gift = (Gift*)[self.basket.gifts objectAtIndex:i - 1];
+        gift.numInBasket = i;
+    }
+    
     [self.giftBasketDetailsTableView reloadData];
     
 }
@@ -46,8 +51,27 @@
     GiftBasketIndivGiftCell *cell = [self.giftBasketDetailsTableView dequeueReusableCellWithIdentifier:@"GiftBasketIndivGiftCell" forIndexPath:indexPath];
     Gift *gift = self.arrayOfIndivGifts[indexPath.row];
     cell.gift = gift;
+    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(didPinch:)];
+    [cell.giftImageView addGestureRecognizer:pinchGestureRecognizer];
+    cell.giftImageView.userInteractionEnabled = YES;
+    
+    /* cell.buyButtonTapHandler = ^{
+            NSLog(@"Buy Button Tapped");
+            
+            WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+            WKWebView *wkWebView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];
+            wkWebView.navigationDelegate = self;
+            [self.view addSubview:wkWebView];
+        };
+     */
+
     
     return cell;
+}
+
+- (void)didPinch:(UIPinchGestureRecognizer*)recognizer {
+    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
+    recognizer.scale = 1;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

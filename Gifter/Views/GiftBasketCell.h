@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray *descriptionLabels;
 @property (strong, nonatomic) NSArray *heightConstraints;
 @property (strong, nonatomic) NSArray *widthConstraints;
+@property (strong, nonatomic) NSArray *spaceConstraints;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image1Height;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image1Width;
@@ -44,6 +45,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image5Height;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image5Width;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image21Space;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image32Space;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image43Space;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image54Space;
+
 
 @end
 

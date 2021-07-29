@@ -19,7 +19,6 @@
         self.numItems = gifts.count;
         self.totalPrice = 0;
         
-        
         for (Gift* gift in gifts) {
             self.totalPrice += [gift.price doubleValue];
         }

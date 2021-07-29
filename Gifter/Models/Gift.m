@@ -25,6 +25,7 @@
         self.asin = dictionary[@"asin"];
         self.descrip = dictionary[@"title"];
         self.price = dictionary[@"price"][@"current_price"];
+        self.rating = dictionary[@"reviews"][@"rating"];
         
         NSURL *imageUrl = [NSURL URLWithString:dictionary[@"thumbnail"]];
         NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];

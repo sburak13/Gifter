@@ -250,7 +250,7 @@
     GiftBasketCell *cell = [self.giftBasketTableView dequeueReusableCellWithIdentifier:@"GiftBasketCell" forIndexPath:indexPath];
     GiftBasket *giftBasket = self.arrayOfGiftBaskets[indexPath.row];
     cell.giftBasket = giftBasket;
-    
+
     return cell;
 }
 

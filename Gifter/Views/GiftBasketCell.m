@@ -19,6 +19,7 @@
     self.descriptionLabels = @[self.description1, self.description2, self.description3, self.description4, self.description5];
     self.heightConstraints = @[self.image1Height, self.image2Height, self.image3Height, self.image4Height, self.image5Height];
     self.widthConstraints = @[self.image1Width, self.image2Width, self.image3Width, self.image4Width, self.image5Width];
+    self.spaceConstraints = @[self.image21Space, self.image32Space, self.image43Space, self.image54Space];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -74,6 +75,7 @@
         UILabel *descriptionLabel = (UILabel*)[self.descriptionLabels objectAtIndex: i];
         NSLayoutConstraint *heightConstraint = (NSLayoutConstraint*)[self.heightConstraints objectAtIndex: i];
         NSLayoutConstraint *widthConstraint = (NSLayoutConstraint*)[self.widthConstraints objectAtIndex: i];
+        NSLayoutConstraint *spaceConstraint = (NSLayoutConstraint*)[self.spaceConstraints objectAtIndex: i];
         
         if (i >= numItems) {
             imageView.hidden = YES;
@@ -89,6 +91,18 @@
             widthConstraint.constant = 70;
             heightConstraint.constant = 75;
         }
+        
+        if (i >= numItems - 1) {
+            spaceConstraint.constant = 0;
+        } else {
+            spaceConstraint.constant = 10;
+        }
+        
+        /*
+        if (numItems == 2) {
+            image32Space (index 1) and image43Space (index 2) and image54Space (index3) = 0
+        }
+        */
         
        
     }

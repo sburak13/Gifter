@@ -16,8 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *itemNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *suggestedBecauseLabel;
 
 @property (strong, nonatomic) Gift *gift;
+
+// @property (nonatomic, copy) void(^buyButtonTapHandler)(void);
 
 @end
 
