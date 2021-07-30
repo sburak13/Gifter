@@ -27,6 +27,12 @@
     self.itemNumLabel.text = [@"Item #" stringByAppendingString:[NSString stringWithFormat:@"%d", gift.numInBasket]];
     
     self.descriptionLabel.text = gift.descrip;
+    NSRange range = [self.descriptionLabel.text rangeOfString:self.descriptionLabel.text];
+    self.descriptionLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    self.descriptionLabel.delegate = self;
+    [self.descriptionLabel addLinkToURL:[NSURL URLWithString:gift.link] withRange:range]; // Embedding a custom link in a substring
+    
+    NSLog(@"%@", gift.link);
     
     self.giftImageView.image = gift.image;
     self.giftImageView.layer.zPosition = 1;
@@ -46,6 +52,11 @@
     [self.ratingLabel setAttributedText: ratingAttributedString];
     
     
+}
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    NSLog(@"links on uilabel work");
+    [[UIApplication sharedApplication] openURL:url];tcjkdjujlgirigcrdlulfcvnerghjjie
 }
 
 

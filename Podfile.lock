@@ -4,19 +4,23 @@ PODS:
     - Parse/Core (= 1.19.2)
   - Parse/Core (1.19.2):
     - Bolts/Tasks (= 1.9.1)
+  - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
   - Parse
+  - TTTAttributedLabel
 
 SPEC REPOS:
   trunk:
     - Bolts
     - Parse
+    - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 73a517ccc938331f7645971d6e219675076fa16b
+PODFILE CHECKSUM: 2d7952396305800f4beeaf92e687815335e16fac
 
 COCOAPODS: 1.10.1

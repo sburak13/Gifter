@@ -38,8 +38,9 @@
             self.image = [UIImage imageWithData: imageData];
 
             self.link = dictionary[@"url"];
+            
         } else {
-            // self.asin = dictionary[@"asin"];
+            self.asin = dictionary[@"asin"];
             self.descrip = dictionary[@"productDescription"];
             // self.descrip = dictionary[@"title"];
             self.price = dictionary[@"price"];
@@ -52,7 +53,8 @@
             NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
             self.image = [UIImage imageWithData: imageData];
 
-            self.link = dictionary[@"url"];
+            self.link = [@"https://www.amazon.com/dp/" stringByAppendingString:self.asin];
+            NSLog(@"%@ this is a link", self.link);
         }
     }
     

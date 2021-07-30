@@ -489,7 +489,7 @@
                                             <outlet property="image5Height" destination="q0U-CY-GCy" id="FRe-0I-rly"/>
                                             <outlet property="image5Width" destination="v1R-ot-nz2" id="Kg6-sa-jCD"/>
                                             <outlet property="totalPriceLabel" destination="gxZ-uP-YIF" id="KhK-Vb-qc1"/>
-                                            <segue destination="QHW-k1-hY7" kind="presentation" identifier="basketDetailsSegue" modalPresentationStyle="fullScreen" id="XKH-hW-Cs3"/>
+                                            <segue destination="QHW-k1-hY7" kind="presentation" identifier="basketDetailsSegue" id="XKH-hW-Cs3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -592,19 +592,19 @@
             <objects>
                 <viewController id="s4Q-LZ-RzG" customClass="GiftBasketDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IhD-qY-BYw">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="638" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dK1-Kt-30p">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="592" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dK1-Kt-30p">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GiftBasketIndivGiftCell" rowHeight="638" id="1HN-Ph-eZY" customClass="GiftBasketIndivGiftCell">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="638"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GiftBasketIndivGiftCell" rowHeight="592" id="1HN-Ph-eZY" customClass="GiftBasketIndivGiftCell">
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="592"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1HN-Ph-eZY" id="RS0-9P-b9v">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="638"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="592"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uo7-c2-JgU">
@@ -640,18 +640,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0p-N2-DnZ">
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0p-N2-DnZ" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="20" y="54" width="350" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8XR-RS-IiO">
-                                                    <rect key="frame" x="135" y="571" width="120" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Click here to buy!"/>
-                                                </button>
                                             </subviews>
                                             <gestureRecognizers/>
                                         </tableViewCellContentView>
@@ -931,7 +926,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QHW-k1-hY7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wyY-Ny-nkQ">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -7,13 +7,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Gift.h"
+#import "TTTAttributedLabel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GiftBasketIndivGiftCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *giftImageView;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemNumLabel;
