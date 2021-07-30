@@ -27,13 +27,11 @@
 		72B735A8269D62FD00EC3322 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735A7269D62FD00EC3322 /* PeopleViewController.m */; };
 		72B735B1269DF68800EC3322 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B0269DF68800EC3322 /* Person.m */; };
 		72B735B4269E172600EC3322 /* AddEditPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B3269E172600EC3322 /* AddEditPersonViewController.m */; };
-		72B735BA269E177100EC3322 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735B9269E177100EC3322 /* DetailsViewController.m */; };
 		72B735BD269E302100EC3322 /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735BC269E302100EC3322 /* PersonCell.m */; };
 		72B735C0269E7FF500EC3322 /* InterestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735BF269E7FF500EC3322 /* InterestCell.m */; };
 		72B735C4269FF71400EC3322 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735C3269FF71400EC3322 /* APIManager.m */; };
 		72B735C626A08B8A00EC3322 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72B735C526A08B8A00EC3322 /* Keys.plist */; };
 		72B735C926A0B2DC00EC3322 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735C826A0B2DC00EC3322 /* Gift.m */; };
-		72B735CC26A0B59B00EC3322 /* GiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B735CB26A0B59B00EC3322 /* GiftCell.m */; };
 		BB5E358AFC81B10F0EA90981 /* Pods_Gifter_GifterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953822AD74C9FCF05EDEAB42 /* Pods_Gifter_GifterUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,8 +92,6 @@
 		72B735B0269DF68800EC3322 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		72B735B2269E172600EC3322 /* AddEditPersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddEditPersonViewController.h; sourceTree = "<group>"; };
 		72B735B3269E172600EC3322 /* AddEditPersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddEditPersonViewController.m; sourceTree = "<group>"; };
-		72B735B8269E177100EC3322 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
-		72B735B9269E177100EC3322 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		72B735BB269E302100EC3322 /* PersonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCell.h; sourceTree = "<group>"; };
 		72B735BC269E302100EC3322 /* PersonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCell.m; sourceTree = "<group>"; };
 		72B735BE269E7FF500EC3322 /* InterestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterestCell.h; sourceTree = "<group>"; };
@@ -105,8 +101,6 @@
 		72B735C526A08B8A00EC3322 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		72B735C726A0B2DC00EC3322 /* Gift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gift.h; sourceTree = "<group>"; };
 		72B735C826A0B2DC00EC3322 /* Gift.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Gift.m; sourceTree = "<group>"; };
-		72B735CA26A0B59B00EC3322 /* GiftCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftCell.h; sourceTree = "<group>"; };
-		72B735CB26A0B59B00EC3322 /* GiftCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftCell.m; sourceTree = "<group>"; };
 		953822AD74C9FCF05EDEAB42 /* Pods_Gifter_GifterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gifter_GifterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B236C7D7F098AEA935595453 /* Pods-GifterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifterTests.debug.xcconfig"; path = "Target Support Files/Pods-GifterTests/Pods-GifterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9F0EE85E583401907AE1710 /* Pods_GifterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,8 +218,6 @@
 				72B735BC269E302100EC3322 /* PersonCell.m */,
 				72B735BE269E7FF500EC3322 /* InterestCell.h */,
 				72B735BF269E7FF500EC3322 /* InterestCell.m */,
-				72B735CA26A0B59B00EC3322 /* GiftCell.h */,
-				72B735CB26A0B59B00EC3322 /* GiftCell.m */,
 				72A0C5D526A8CD44007AE20B /* GiftBasketCell.h */,
 				72A0C5D626A8CD44007AE20B /* GiftBasketCell.m */,
 				7258BEAB26B1F972003CA4BF /* GiftBasketIndivGiftCell.h */,
@@ -258,8 +250,6 @@
 				72B735A7269D62FD00EC3322 /* PeopleViewController.m */,
 				72B735B2269E172600EC3322 /* AddEditPersonViewController.h */,
 				72B735B3269E172600EC3322 /* AddEditPersonViewController.m */,
-				72B735B8269E177100EC3322 /* DetailsViewController.h */,
-				72B735B9269E177100EC3322 /* DetailsViewController.m */,
 				72A0C5D226A7756D007AE20B /* GiftBasketsViewController.h */,
 				72A0C5D326A7756D007AE20B /* GiftBasketsViewController.m */,
 				7258BEA526B1F8CA003CA4BF /* GiftBasketDetailsViewController.h */,
@@ -526,7 +516,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				72B735A2269D5FB500EC3322 /* LoginViewController.m in Sources */,
-				72B735BA269E177100EC3322 /* DetailsViewController.m in Sources */,
 				72B735A5269D602300EC3322 /* SignUpViewController.m in Sources */,
 				72B735C926A0B2DC00EC3322 /* Gift.m in Sources */,
 				72B735B1269DF68800EC3322 /* Person.m in Sources */,
@@ -537,7 +526,6 @@
 				72A0C5D726A8CD44007AE20B /* GiftBasketCell.m in Sources */,
 				72B735C4269FF71400EC3322 /* APIManager.m in Sources */,
 				72A0C5D126A76C64007AE20B /* GiftBasket.m in Sources */,
-				72B735CC26A0B59B00EC3322 /* GiftCell.m in Sources */,
 				72B73572269D058400EC3322 /* main.m in Sources */,
 				7258BEAD26B1F972003CA4BF /* GiftBasketIndivGiftCell.m in Sources */,
 				72A0C5D426A7756D007AE20B /* GiftBasketsViewController.m in Sources */,

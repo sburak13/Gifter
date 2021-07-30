@@ -66,15 +66,14 @@
     }
     
     [self hideUnhideUI:numItems];
-}
-
-- (void)hideUnhideUI:(int)numItems {
-    
     
     self.image21Space.constant = 0;
     self.image32Space.constant = 0;
     self.image43Space.constant = 0;
     self.image54Space.constant = 0;
+}
+
+- (void)hideUnhideUI:(int)numItems {
     
     
     for (int i = 0; i < self.imageViews.count; i++) {
@@ -102,9 +101,11 @@
         if (i < self.imageViews.count - 1) {
             NSLayoutConstraint *spaceConstraint = (NSLayoutConstraint*)[self.spaceConstraints objectAtIndex: i];
             if (i >= numItems - 1) {
-                spaceConstraint.constant = 0;
+                // spaceConstraint.constant = 0;
+                [imageView removeConstraint: spaceConstraint];
             } else {
-                spaceConstraint.constant = 10;
+                // spaceConstraint.constant = 10;
+                // [imageView addConstraint: spaceConstraint];
             }
         }
         */

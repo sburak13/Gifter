@@ -22,8 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) Gift *gift;
 
-// @property (nonatomic, copy) void(^buyButtonTapHandler)(void);
-
 @end
 
 NS_ASSUME_NONNULL_END

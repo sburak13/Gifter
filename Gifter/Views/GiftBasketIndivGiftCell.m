@@ -32,8 +32,6 @@
     self.descriptionLabel.delegate = self;
     [self.descriptionLabel addLinkToURL:[NSURL URLWithString:gift.link] withRange:range]; // Embedding a custom link in a substring
     
-    NSLog(@"%@", gift.link);
-    
     self.giftImageView.image = gift.image;
     self.giftImageView.layer.zPosition = 1;
     
@@ -50,22 +48,12 @@
     boldRange = [ratingString rangeOfString:boldString];
     [ratingAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
     [self.ratingLabel setAttributedText: ratingAttributedString];
-    
-    
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
-    NSLog(@"links on uilabel work");
     [[UIApplication sharedApplication] openURL:url];
 }
 
-
-
-/*
- - (IBAction)buyButtonTapped:(UIButton *)sender {
-    self.buyButtonTapHandler();
-}
- */
 
 
 

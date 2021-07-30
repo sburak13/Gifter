@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *price;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSString *link;
-// @property (nonatomic, strong) NSString *rating;
 @property (nonatomic, strong) NSNumber *rating;
 @property (nonatomic) int *numInBasket;
 
