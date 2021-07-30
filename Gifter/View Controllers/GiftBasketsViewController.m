@@ -122,21 +122,34 @@
                 [self.arrayOfGifts addObjectsFromArray:[Gift giftsWithArray: giftsDictionaryArray FromInterest:interest]];
                 if (i == interests.count - 1) {
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        [self limitGifts:40];
+                        
                         self.giftBasketTableView.hidden = NO;
                         self.picker.hidden = NO;
                         self.sortingSegmentedControl.hidden = NO;
                         self.loadingGiftsLabel.hidden = YES;
+                        
                         [self.activityIndicator stopAnimating];
+                        
                         self.numItemsInBasket = 1;
                         [self loadGiftBaskets];
                         [self sortAscendingPrice];
+                        
                         [self.giftBasketTableView reloadData];
+                        
                         [self checkNoGiftBaskets];
                     });
                 }
                  
             }
         }];
+    }
+}
+
+- (void)limitGifts:(int)num {
+    while (self.arrayOfGifts.count > num) {
+        int rand = arc4random_uniform(self.arrayOfGifts.count);
+        [self.arrayOfGifts removeObjectAtIndex:rand];
     }
 }
 
