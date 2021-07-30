@@ -7,6 +7,7 @@
 
 #import "GiftBasketIndivGiftCell.h"
 #import "Gift.h"
+#import "APIManager.h"
 
 @implementation GiftBasketIndivGiftCell
 
@@ -42,7 +43,12 @@
     [priceAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
     [self.priceLabel setAttributedText: priceAttributedString];
     
-    NSString *ratingString = [@"Rating: " stringByAppendingString:gift.rating]; // [@"Rating: " stringByAppendingString:[gift.rating stringValue]];
+    NSString *ratingString;
+    if (apiNum == 1) {
+        ratingString = [@"Rating: " stringByAppendingString:[gift.rating stringValue]];
+    } else {
+        ratingString = [@"Rating: " stringByAppendingString:gift.rating];
+    }
     NSMutableAttributedString *ratingAttributedString = [[NSMutableAttributedString alloc] initWithString:ratingString];
     boldString = @"Rating:";
     boldRange = [ratingString rangeOfString:boldString];
