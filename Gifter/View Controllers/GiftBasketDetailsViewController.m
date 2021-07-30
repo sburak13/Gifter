@@ -12,7 +12,7 @@
 #import "SceneDelegate.h"
 #import "GiftBasketsViewController.h"
 
-@interface GiftBasketDetailsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface GiftBasketDetailsViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *giftBasketDetailsTableView;
 @property (strong, nonatomic) NSArray *arrayOfIndivGifts;
@@ -51,9 +51,13 @@
     GiftBasketIndivGiftCell *cell = [self.giftBasketDetailsTableView dequeueReusableCellWithIdentifier:@"GiftBasketIndivGiftCell" forIndexPath:indexPath];
     Gift *gift = self.arrayOfIndivGifts[indexPath.row];
     cell.gift = gift;
+    
+    
     UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(didPinch:)];
     [cell.giftImageView addGestureRecognizer:pinchGestureRecognizer];
     cell.giftImageView.userInteractionEnabled = YES;
+    pinchGestureRecognizer.delegate = self;
+    
     
     /* cell.buyButtonTapHandler = ^{
             NSLog(@"Buy Button Tapped");
@@ -69,9 +73,29 @@
     return cell;
 }
 
-- (void)didPinch:(UIPinchGestureRecognizer*)recognizer {
-    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
-    recognizer.scale = 1;
+- (void)didPinch:(UIPinchGestureRecognizer*)recognizer   {
+    if (recognizer.state == UIGestureRecognizerStateChanged) {
+        // recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
+        // recognizer.scale = 1;
+        
+        UIView *pinchView = recognizer.view;
+        CGRect bounds = pinchView.bounds;
+        CGPoint pinchCenter = [recognizer locationInView:pinchView];
+        pinchCenter.x -= CGRectGetMidX(bounds);
+        pinchCenter.y -= CGRectGetMidY(bounds);
+        CGAffineTransform transform = pinchView.transform;
+        transform = CGAffineTransformTranslate(transform, pinchCenter.x, pinchCenter.y);
+        CGFloat scale = recognizer.scale;
+        transform = CGAffineTransformScale(transform, scale, scale);
+        transform = CGAffineTransformTranslate(transform, -pinchCenter.x, -pinchCenter.y);
+        pinchView.transform = transform;
+        recognizer.scale = 1.0;
+    
+        
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        CGAffineTransform transform = CGAffineTransformMakeScale([recognizer scale],  [recognizer scale]);
+        recognizer.view.transform = transform;
+    }
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

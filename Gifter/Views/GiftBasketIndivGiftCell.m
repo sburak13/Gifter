@@ -29,6 +29,7 @@
     self.descriptionLabel.text = gift.descrip;
     
     self.giftImageView.image = gift.image;
+    self.giftImageView.layer.zPosition = 1;
     
     NSString *priceString = [@"Price: $" stringByAppendingString:[gift.price stringValue]];
     NSMutableAttributedString *priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceString];
