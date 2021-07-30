@@ -68,8 +68,11 @@
 }
 
 - (void)loadGifts {
-    NSMutableArray *interests = self.person.interests;
     
+    NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
+    
+    NSMutableArray *interests = self.person.interests;
+
     for (NSString* interest in interests) {
         NSString *editedInterest = [interest stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
         
@@ -85,7 +88,6 @@
                 if (apiNum == 1) {
                     // NSArray *giftDetails = gifts[@"searchProductDetails"];
                     NSArray *giftDetails = gifts[@"products"];
-                    NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
                     
                     for (NSDictionary* gift in giftDetails) {
                         // NSNumber *giftPrice = gift[@"price"];
@@ -101,11 +103,12 @@
                         }
                     }
                     
-                    self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
+                    // self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
+                    
                 } else {
                     NSArray *giftDetails = gifts[@"searchProductDetails"];
                     // NSArray *giftDetails = gifts[@"products"];
-                    NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
+                    // NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
                     
                     for (NSDictionary* gift in giftDetails) {
                         NSNumber *giftPrice = gift[@"price"];
@@ -124,13 +127,14 @@
                         }
                     }
                     
-                    self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
+                    NSLog(@"%@Gifts", giftsDictionaryArray);
+                    
+                    // self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
                 }
                 
                 
-    
-            
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
                     self.giftBasketTableView.hidden = NO;
                     self.picker.hidden = NO;
                     self.sortingSegmentedControl.hidden = NO;
@@ -142,9 +146,28 @@
                     [self.giftBasketTableView reloadData];
                     [self checkNoGiftBaskets];
                 });
+                
+                
             }
         }];
     }
+    
+    
+    /*
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
+        self.giftBasketTableView.hidden = NO;
+        self.picker.hidden = NO;
+        self.sortingSegmentedControl.hidden = NO;
+        self.loadingGiftsLabel.hidden = YES;
+        [self.activityIndicator stopAnimating];
+        self.numItemsInBasket = 1;
+        [self loadGiftBaskets];
+        [self sortAscendingPrice];
+        [self.giftBasketTableView reloadData];
+        [self checkNoGiftBaskets];
+    });
+     */
 }
 
 - (IBAction)didTapBackButton:(id)sender {

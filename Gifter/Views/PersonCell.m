@@ -24,17 +24,27 @@
     _person = person;
     
     self.nameLabel.text = person.name;
+    
     NSString *interests = [[person.interests valueForKey:@"description"] componentsJoinedByString:@", "];
     if (interests) {
-        self.interestsLabel.text = [@"Interests: " stringByAppendingString:interests];
+        NSString *interestsString = [@"Interests: " stringByAppendingString:interests];
+        NSMutableAttributedString *interestsAttributedString = [[NSMutableAttributedString alloc] initWithString:interestsString];
+        NSString *boldString = @"Interests:";
+        NSRange boldRange = [interestsString rangeOfString:boldString];
+        [interestsAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
+        [self.interestsLabel setAttributedText: interestsAttributedString];
+        
+        
+        // self.interestsLabel.text = [@"Interests: " stringByAppendingString:interests];
     }
     
     if (person.budgetAmt) {
-        NSLog(@"hiii");
-        self.budgetLabel.text = [@"Budget: $" stringByAppendingString:[person.budgetAmt stringValue]];
-        // NSLog(@"hiii");
-    } else {
-        self.budgetLabel.text = @"Budget: None";
+        NSString *budgetString = [@"Budget: $" stringByAppendingString:[person.budgetAmt stringValue]];
+        NSMutableAttributedString *budgetAttributedString = [[NSMutableAttributedString alloc] initWithString:budgetString];
+        NSString *boldString = @"Budget:";
+        NSRange boldRange = [budgetString rangeOfString:boldString];
+        [budgetAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
+        [self.budgetLabel setAttributedText: budgetAttributedString];
     }
     
 }
