@@ -56,7 +56,7 @@
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     NSLog(@"links on uilabel work");
-    [[UIApplication sharedApplication] openURL:url];tcjkdjujlgirigcrdlulfcvnerghjjie
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 

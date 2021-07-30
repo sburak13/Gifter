@@ -665,13 +665,7 @@
                         <viewLayoutGuide key="safeArea" id="xq7-zf-DtZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Gift Basket Details" id="QVa-j7-XBs">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Fyp-ir-45H">
-                            <connections>
-                                <action selector="didTapBackButton:" destination="s4Q-LZ-RzG" id="fHs-zr-5U3"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Gift Basket Details" id="QVa-j7-XBs"/>
                     <connections>
                         <outlet property="giftBasketDetailsTableView" destination="dK1-Kt-30p" id="Ulf-Ml-4jb"/>
                     </connections>
