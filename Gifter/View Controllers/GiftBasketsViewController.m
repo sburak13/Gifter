@@ -134,7 +134,7 @@
                 
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
+                    self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray FromInterest:interest];
                     self.giftBasketTableView.hidden = NO;
                     self.picker.hidden = NO;
                     self.sortingSegmentedControl.hidden = NO;
@@ -326,6 +326,7 @@
         UINavigationController *navController = segue.destinationViewController;
         GiftBasketDetailsViewController *giftBasketDetailsViewController = navController.topViewController;
         giftBasketDetailsViewController.basket = basket;
+        giftBasketDetailsViewController.person = self.person;
     }
 
 }

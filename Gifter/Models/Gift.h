@@ -20,11 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *link;
 @property (nonatomic, strong) NSNumber *rating;
 @property (nonatomic) int *numInBasket;
-
+@property (nonatomic, strong) NSString *ofInterest;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
-+ (NSMutableArray *)giftsWithArray:(NSArray *)dictionaries;
++ (NSMutableArray *)giftsWithArray:(NSArray *)dictionaries FromInterest:(NSString *)interest;
 
 @end
 

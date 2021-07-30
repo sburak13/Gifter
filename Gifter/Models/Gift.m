@@ -61,13 +61,14 @@
     return self;
 }
 
-+ (NSMutableArray *)giftsWithArray:(NSArray *)dictionaries {
++ (NSMutableArray *)giftsWithArray:(NSArray *)dictionaries FromInterest:(NSString *)interest{
     
     NSMutableArray *gifts = [NSMutableArray array];
     
     for (NSDictionary *dictionary in dictionaries) {
         if (dictionary) {
             Gift *gift = [[Gift alloc] initWithDictionary:dictionary];
+            gift.ofInterest = interest;
             [gifts addObject:gift];
         }
     }

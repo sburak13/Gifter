@@ -48,6 +48,8 @@
     boldRange = [ratingString rangeOfString:boldString];
     [ratingAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
     [self.ratingLabel setAttributedText: ratingAttributedString];
+    
+    self.suggestedBecauseLabel.text = [@"Suggested because of interest in " stringByAppendingString:gift.ofInterest];
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {

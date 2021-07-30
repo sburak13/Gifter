@@ -76,7 +76,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [@"Total Gift Basket Price: " stringByAppendingString:[@(self.basket.totalPrice) stringValue]];
+    return [[@"Present for " stringByAppendingString:self.person.name] stringByAppendingString:[@" - $" stringByAppendingString:[@(self.basket.totalPrice) stringValue]]];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
