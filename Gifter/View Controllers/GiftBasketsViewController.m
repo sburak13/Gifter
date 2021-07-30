@@ -68,12 +68,13 @@
 }
 
 - (void)loadGifts {
-    
     NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
+    self.arrayOfGifts = [NSMutableArray array];
     
     NSMutableArray *interests = self.person.interests;
-
-    for (NSString* interest in interests) {
+    // for (NSString* interest in interests) {
+    for (int i = 0; i < interests.count; i++) {
+        NSString *interest = [interests objectAtIndex:i];
         NSString *editedInterest = [interest stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
         
         [[APIManager shared] getSearchResultsFor:editedInterest completion:^(NSDictionary *gifts, NSError *error) {
@@ -84,43 +85,31 @@
                 [self presentViewController:self.giftsAlert animated:YES completion:nil];
             }
             else {
-            
                 if (apiNum == 1) {
-                    // NSArray *giftDetails = gifts[@"searchProductDetails"];
+                    NSLog(@"%@ gifts", gifts);
                     NSArray *giftDetails = gifts[@"products"];
+                    NSLog(@"%@ gift details", giftDetails);
                     
                     for (NSDictionary* gift in giftDetails) {
-                        // NSNumber *giftPrice = gift[@"price"];
                         NSNumber *giftPrice = gift[@"price"][@"current_price"];
-                        
                         if (!([giftPrice isEqualToNumber:@(0)])) {
-                            // NSString *giftTitle = gift[@"productDescription"];
-                            NSString *giftTitle = gift[@"title"];
                             
+                            NSString *giftTitle = gift[@"title"];
                             if (!(giftTitle.length > 9 && [[giftTitle substringToIndex:9] isEqualToString: @"Sponsored"])) {
                                 [giftsDictionaryArray addObject:gift];
                             }
                         }
                     }
-                    
-                    // self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
-                    
                 } else {
+                    NSLog(@"%@ gifts", gifts);
                     NSArray *giftDetails = gifts[@"searchProductDetails"];
-                    // NSArray *giftDetails = gifts[@"products"];
-                    // NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
+                    NSLog(@"%@ gift details", giftDetails);
                     
                     for (NSDictionary* gift in giftDetails) {
                         NSNumber *giftPrice = gift[@"price"];
-                        // NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-                        // f.numberStyle = NSNumberFormatterDecimalStyle;
-                        // NSNumber *giftPriceNumber = [f numberFromString:giftPrice];
-                        // NSNumber *giftPrice = gift[@"price"][@"current_price"];
-                        
                         if (!([giftPrice isEqualToNumber:@(0)])) {
-                            NSString *giftTitle = gift[@"productDescription"];
-                            // NSString *giftTitle = gift[@"title"];
                             
+                            NSString *giftTitle = gift[@"productDescription"];
                             if (!(giftTitle.length > 9 && [[giftTitle substringToIndex:9] isEqualToString: @"Sponsored"])) {
                                 [giftsDictionaryArray addObject:gift];
                             }
@@ -128,46 +117,27 @@
                     }
                     
                     NSLog(@"%@Gifts", giftsDictionaryArray);
-                    
-                    // self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
                 }
                 
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray FromInterest:interest];
-                    self.giftBasketTableView.hidden = NO;
-                    self.picker.hidden = NO;
-                    self.sortingSegmentedControl.hidden = NO;
-                    self.loadingGiftsLabel.hidden = YES;
-                    [self.activityIndicator stopAnimating];
-                    self.numItemsInBasket = 1;
-                    [self loadGiftBaskets];
-                    [self sortAscendingPrice];
-                    [self.giftBasketTableView reloadData];
-                    [self checkNoGiftBaskets];
-                });
-                
-                
+                [self.arrayOfGifts addObjectsFromArray:[Gift giftsWithArray: giftsDictionaryArray FromInterest:interest]];
+                if (i == interests.count - 1) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.giftBasketTableView.hidden = NO;
+                        self.picker.hidden = NO;
+                        self.sortingSegmentedControl.hidden = NO;
+                        self.loadingGiftsLabel.hidden = YES;
+                        [self.activityIndicator stopAnimating];
+                        self.numItemsInBasket = 1;
+                        [self loadGiftBaskets];
+                        [self sortAscendingPrice];
+                        [self.giftBasketTableView reloadData];
+                        [self checkNoGiftBaskets];
+                    });
+                }
+                 
             }
         }];
     }
-    
-    
-    /*
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.arrayOfGifts = [Gift giftsWithArray: giftsDictionaryArray];
-        self.giftBasketTableView.hidden = NO;
-        self.picker.hidden = NO;
-        self.sortingSegmentedControl.hidden = NO;
-        self.loadingGiftsLabel.hidden = YES;
-        [self.activityIndicator stopAnimating];
-        self.numItemsInBasket = 1;
-        [self loadGiftBaskets];
-        [self sortAscendingPrice];
-        [self.giftBasketTableView reloadData];
-        [self checkNoGiftBaskets];
-    });
-     */
 }
 
 - (IBAction)didTapBackButton:(id)sender {
