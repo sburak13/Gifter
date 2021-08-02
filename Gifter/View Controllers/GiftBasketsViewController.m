@@ -68,7 +68,6 @@
 }
 
 - (void)loadGifts {
-    NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
     self.arrayOfGifts = [NSMutableArray array];
     
     NSMutableArray *interests = self.person.interests;
@@ -87,6 +86,8 @@
                 */
             }
             else {
+                NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
+                
                 if (apiNum == 1) {
                     NSLog(@"%@ gifts", gifts);
                     NSArray *giftDetails = gifts[@"products"];
@@ -124,7 +125,7 @@
                 [self.arrayOfGifts addObjectsFromArray:[Gift giftsWithArray: giftsDictionaryArray FromInterest:interest]];
                 if (i == interests.count - 1) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self limitGifts:40];
+                        [self limitGifts:100];
                         
                         self.giftBasketTableView.hidden = NO;
                         self.picker.hidden = NO;
@@ -179,7 +180,6 @@
 }
 
 - (void)loadGiftBaskets {
-    
     self.arrayOfGiftBaskets = [NSMutableArray array];
     
     NSMutableArray *combo = [NSMutableArray array];
@@ -188,7 +188,6 @@
     }
     
     [self combination:self.arrayOfGifts data:combo start:0 end:self.arrayOfGifts.count-1 index:0 r:self.numItemsInBasket];
-
 }
 
 - (IBAction)segmentSwitch:(id)sender {

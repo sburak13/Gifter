@@ -20,7 +20,7 @@
         self.totalPrice = 0;
         
         for (Gift* gift in gifts) {
-            self.totalPrice += [gift.price doubleValue];
+            self.totalPrice += gift.price; // [gift.price doubleValue];
         }
         
         self.totalPrice = trunc(self.totalPrice * 100) / 100;

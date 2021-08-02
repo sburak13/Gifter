@@ -15,11 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *asin;
 @property (nonatomic, strong) NSString *descrip;
-@property (nonatomic, strong) NSNumber *price;
+// @property (nonatomic, strong) NSNumber *price;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSString *link;
 @property (nonatomic, strong) NSNumber *rating;
 @property (nonatomic) int *numInBasket;
+@property (nonatomic) double price;
 @property (nonatomic, strong) NSString *ofInterest;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;

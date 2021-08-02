@@ -59,7 +59,9 @@
     self.descriptionLabel.delegate = self;
     [self.descriptionLabel addLinkToURL:[NSURL URLWithString:self.gift.link] withRange:range]; // Embedding a custom link in a substring
     
-    NSString *priceString = [@"Price: $" stringByAppendingString:[self.gift.price stringValue]];
+    // NSString *priceString = [@"Price: $" stringByAppendingString:[self.gift.price stringValue]];
+    
+    NSString *priceString = [@"Price: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", self.gift.price]];
     NSMutableAttributedString *priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceString];
     NSString *boldString = @"Price:";
     NSRange boldRange = [priceString rangeOfString:boldString];
@@ -81,7 +83,8 @@
     self.suggestedBecauseLabel.text = [@"Suggested because of interest in " stringByAppendingString:self.gift.ofInterest];
     
     self.headerLabel.text = [@"Present for " stringByAppendingString:self.person.name];
-    self.totalPriceLabel.text = [@"Total Price: $" stringByAppendingString:[@(self.basket.totalPrice) stringValue]];
+    // self.totalPriceLabel.text = [@"Total Price: $" stringByAppendingString:[@(self.basket.totalPrice) stringValue]];
+    self.totalPriceLabel.text = [@"Total Price: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", self.basket.totalPrice]];
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {

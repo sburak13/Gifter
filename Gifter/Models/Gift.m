@@ -32,8 +32,7 @@
             // this converts the NSNumber to a float, then formats the float in a string;
             // NSNumber *formattedNumber = [NSNumber numberWithFloat:[numberString floatValue]];
             // this extracts the float from the string and puts it back as an NSNumber
-            self.price = dictionary[@"price"][@"current_price"];
-            
+            self.price = [dictionary[@"price"][@"current_price"] doubleValue];
             // self.rating = dictionary[@"productRating"];
             self.rating = dictionary[@"reviews"][@"rating"];
             
@@ -48,7 +47,7 @@
             self.asin = dictionary[@"asin"];
             self.descrip = dictionary[@"productDescription"];
             // self.descrip = dictionary[@"title"];
-            self.price = dictionary[@"price"];
+            self.price = [dictionary[@"price"] doubleValue];
             // self.price = dictionary[@"price"][@"current_price"];
             self.rating = dictionary[@"productRating"];
             // self.rating = dictionary[@"reviews"][@"rating"];
