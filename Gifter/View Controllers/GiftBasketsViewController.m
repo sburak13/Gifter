@@ -5,7 +5,6 @@
 //  Created by samanthaburak on 7/20/21.
 //
 
-#import "GiftBasketDetailsViewController.h"
 #import "GiftBasketsViewController.h"
 #import "SceneDelegate.h"
 #import "PeopleViewController.h"
@@ -218,13 +217,12 @@
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"totalPrice"
                                                ascending:NO];
     self.arrayOfGiftBaskets = [self.arrayOfGiftBaskets sortedArrayUsingDescriptors:@[sortDescriptor]];
-    
 }
 
 - (NSArray *)createPickerData {
     NSMutableArray *choices = [NSMutableArray array];
     int lowBound = 1;
-    int highBound = 5;
+    int highBound = 4;
     for (int i = lowBound; i <= highBound; i++) {
         [choices addObject:[NSString stringWithFormat:@"Basket of %d", i]];
     }

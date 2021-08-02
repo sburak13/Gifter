@@ -33,9 +33,6 @@
         NSRange boldRange = [interestsString rangeOfString:boldString];
         [interestsAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
         [self.interestsLabel setAttributedText: interestsAttributedString];
-        
-        
-        // self.interestsLabel.text = [@"Interests: " stringByAppendingString:interests];
     }
     
     if (person.budgetAmt) {

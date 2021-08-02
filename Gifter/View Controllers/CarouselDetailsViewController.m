@@ -7,7 +7,6 @@
 
 #import "ImageViewController.h"
 #import "CarouselDetailsViewController.h"
-#import "GiftBasketIndivGiftCell.h"
 #import "GiftBasket.h"
 #import "Gift.h"
 #import "SceneDelegate.h"
@@ -81,7 +80,8 @@
     
     self.suggestedBecauseLabel.text = [@"Suggested because of interest in " stringByAppendingString:self.gift.ofInterest];
     
-    self.headerLabel.text = [[@"Present for " stringByAppendingString:self.person.name] stringByAppendingString:[@" - $" stringByAppendingString:[@(self.basket.totalPrice) stringValue]]];
+    self.headerLabel.text = [@"Present for " stringByAppendingString:self.person.name];
+    self.totalPriceLabel.text = [@"Total Price: $" stringByAppendingString:[@(self.basket.totalPrice) stringValue]];
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
@@ -89,8 +89,9 @@
 }
 
 - (nonnull UIView *)carousel:(nonnull iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(nullable UIView *)view {
-    view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 200.0f)];
-    ((UIImageView *)view).image = self.imageArr[index];
+    UIImage* giftImage = self.imageArr[index];
+    view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, giftImage.size.width * 0.75, giftImage.size.height * 0.75)]; 
+    ((UIImageView *)view).image = giftImage;
     return view;
 }
 

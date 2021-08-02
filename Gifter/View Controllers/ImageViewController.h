@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIImageView *giftImageView;
 @property (nonatomic, weak) UIImage *img;
+@property (weak, nonatomic) IBOutlet UILabel *pinchToZoomLabel;
 
 @end
 

@@ -38,10 +38,12 @@
         transform = CGAffineTransformTranslate(transform, -pinchCenter.x, -pinchCenter.y);
         pinchView.transform = transform;
         recognizer.scale = 1.0;
+        self.pinchToZoomLabel.hidden = YES;
     
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         CGAffineTransform transform = CGAffineTransformMakeScale([recognizer scale],  [recognizer scale]);
         recognizer.view.transform = transform;
+        self.pinchToZoomLabel.hidden = NO;
     }
 }
 
