@@ -11,6 +11,8 @@
 		3AD38C15A26188D8CDA8D770 /* Pods_Gifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE90673B65A6247B8221830B /* Pods_Gifter.framework */; };
 		7258BEA726B1F8CA003CA4BF /* GiftBasketDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BEA626B1F8CA003CA4BF /* GiftBasketDetailsViewController.m */; };
 		7258BEAD26B1F972003CA4BF /* GiftBasketIndivGiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BEAC26B1F972003CA4BF /* GiftBasketIndivGiftCell.m */; };
+		7258BF3E26B7C6CE003CA4BF /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF3D26B7C6CE003CA4BF /* iCarousel.m */; };
+		7258BF4126B7C8A5003CA4BF /* CarouselDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF4026B7C8A5003CA4BF /* CarouselDetailsViewController.m */; };
 		72A0C5D126A76C64007AE20B /* GiftBasket.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D026A76C64007AE20B /* GiftBasket.m */; };
 		72A0C5D426A7756D007AE20B /* GiftBasketsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D326A7756D007AE20B /* GiftBasketsViewController.m */; };
 		72A0C5D726A8CD44007AE20B /* GiftBasketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D626A8CD44007AE20B /* GiftBasketCell.m */; };
@@ -60,6 +62,10 @@
 		7258BEA626B1F8CA003CA4BF /* GiftBasketDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftBasketDetailsViewController.m; sourceTree = "<group>"; };
 		7258BEAB26B1F972003CA4BF /* GiftBasketIndivGiftCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasketIndivGiftCell.h; sourceTree = "<group>"; };
 		7258BEAC26B1F972003CA4BF /* GiftBasketIndivGiftCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftBasketIndivGiftCell.m; sourceTree = "<group>"; };
+		7258BF3C26B7C6CE003CA4BF /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		7258BF3D26B7C6CE003CA4BF /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		7258BF3F26B7C8A5003CA4BF /* CarouselDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselDetailsViewController.h; sourceTree = "<group>"; };
+		7258BF4026B7C8A5003CA4BF /* CarouselDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselDetailsViewController.m; sourceTree = "<group>"; };
 		72A0C5CF26A76C64007AE20B /* GiftBasket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasket.h; sourceTree = "<group>"; };
 		72A0C5D026A76C64007AE20B /* GiftBasket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftBasket.m; sourceTree = "<group>"; };
 		72A0C5D226A7756D007AE20B /* GiftBasketsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasketsViewController.h; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 				72B7356D269D058400EC3322 /* LaunchScreen.storyboard */,
 				72B73570269D058400EC3322 /* Info.plist */,
 				72B73571269D058400EC3322 /* main.m */,
+				7258BF3C26B7C6CE003CA4BF /* iCarousel.h */,
+				7258BF3D26B7C6CE003CA4BF /* iCarousel.m */,
 				72B735C526A08B8A00EC3322 /* Keys.plist */,
 			);
 			path = Gifter;
@@ -254,6 +262,8 @@
 				72A0C5D326A7756D007AE20B /* GiftBasketsViewController.m */,
 				7258BEA526B1F8CA003CA4BF /* GiftBasketDetailsViewController.h */,
 				7258BEA626B1F8CA003CA4BF /* GiftBasketDetailsViewController.m */,
+				7258BF3F26B7C8A5003CA4BF /* CarouselDetailsViewController.h */,
+				7258BF4026B7C8A5003CA4BF /* CarouselDetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -516,8 +526,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				72B735A2269D5FB500EC3322 /* LoginViewController.m in Sources */,
+				7258BF4126B7C8A5003CA4BF /* CarouselDetailsViewController.m in Sources */,
 				72B735A5269D602300EC3322 /* SignUpViewController.m in Sources */,
 				72B735C926A0B2DC00EC3322 /* Gift.m in Sources */,
+				7258BF3E26B7C6CE003CA4BF /* iCarousel.m in Sources */,
 				72B735B1269DF68800EC3322 /* Person.m in Sources */,
 				72B735BD269E302100EC3322 /* PersonCell.m in Sources */,
 				72B73561269D058300EC3322 /* AppDelegate.m in Sources */,

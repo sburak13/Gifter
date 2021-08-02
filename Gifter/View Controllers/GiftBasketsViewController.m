@@ -13,6 +13,7 @@
 #import "Gift.h"
 #import "GiftBasketCell.h"
 #import "APIManager.h"
+#import "CarouselDetailsViewController.h"
 
 @interface GiftBasketsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -302,14 +303,19 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([[segue identifier] isEqualToString:@"basketDetailsSegue"]) {
+    if ([[segue identifier] isEqualToString:@"carouselDetailsSegue"]) {
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.giftBasketTableView indexPathForCell:tappedCell];
         GiftBasket *basket = self.arrayOfGiftBaskets[indexPath.row];
         UINavigationController *navController = segue.destinationViewController;
+        CarouselDetailsViewController *carouselBasketDetailsViewController = navController.topViewController;
+        carouselBasketDetailsViewController.basket = basket;
+        carouselBasketDetailsViewController.person = self.person;
+        /*
         GiftBasketDetailsViewController *giftBasketDetailsViewController = navController.topViewController;
         giftBasketDetailsViewController.basket = basket;
         giftBasketDetailsViewController.person = self.person;
+        */
     }
 
 }
