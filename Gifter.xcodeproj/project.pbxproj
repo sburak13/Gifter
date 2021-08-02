@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3AC3B72C77978191FD002BB5 /* Pods_GifterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F0EE85E583401907AE1710 /* Pods_GifterTests.framework */; };
 		3AD38C15A26188D8CDA8D770 /* Pods_Gifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE90673B65A6247B8221830B /* Pods_Gifter.framework */; };
-		7258BEA726B1F8CA003CA4BF /* GiftBasketDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BEA626B1F8CA003CA4BF /* GiftBasketDetailsViewController.m */; };
-		7258BEAD26B1F972003CA4BF /* GiftBasketIndivGiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BEAC26B1F972003CA4BF /* GiftBasketIndivGiftCell.m */; };
 		7258BF3E26B7C6CE003CA4BF /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF3D26B7C6CE003CA4BF /* iCarousel.m */; };
 		7258BF4126B7C8A5003CA4BF /* CarouselDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF4026B7C8A5003CA4BF /* CarouselDetailsViewController.m */; };
 		7258BF4426B7DA1F003CA4BF /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF4326B7DA1F003CA4BF /* ImageViewController.m */; };
@@ -59,10 +57,6 @@
 		2228C5033F9D56DC34568639 /* Pods-GifterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifterTests.release.xcconfig"; path = "Target Support Files/Pods-GifterTests/Pods-GifterTests.release.xcconfig"; sourceTree = "<group>"; };
 		22358D91F3D730E7C23FA866 /* Pods-Gifter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gifter.release.xcconfig"; path = "Target Support Files/Pods-Gifter/Pods-Gifter.release.xcconfig"; sourceTree = "<group>"; };
 		3DAC07CD493B4860C849E571 /* Pods-Gifter-GifterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gifter-GifterUITests.release.xcconfig"; path = "Target Support Files/Pods-Gifter-GifterUITests/Pods-Gifter-GifterUITests.release.xcconfig"; sourceTree = "<group>"; };
-		7258BEA526B1F8CA003CA4BF /* GiftBasketDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasketDetailsViewController.h; sourceTree = "<group>"; };
-		7258BEA626B1F8CA003CA4BF /* GiftBasketDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftBasketDetailsViewController.m; sourceTree = "<group>"; };
-		7258BEAB26B1F972003CA4BF /* GiftBasketIndivGiftCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasketIndivGiftCell.h; sourceTree = "<group>"; };
-		7258BEAC26B1F972003CA4BF /* GiftBasketIndivGiftCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftBasketIndivGiftCell.m; sourceTree = "<group>"; };
 		7258BF3C26B7C6CE003CA4BF /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		7258BF3D26B7C6CE003CA4BF /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		7258BF3F26B7C8A5003CA4BF /* CarouselDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselDetailsViewController.h; sourceTree = "<group>"; };
@@ -231,8 +225,6 @@
 				72B735BF269E7FF500EC3322 /* InterestCell.m */,
 				72A0C5D526A8CD44007AE20B /* GiftBasketCell.h */,
 				72A0C5D626A8CD44007AE20B /* GiftBasketCell.m */,
-				7258BEAB26B1F972003CA4BF /* GiftBasketIndivGiftCell.h */,
-				7258BEAC26B1F972003CA4BF /* GiftBasketIndivGiftCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,8 +255,6 @@
 				72B735B3269E172600EC3322 /* AddEditPersonViewController.m */,
 				72A0C5D226A7756D007AE20B /* GiftBasketsViewController.h */,
 				72A0C5D326A7756D007AE20B /* GiftBasketsViewController.m */,
-				7258BEA526B1F8CA003CA4BF /* GiftBasketDetailsViewController.h */,
-				7258BEA626B1F8CA003CA4BF /* GiftBasketDetailsViewController.m */,
 				7258BF3F26B7C8A5003CA4BF /* CarouselDetailsViewController.h */,
 				7258BF4026B7C8A5003CA4BF /* CarouselDetailsViewController.m */,
 				7258BF4226B7DA1F003CA4BF /* ImageViewController.h */,
@@ -545,9 +535,7 @@
 				72B735C4269FF71400EC3322 /* APIManager.m in Sources */,
 				72A0C5D126A76C64007AE20B /* GiftBasket.m in Sources */,
 				72B73572269D058400EC3322 /* main.m in Sources */,
-				7258BEAD26B1F972003CA4BF /* GiftBasketIndivGiftCell.m in Sources */,
 				72A0C5D426A7756D007AE20B /* GiftBasketsViewController.m in Sources */,
-				7258BEA726B1F8CA003CA4BF /* GiftBasketDetailsViewController.m in Sources */,
 				72B73564269D058300EC3322 /* SceneDelegate.m in Sources */,
 				72B735C0269E7FF500EC3322 /* InterestCell.m in Sources */,
 			);
