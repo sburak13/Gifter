@@ -9,6 +9,8 @@
 #import "GiftBasket.h"
 #import "iCarousel.h"
 #import "Person.h"
+#import "Gift.h"
+#import "TTTAttributedLabel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,8 +18,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) GiftBasket *basket;
 @property (nonatomic, weak) Person *person;
+@property (nonatomic, weak) Gift *gift;
 
 @property (weak, nonatomic) IBOutlet iCarousel *iCarouselView;
+@property (weak, nonatomic) IBOutlet UILabel *headerLabel;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *itemNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *suggestedBecauseLabel;
 
 @end
 

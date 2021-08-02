@@ -82,8 +82,10 @@
             if(error) {
                 NSLog(@"Error getting search results: %@", error.localizedDescription);
                 
+                /*
                 self.giftsAlert.message = [@"Gift search error: " stringByAppendingString:error.localizedDescription];
                 [self presentViewController:self.giftsAlert animated:YES completion:nil];
+                */
             }
             else {
                 if (apiNum == 1) {
