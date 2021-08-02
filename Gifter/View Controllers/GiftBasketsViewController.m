@@ -313,11 +313,6 @@
         CarouselDetailsViewController *carouselBasketDetailsViewController = navController.topViewController;
         carouselBasketDetailsViewController.basket = basket;
         carouselBasketDetailsViewController.person = self.person;
-        /*
-        GiftBasketDetailsViewController *giftBasketDetailsViewController = navController.topViewController;
-        giftBasketDetailsViewController.basket = basket;
-        giftBasketDetailsViewController.person = self.person;
-        */
     }
 
 }

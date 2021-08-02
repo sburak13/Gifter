@@ -5,6 +5,7 @@
 //  Created by samanthaburak on 8/2/21.
 //
 
+#import "ImageViewController.h"
 #import "CarouselDetailsViewController.h"
 #import "GiftBasketIndivGiftCell.h"
 #import "GiftBasket.h"
@@ -13,7 +14,7 @@
 #import "GiftBasketsViewController.h"
 #import "APIManager.h"
 
-@interface CarouselDetailsViewController () <iCarouselDelegate, iCarouselDataSource, UIGestureRecognizerDelegate>
+@interface CarouselDetailsViewController () <iCarouselDelegate, iCarouselDataSource>
 
 @property (strong, nonatomic) NSArray *arrayOfIndivGifts;
 @property (strong, nonatomic) NSMutableArray *imageArr;
@@ -38,11 +39,6 @@
         [self.imageArr addObject:gift.image];
     }
     
-    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(didPinch:)];
-    [self.iCarouselView addGestureRecognizer:pinchGestureRecognizer];
-    self.iCarouselView.userInteractionEnabled = YES;
-    pinchGestureRecognizer.delegate = self;
-    
     self.iCarouselView.dataSource = self;
     self.iCarouselView.delegate = self;
     
@@ -53,27 +49,6 @@
         self.gift = (Gift*)self.arrayOfIndivGifts[0];
     }
     [self setUI];
-}
-
-- (void)didPinch:(UIPinchGestureRecognizer*)recognizer   {
-    if (recognizer.state == UIGestureRecognizerStateChanged) {
-        UIView *pinchView = recognizer.view;
-        CGRect bounds = pinchView.bounds;
-        CGPoint pinchCenter = [recognizer locationInView:pinchView];
-        pinchCenter.x -= CGRectGetMidX(bounds);
-        pinchCenter.y -= CGRectGetMidY(bounds);
-        CGAffineTransform transform = pinchView.transform;
-        transform = CGAffineTransformTranslate(transform, pinchCenter.x, pinchCenter.y);
-        CGFloat scale = recognizer.scale;
-        transform = CGAffineTransformScale(transform, scale, scale);
-        transform = CGAffineTransformTranslate(transform, -pinchCenter.x, -pinchCenter.y);
-        pinchView.transform = transform;
-        recognizer.scale = 1.0;
-    
-    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        CGAffineTransform transform = CGAffineTransformMakeScale([recognizer scale],  [recognizer scale]);
-        recognizer.view.transform = transform;
-    }
 }
 
 - (void)setUI {
@@ -135,14 +110,19 @@
     [self setUI];
 }
 
-/*
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
+    [self performSegueWithIdentifier:@"imageSegue" sender:self];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"imageSegue"]) {
+        ImageViewController *imageViewController = segue.destinationViewController;
+        Gift* gift = (Gift*)self.arrayOfIndivGifts[self.iCarouselView.currentItemIndex];
+        imageViewController.img = gift.image;
+    }
 }
-*/
 
 @end

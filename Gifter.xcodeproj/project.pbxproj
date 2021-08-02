@@ -13,6 +13,7 @@
 		7258BEAD26B1F972003CA4BF /* GiftBasketIndivGiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BEAC26B1F972003CA4BF /* GiftBasketIndivGiftCell.m */; };
 		7258BF3E26B7C6CE003CA4BF /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF3D26B7C6CE003CA4BF /* iCarousel.m */; };
 		7258BF4126B7C8A5003CA4BF /* CarouselDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF4026B7C8A5003CA4BF /* CarouselDetailsViewController.m */; };
+		7258BF4426B7DA1F003CA4BF /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF4326B7DA1F003CA4BF /* ImageViewController.m */; };
 		72A0C5D126A76C64007AE20B /* GiftBasket.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D026A76C64007AE20B /* GiftBasket.m */; };
 		72A0C5D426A7756D007AE20B /* GiftBasketsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D326A7756D007AE20B /* GiftBasketsViewController.m */; };
 		72A0C5D726A8CD44007AE20B /* GiftBasketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D626A8CD44007AE20B /* GiftBasketCell.m */; };
@@ -66,6 +67,8 @@
 		7258BF3D26B7C6CE003CA4BF /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		7258BF3F26B7C8A5003CA4BF /* CarouselDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselDetailsViewController.h; sourceTree = "<group>"; };
 		7258BF4026B7C8A5003CA4BF /* CarouselDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselDetailsViewController.m; sourceTree = "<group>"; };
+		7258BF4226B7DA1F003CA4BF /* ImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		7258BF4326B7DA1F003CA4BF /* ImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		72A0C5CF26A76C64007AE20B /* GiftBasket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasket.h; sourceTree = "<group>"; };
 		72A0C5D026A76C64007AE20B /* GiftBasket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftBasket.m; sourceTree = "<group>"; };
 		72A0C5D226A7756D007AE20B /* GiftBasketsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasketsViewController.h; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 				7258BEA626B1F8CA003CA4BF /* GiftBasketDetailsViewController.m */,
 				7258BF3F26B7C8A5003CA4BF /* CarouselDetailsViewController.h */,
 				7258BF4026B7C8A5003CA4BF /* CarouselDetailsViewController.m */,
+				7258BF4226B7DA1F003CA4BF /* ImageViewController.h */,
+				7258BF4326B7DA1F003CA4BF /* ImageViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -535,6 +540,7 @@
 				72B73561269D058300EC3322 /* AppDelegate.m in Sources */,
 				72B735A8269D62FD00EC3322 /* PeopleViewController.m in Sources */,
 				72B735B4269E172600EC3322 /* AddEditPersonViewController.m in Sources */,
+				7258BF4426B7DA1F003CA4BF /* ImageViewController.m in Sources */,
 				72A0C5D726A8CD44007AE20B /* GiftBasketCell.m in Sources */,
 				72B735C4269FF71400EC3322 /* APIManager.m in Sources */,
 				72A0C5D126A76C64007AE20B /* GiftBasket.m in Sources */,

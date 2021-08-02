@@ -625,11 +625,37 @@
                         <outlet property="priceLabel" destination="XqS-EB-Ukg" id="UF4-n1-7Yv"/>
                         <outlet property="ratingLabel" destination="0da-CN-L6w" id="VGl-it-tNT"/>
                         <outlet property="suggestedBecauseLabel" destination="inw-6n-fgd" id="mAD-K9-nDp"/>
+                        <segue destination="ldj-9M-djt" kind="show" identifier="imageSegue" id="jEn-Vx-Dzw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bnd-1l-Byr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="321.53846153846155" y="3042.654028436019"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="Ibf-Os-Sqe">
+            <objects>
+                <viewController id="ldj-9M-djt" customClass="ImageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mHK-JN-1uO">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVo-WD-ufS">
+                                <rect key="frame" x="0.0" y="208" width="390" height="374"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Xp-wo-OYa"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dps-Hz-gqe"/>
+                    <connections>
+                        <outlet property="giftImageView" destination="xVo-WD-ufS" id="SJY-xj-puX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E6r-XT-8FU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076.9230769230769" y="3042.654028436019"/>
         </scene>
         <!--Add Edit Person View Controller-->
         <scene sceneID="LQt-pT-bZG">
