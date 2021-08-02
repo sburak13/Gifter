@@ -12,7 +12,7 @@
 #import "SceneDelegate.h"
 #import "GiftBasketsViewController.h"
 
-@interface CarouselDetailsViewController () <iCarouselDelegate, iCarouselDataSource>
+@interface CarouselDetailsViewController () <iCarouselDelegate, iCarouselDataSource, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) NSArray *arrayOfIndivGifts;
 @property (strong, nonatomic) NSMutableArray *imageArr;
@@ -37,11 +37,37 @@
         [self.imageArr addObject:gift.image];
     }
     
+    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(didPinch:)];
+    [self.iCarouselView addGestureRecognizer:pinchGestureRecognizer];
+    self.iCarouselView.userInteractionEnabled = YES;
+    pinchGestureRecognizer.delegate = self;
+    
     self.iCarouselView.dataSource = self;
     self.iCarouselView.delegate = self;
     
     self.iCarouselView.type = iCarouselTypeRotary;
     self.iCarouselView.contentMode = UIViewContentModeScaleAspectFit;
+}
+
+- (void)didPinch:(UIPinchGestureRecognizer*)recognizer   {
+    if (recognizer.state == UIGestureRecognizerStateChanged) {
+        UIView *pinchView = recognizer.view;
+        CGRect bounds = pinchView.bounds;
+        CGPoint pinchCenter = [recognizer locationInView:pinchView];
+        pinchCenter.x -= CGRectGetMidX(bounds);
+        pinchCenter.y -= CGRectGetMidY(bounds);
+        CGAffineTransform transform = pinchView.transform;
+        transform = CGAffineTransformTranslate(transform, pinchCenter.x, pinchCenter.y);
+        CGFloat scale = recognizer.scale;
+        transform = CGAffineTransformScale(transform, scale, scale);
+        transform = CGAffineTransformTranslate(transform, -pinchCenter.x, -pinchCenter.y);
+        pinchView.transform = transform;
+        recognizer.scale = 1.0;
+    
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        CGAffineTransform transform = CGAffineTransformMakeScale([recognizer scale],  [recognizer scale]);
+        recognizer.view.transform = transform;
+    }
 }
 
 - (nonnull UIView *)carousel:(nonnull iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(nullable UIView *)view {

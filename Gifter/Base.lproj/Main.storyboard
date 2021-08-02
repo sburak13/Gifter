@@ -550,7 +550,7 @@
             </objects>
             <point key="canvasLocation" x="321.53846153846155" y="2309.7156398104266"/>
         </scene>
-        <!--Carousel Details View Controller-->
+        <!--Gift Basket Details-->
         <scene sceneID="QNi-dK-e3B">
             <objects>
                 <viewController id="GKU-Pc-0rH" customClass="CarouselDetailsViewController" sceneMemberID="viewController">
@@ -561,7 +561,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oMY-y7-3Oy" customClass="iCarousel">
                                 <rect key="frame" x="41" y="118" width="309" height="296"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Present for Person: $0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMy-k4-ZoB">
                                 <rect key="frame" x="41" y="68" width="309" height="42"/>
@@ -617,7 +616,7 @@
                         <viewLayoutGuide key="safeArea" id="Nx9-Cj-AX3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="JEh-QW-3tx"/>
+                    <navigationItem key="navigationItem" title="Gift Basket Details" id="JEh-QW-3tx"/>
                     <connections>
                         <outlet property="iCarouselView" destination="oMY-y7-3Oy" id="rBC-oU-usf"/>
                     </connections>
