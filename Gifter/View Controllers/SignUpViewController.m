@@ -82,7 +82,6 @@
     sceneDelegate.window.rootViewController = loginViewController;
 }
 
-
 /*
 #pragma mark - Navigation
 

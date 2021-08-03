@@ -43,7 +43,6 @@
         [budgetAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
         [self.budgetLabel setAttributedText: budgetAttributedString];
     }
-    
 }
 
 @end

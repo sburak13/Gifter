@@ -22,20 +22,10 @@
         for (Gift* gift in gifts) {
             self.totalPrice += gift.price; // [gift.price doubleValue];
         }
-        
-        self.totalPrice = trunc(self.totalPrice * 100) / 100;
-         
 
     }
     
     return self;
 }
 
-/*
- - (void)addGift:(Gift*)gift {
-     [self.gifts addObject:gift];
-     self.numItems++;
-     self.totalPrice += [gift.price doubleValue];
- }
- */
 @end

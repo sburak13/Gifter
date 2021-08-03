@@ -18,8 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init:(NSMutableArray*)gifts;
 
-- (void)addGift:(Gift*)gift;
-
 @end
 
 NS_ASSUME_NONNULL_END
