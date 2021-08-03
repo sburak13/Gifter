@@ -11,14 +11,6 @@
 
 @implementation Gift
 
-/*
-@dynamic asin;
-@dynamic descrip;
-@dynamic price;
-@dynamic image;
-@dynamic link;
-*/
-
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     

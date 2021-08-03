@@ -22,8 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
            withBudget: ( NSNumber * _Nullable)budget
        withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
-- (NSMutableArray *)getInterests;
-
 @end
 
 NS_ASSUME_NONNULL_END
