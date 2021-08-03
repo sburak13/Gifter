@@ -47,7 +47,7 @@
     self.signupAlert.title = @"Invalid Sign Up";
     
     if ([self.usernameTextField.text isEqual:@""] || [self.passwordTextField.text isEqual:@""]) {
-        self.signupAlert.message = @"Username or Password field is blank.";
+        self.signupAlert.message = @"Username or Password field is blank";
         [self presentViewController:self.signupAlert animated:YES completion:nil];
     } else {
         // initialize a user object

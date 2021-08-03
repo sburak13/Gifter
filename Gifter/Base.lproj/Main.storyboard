@@ -33,7 +33,7 @@
                                 <rect key="frame" x="107" y="372" width="200" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqd-9C-iKc">
                                 <rect key="frame" x="185" y="448" width="44" height="34"/>
@@ -110,7 +110,7 @@
                                 <rect key="frame" x="95" y="405" width="200" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCA-ET-MA6">
                                 <rect key="frame" x="162" y="482" width="67" height="34"/>
@@ -823,7 +823,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="HI0-po-Op1"/>
+        <segue reference="btJ-A4-cIf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="pencil" catalog="system" width="128" height="113"/>
