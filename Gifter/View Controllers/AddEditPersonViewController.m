@@ -45,31 +45,54 @@
 }
 
 - (IBAction)didTapDone:(id)sender {
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    f.numberStyle = NSNumberFormatterDecimalStyle;
-    NSNumber *budgetNum = [f numberFromString:self.budgetTextField.text];
-    __weak AddEditPersonViewController *weakSelf = self;
-    [Person createPerson:self.nameTextField.text withInterests:self.interestsArray withBudget:budgetNum withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        AddEditPersonViewController *strongSelf = weakSelf;
-        if (!strongSelf) {
-            return;
-        }
-        if (succeeded) {
-            NSLog(@"Succesfully created person");
-            [strongSelf goToPeopleScreen];
-            
-        } else {
-            UIAlertController *createPersonAlert = [UIAlertController alertControllerWithTitle:@"Could Not Create Person"
-                                                                                       message: [@"Error: " stringByAppendingString:error.localizedDescription]
-                                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                               style:UIAlertActionStyleDefault
-                                                             handler:nil];
-            [createPersonAlert addAction:okAction];
-            [self presentViewController:createPersonAlert animated:YES completion:nil];
-            
-        }
-    }];
+    if ([self didFillOutAllFields]) {
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        f.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *budgetNum = [f numberFromString:self.budgetTextField.text];
+        __weak AddEditPersonViewController *weakSelf = self;
+        [Person createPerson:self.nameTextField.text withInterests:self.interestsArray withBudget:budgetNum withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            AddEditPersonViewController *strongSelf = weakSelf;
+            if (!strongSelf) {
+                return;
+            }
+            if (succeeded) {
+                NSLog(@"Succesfully created person");
+                [strongSelf goToPeopleScreen];
+            } else {
+                UIAlertController *createPersonAlert = [UIAlertController alertControllerWithTitle:@"Could Not Create Person"
+                                                                                           message: [@"Error: " stringByAppendingString:error.localizedDescription]
+                                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:nil];
+                [createPersonAlert addAction:okAction];
+                [self presentViewController:createPersonAlert animated:YES completion:nil];
+                
+            }
+        }];
+    } else {
+        UIAlertController *missingInfoAlert = [UIAlertController alertControllerWithTitle:@"Could Not Add Person"
+                                                                                  message: @"Please make sure to fill out all fields"
+                                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [missingInfoAlert addAction:okAction];
+        [self presentViewController:missingInfoAlert animated:YES completion:nil];
+    }
+}
+
+- (BOOL) didFillOutAllFields {
+    if (self.nameTextField.text.length == 0) {
+        return false;
+    }
+    if (self.interestsArray.count == 0) {
+        return false;
+    }
+    if (self.budgetTextField.text.length == 0) {
+        return false;
+    }
+    return true;
 }
 
 - (IBAction)didTapAddInterest:(id)sender {

@@ -71,7 +71,6 @@
 }
 
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
-        
         NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                                                               delegate:nil
                                                          delegateQueue:[NSOperationQueue mainQueue]];
@@ -88,8 +87,6 @@
     
         [task resume];
 }
-
-
 
 - (IBAction)didTapLogout:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
@@ -133,55 +130,19 @@
     return self.peopleArray.count;
 }
 
-/*
-- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-       UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
-          //insert your editAction here
-           NSLog(@"edit");
-       }];
-       editAction.backgroundColor = [UIColor blueColor];
-
-       UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Delete"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
-          //insert your deleteAction here
-           NSLog(@"delete");
-       }];
-       deleteAction.backgroundColor = [UIColor redColor];
-return @[deleteAction,editAction];
-}
-*/
-
-/*
-- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-UITableViewRowAction *button = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Button 1" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
-   {
-       NSLog(@"Action to perform with Button 1");
-   }];
-   button.backgroundColor = [UIColor greenColor]; //arbitrary color
-   UITableViewRowAction *button2 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Button 2" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
-                                   {
-                                       NSLog(@"Action to perform with Button2!");
-                                   }];
-   button2.backgroundColor = [UIColor blueColor]; //arbitrary color
-
-   return @[button, button2]; //array with all the buttons you want. 1,2,3, etc...
-}
- */
-
 - (id)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [self getRowActions:tableView indexPath:indexPath];
 }
-
-/*
-- (id)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self getRowActions:tableView indexPath:indexPath];
-}
-*/
 
 - (id)getRowActions:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     UIContextualAction *delete = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive
                                                                          title:@"Delete"
                                                                        handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
         NSLog(@"Delete");
+        PFObject *person = self.peopleArray[indexPath.row];
+        [person deleteInBackground];
+        [self.peopleArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                                                            }];
     delete.backgroundColor = [UIColor redColor];
     UISwipeActionsConfiguration *swipeActionConfig = [UISwipeActionsConfiguration configurationWithActions:@[delete]];
@@ -189,16 +150,6 @@ UITableViewRowAction *button = [UITableViewRowAction rowActionWithStyle:UITableV
     return swipeActionConfig;
 }
 
-/*
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-// you need to implement this method too or nothing will work:
-
-}
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-   {
-       return YES; //tableview must be editable or nothing will work...
-   }
- */
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
