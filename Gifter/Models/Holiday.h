@@ -14,12 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSMutableArray *recipients;
+@property (nonatomic, strong) NSMutableArray *recipientNames;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSNumber *totalSpending;
 
 + (void) createHoliday: ( NSString * _Nullable )name
         withRecipients: ( NSMutableArray * _Nullable )recipients
-           withDate: ( NSDate * _Nullable)date
+    withRecipientNames: ( NSMutableArray * _Nullable )recipientNames
+              withDate: ( NSDate * _Nullable)date
        withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end

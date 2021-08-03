@@ -14,6 +14,8 @@
 @interface HolidaysViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) NSMutableArray *holidaysArray;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 
 @end
 
@@ -26,6 +28,10 @@
     self.holidaysTableView.delegate = self;
     
     [self loadHolidays];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadHolidays) forControlEvents:UIControlEventValueChanged];
+    [self.holidaysTableView insertSubview:self.refreshControl atIndex: 0];
 }
 
 - (void)loadHolidays {
@@ -42,6 +48,24 @@
             NSLog(@"Error getting holidayse%@", error.localizedDescription);
         }
     }];
+}
+
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                                              delegate:nil
+                                                         delegateQueue:[NSOperationQueue mainQueue]];
+        session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:self.holidaysArray
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    
+            [self.holidaysTableView reloadData];
+
+            [refreshControl endRefreshing];
+
+        }];
+    
+        [task resume];
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -74,6 +98,26 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.holidaysArray.count;
+}
+
+- (id)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+   return [self getRowActions:tableView indexPath:indexPath];
+}
+
+- (id)getRowActions:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+   UIContextualAction *delete = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive
+                                                                        title:@"Delete"
+                                                                      handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+       NSLog(@"Delete Holiday");
+       PFObject *holiday = self.holidaysArray[indexPath.row];
+       [holiday deleteInBackground];
+       [self.holidaysArray removeObjectAtIndex:indexPath.row];
+       [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                                                          }];
+   delete.backgroundColor = [UIColor redColor];
+   UISwipeActionsConfiguration *swipeActionConfig = [UISwipeActionsConfiguration configurationWithActions:@[delete]];
+   swipeActionConfig.performsFirstActionWithFullSwipe = NO;
+   return swipeActionConfig;
 }
 
 

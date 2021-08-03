@@ -82,7 +82,7 @@
     }
 }
 
-- (BOOL) didFillOutAllFields {
+- (BOOL)didFillOutAllFields {
     if (self.nameTextField.text.length == 0) {
         return false;
     }
