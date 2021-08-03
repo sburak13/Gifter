@@ -644,6 +644,7 @@
                                             <outlet property="dateLabel" destination="BL1-VN-ZZT" id="3Wg-VM-hy0"/>
                                             <outlet property="nameLabel" destination="eKe-xb-rXM" id="pDE-K9-dfE"/>
                                             <outlet property="recipientsLabel" destination="Pih-vs-k0z" id="7wX-da-e9t"/>
+                                            <segue destination="HsK-A7-bBe" kind="presentation" identifier="holidaySegue" modalPresentationStyle="fullScreen" id="7oc-aG-m18"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -672,6 +673,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxR-nd-CoT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3744.6153846153843" y="1590.995260663507"/>
+        </scene>
+        <!--Holiday-->
+        <scene sceneID="eik-Pe-udV">
+            <objects>
+                <viewController id="hso-iI-a6z" customClass="SpecificHolidayViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="162" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ka0-fr-jX5">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SpecificHolidayRecipientCell" rowHeight="162" id="Iea-Z6-afP" customClass="SpecificHolidayRecipientCell">
+                                <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="162"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iea-Z6-afP" id="LNK-Jm-xRb">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="162"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3p-wN-KWD">
+                                            <rect key="frame" x="20" y="28" width="189" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcg-6k-iXQ">
+                                            <rect key="frame" x="293" y="94" width="57" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Add Gift"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVX-le-Jov">
+                                            <rect key="frame" x="298" y="36" width="79" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="basketPrice" destination="VVX-le-Jov" id="VBI-6U-EPP"/>
+                                    <outlet property="recipientNameLabel" destination="q3p-wN-KWD" id="2ro-km-e8N"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Holiday" id="KOx-VZ-qp5">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="61M-nl-EmO">
+                            <connections>
+                                <action selector="didTapBackButton:" destination="hso-iI-a6z" id="W9t-C0-LPB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mainTableView" destination="ka0-fr-jX5" id="LqG-9n-HMB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="99g-AA-E0j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3744.6153846153843" y="2309.7156398104266"/>
         </scene>
         <!--Add Person-->
         <scene sceneID="LQt-pT-bZG">
@@ -1035,6 +1095,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jF1-mZ-CYU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4576.9230769230771" y="1590.995260663507"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RQe-OQ-zXz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HsK-A7-bBe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zv5-0g-CFZ">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hso-iI-a6z" kind="relationship" relationship="rootViewController" id="Gy6-hQ-Cfj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ey-pe-pWa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2840" y="2310"/>
         </scene>
     </scenes>
     <designables>

@@ -165,6 +165,11 @@
 }
 
 - (void)combination:(NSMutableArray*)arr data:(NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
+    /*
+     if for basket size of 5 and more than 20 return stop
+     
+     
+     */
     if (index == r) {
         GiftBasket *basket = [[GiftBasket alloc] init:[NSMutableArray arrayWithArray:data]];
         if (basket.totalPrice < [self.person.budgetAmt floatValue]) {

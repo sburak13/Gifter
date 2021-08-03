@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray *recipientNames;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSNumber *totalSpending;
+@property (nonatomic, strong) NSMutableDictionary *dictionary;
+// dictionary - key: (Person) recipient, (GiftBasket) value - basket
 
 + (void) createHoliday: ( NSString * _Nullable )name
         withRecipients: ( NSMutableArray * _Nullable )recipients

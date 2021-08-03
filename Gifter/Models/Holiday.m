@@ -6,6 +6,7 @@
 //
 
 #import "Holiday.h"
+#import "Person.h"
 
 @implementation Holiday
 
@@ -14,6 +15,7 @@
 @dynamic recipientNames;
 @dynamic date;
 @dynamic totalSpending;
+@dynamic dictionary;
 
 + (nonnull NSString *)parseClassName {
     return @"Holiday";
@@ -25,6 +27,12 @@
     newHoliday.recipients = recipients;
     newHoliday.recipientNames = recipientNames;
     newHoliday.date = date;
+    newHoliday.dictionary = [[NSMutableDictionary alloc] initWithCapacity:[recipients count]];
+    
+    for (NSString* personName in recipientNames) {
+        [newHoliday.dictionary setObject:[NSMutableArray array] forKey:personName];
+
+    }
     
     [newHoliday saveInBackgroundWithBlock: completion];
 }

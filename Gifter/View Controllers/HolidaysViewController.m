@@ -10,6 +10,7 @@
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 #import "HolidayCell.h"
+#import "SpecificHolidayViewController.h"
 
 @interface HolidaysViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -41,12 +42,14 @@
 
     [holidayQuery findObjectsInBackgroundWithBlock:^(NSArray<Holiday *> * _Nullable holidays, NSError * _Nullable error) {
         if (holidays) {
-            self.holidaysArray = holidays;
+            self.holidaysArray = (NSMutableArray*)holidays;
             
+            /*
             NSSortDescriptor *sortDescriptor;
             sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date"
                                                        ascending:YES];
-            self.holidaysArray = [self.holidaysArray sortedArrayUsingDescriptors:@[sortDescriptor]];
+            self.holidaysArray = (NSMutableArray*)[self.holidaysArray sortedArrayUsingDescriptors:@[sortDescriptor]];
+            */
             
             [self.holidaysTableView reloadData];
             [self.refreshControl endRefreshing];
@@ -118,6 +121,7 @@
        NSLog(@"Delete Holiday");
        PFObject *holiday = self.holidaysArray[indexPath.row];
        [holiday deleteInBackground];
+       
        [self.holidaysArray removeObjectAtIndex:indexPath.row];
        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                                                           }];
@@ -127,16 +131,21 @@
    return swipeActionConfig;
 }
 
-
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"holidaySegue"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.holidaysTableView indexPathForCell:tappedCell];
+        Holiday *holiday = self.holidaysArray[indexPath.row];
+        UINavigationController *navController = segue.destinationViewController;
+        SpecificHolidayViewController *specificHolidayViewController = navController.topViewController;
+        specificHolidayViewController.holiday = holiday;
+    }
 }
-*/
+
 
 @end

@@ -144,7 +144,8 @@
     if (self.nameTextField.text.length == 0) {
         return false;
     }
-    if (self.peopleArray.count == 0) {
+    
+    if (self.recipientsArray.count == 0) {
         return false;
     }
     if ([self.datePicker.date isEqual:nil]) {

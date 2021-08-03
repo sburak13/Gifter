@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Person : PFObject<PFSubclassing>
+@interface Person : PFObject<PFSubclassing, NSCopying>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSMutableArray *interests;

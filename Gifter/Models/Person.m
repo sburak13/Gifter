@@ -28,5 +28,19 @@
     [newPerson saveInBackgroundWithBlock: completion];
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    id copy = [[[self class] alloc] init];
+
+    if (copy) {
+        // Copy NSObject subclasses
+        [copy setName:[self.name copyWithZone:zone]];
+        [copy setInterests:[self.interests copyWithZone:zone]];
+        [copy setBudgetAmt:[self.budgetAmt copyWithZone:zone]];
+    }
+
+    return copy;
+}
+
 @end
 
