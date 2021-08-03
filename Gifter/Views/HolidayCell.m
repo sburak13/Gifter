@@ -25,40 +25,14 @@
     _holiday = holiday;
     
     self.nameLabel.text = holiday.name;
-    // self.dateLabel.text = holiday.date;
-    
+
     self.recipientsLabel.text = [[holiday.recipientNames valueForKey:@"description"] componentsJoinedByString:@", "];
     
-    
-    // NSMutableArray *recipientNames = [NSMutableArray array];
-    // NSArray *recipients = holiday.recipients;
-    
-    /*
-    for (int i = 0; i < recipients.count; i++) {
-        Person *person = (Person*)recipients[i];
-        [recipientNames addObject:person[@"name"]];
-        
-        
-        [person fetchIfNeededInBackgroundWithBlock:^(PFObject *person, NSError *error) {
-            if (person) {
-                Person *newPerson = (Person*)person;
-                NSLog(@"%@", newPerson.name);
-                
-                [recipientNames addObject:newPerson.name];
-                if (i == recipients.count - 1) {
-                    self.recipientsLabel.text = [[recipientNames valueForKey:@"description"] componentsJoinedByString:@", "];
-                    
-                }
-            } else {
-                NSLog(@"Failed to fetch person");
-            }
-        }];
-    
-    }
-    */
-    
-
-    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    NSDate *date = holiday.date;
+    self.dateLabel.text = [formatter stringFromDate:date];
 }
 
 

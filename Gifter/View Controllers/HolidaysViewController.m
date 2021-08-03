@@ -42,7 +42,14 @@
     [holidayQuery findObjectsInBackgroundWithBlock:^(NSArray<Holiday *> * _Nullable holidays, NSError * _Nullable error) {
         if (holidays) {
             self.holidaysArray = holidays;
+            
+            NSSortDescriptor *sortDescriptor;
+            sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date"
+                                                       ascending:YES];
+            self.holidaysArray = [self.holidaysArray sortedArrayUsingDescriptors:@[sortDescriptor]];
+            
             [self.holidaysTableView reloadData];
+            [self.refreshControl endRefreshing];
         }
         else {
             NSLog(@"Error getting holidayse%@", error.localizedDescription);
