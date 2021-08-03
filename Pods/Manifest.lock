@@ -1,5 +1,6 @@
 PODS:
   - Bolts/Tasks (1.9.1)
+  - CCDropDownMenus (0.1.2)
   - Parse (1.19.2):
     - Parse/Core (= 1.19.2)
   - Parse/Core (1.19.2):
@@ -7,20 +8,23 @@ PODS:
   - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
+  - CCDropDownMenus
   - Parse
   - TTTAttributedLabel
 
 SPEC REPOS:
   trunk:
     - Bolts
+    - CCDropDownMenus
     - Parse
     - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  CCDropDownMenus: ee65b63286a16354907fdde49c40c1817f463470
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 2d7952396305800f4beeaf92e687815335e16fac
+PODFILE CHECKSUM: 87384ea2f093eb72b53768d5be43103a000fb299
 
 COCOAPODS: 1.10.1

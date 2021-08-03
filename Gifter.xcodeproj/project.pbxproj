@@ -15,6 +15,7 @@
 		7258BF4726B8DAEB003CA4BF /* HolidaysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF4626B8DAEB003CA4BF /* HolidaysViewController.m */; };
 		7258BF4A26B8E60B003CA4BF /* Holiday.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF4926B8E60B003CA4BF /* Holiday.m */; };
 		7258BF4D26B8E7A9003CA4BF /* HolidayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF4C26B8E7A9003CA4BF /* HolidayCell.m */; };
+		7258BF5026B9053B003CA4BF /* AddHolidayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF4F26B9053B003CA4BF /* AddHolidayViewController.m */; };
 		72A0C5D126A76C64007AE20B /* GiftBasket.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D026A76C64007AE20B /* GiftBasket.m */; };
 		72A0C5D426A7756D007AE20B /* GiftBasketsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D326A7756D007AE20B /* GiftBasketsViewController.m */; };
 		72A0C5D726A8CD44007AE20B /* GiftBasketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D626A8CD44007AE20B /* GiftBasketCell.m */; };
@@ -72,6 +73,8 @@
 		7258BF4926B8E60B003CA4BF /* Holiday.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Holiday.m; sourceTree = "<group>"; };
 		7258BF4B26B8E7A9003CA4BF /* HolidayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HolidayCell.h; sourceTree = "<group>"; };
 		7258BF4C26B8E7A9003CA4BF /* HolidayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HolidayCell.m; sourceTree = "<group>"; };
+		7258BF4E26B9053B003CA4BF /* AddHolidayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddHolidayViewController.h; sourceTree = "<group>"; };
+		7258BF4F26B9053B003CA4BF /* AddHolidayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddHolidayViewController.m; sourceTree = "<group>"; };
 		72A0C5CF26A76C64007AE20B /* GiftBasket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasket.h; sourceTree = "<group>"; };
 		72A0C5D026A76C64007AE20B /* GiftBasket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftBasket.m; sourceTree = "<group>"; };
 		72A0C5D226A7756D007AE20B /* GiftBasketsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasketsViewController.h; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 				7258BF4326B7DA1F003CA4BF /* ImageViewController.m */,
 				7258BF4526B8DAEB003CA4BF /* HolidaysViewController.h */,
 				7258BF4626B8DAEB003CA4BF /* HolidaysViewController.m */,
+				7258BF4E26B9053B003CA4BF /* AddHolidayViewController.h */,
+				7258BF4F26B9053B003CA4BF /* AddHolidayViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -544,6 +549,7 @@
 				72B735B1269DF68800EC3322 /* Person.m in Sources */,
 				72B735BD269E302100EC3322 /* PersonCell.m in Sources */,
 				72B73561269D058300EC3322 /* AppDelegate.m in Sources */,
+				7258BF5026B9053B003CA4BF /* AddHolidayViewController.m in Sources */,
 				72B735A8269D62FD00EC3322 /* PeopleViewController.m in Sources */,
 				72B735B4269E172600EC3322 /* AddEditPersonViewController.m in Sources */,
 				7258BF4426B7DA1F003CA4BF /* ImageViewController.m in Sources */,

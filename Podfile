@@ -8,6 +8,7 @@ target 'Gifter' do
   # Pods for Gifter
   pod 'Parse'
   pod 'TTTAttributedLabel'
+  pod 'CCDropDownMenus'
 
   target 'GifterTests' do
     inherit! :search_paths

@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Gifter/Pods-Gifter-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/CCDropDownMenus/CCDropDownMenus.framework
 ${BUILT_PRODUCTS_DIR}/Parse/Parse.framework
 ${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework
