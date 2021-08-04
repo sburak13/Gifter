@@ -159,7 +159,7 @@
                 [self.arrayOfGifts addObjectsFromArray:[Gift giftsWithArray: giftsDictionaryArray FromInterest:interest]];
                 if (i == interests.count - 1) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self limitGifts:100];
+                        // [self limitGifts:100];
                         
                         self.giftBasketTableView.hidden = NO;
                         self.picker.hidden = NO;
@@ -201,11 +201,10 @@
 }
 
 - (void)combination:(NSMutableArray*)arr data:(NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
-    /*
-     if for basket size of 5 and more than 20 return stop
-     
-     
-     */
+    if (self.arrayOfGiftBaskets.count == 500) {
+        return;
+    }
+    
     if (index == r) {
         GiftBasket *basket = [[GiftBasket alloc] init:[NSMutableArray arrayWithArray:data]];
         if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
@@ -229,6 +228,7 @@
     }
     
     [self combination:self.arrayOfGifts data:combo start:0 end:self.arrayOfGifts.count-1 index:0 r:self.numItemsInBasket];
+    
 }
 
 - (IBAction)segmentSwitch:(id)sender {
@@ -262,7 +262,7 @@
 - (NSArray *)createPickerData {
     NSMutableArray *choices = [NSMutableArray array];
     int lowBound = 1;
-    int highBound = 4;
+    int highBound = 5;
     for (int i = lowBound; i <= highBound; i++) {
         [choices addObject:[NSString stringWithFormat:@"Basket of %d", i]];
     }
