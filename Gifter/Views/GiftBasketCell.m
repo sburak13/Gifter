@@ -68,12 +68,15 @@
     
     [self hideUnhideUI:numItems];
     
+    
     /*
     self.image21Space.constant = 10;
     self.image32Space.constant = 10;
     self.image43Space.constant = 10;
     self.image54Space.constant = 10;
-    */
+     */
+    
+    
 }
 
 - (void)hideUnhideUI:(int)numItems {
@@ -100,7 +103,7 @@
             heightConstraint.constant = 75;
         }
         
-        /*
+        
         if (i < self.imageViews.count - 1) {
             NSLayoutConstraint *spaceConstraint = (NSLayoutConstraint*)[self.spaceConstraints objectAtIndex: i];
             if (i >= numItems - 1) {
@@ -111,7 +114,6 @@
                 // [imageView addConstraint: spaceConstraint];
             }
         }
-        */
         
         
         /*i = 0

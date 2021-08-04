@@ -59,6 +59,8 @@
     // [self.activityIndicator startAnimating];
     // self.activityIndicator.layer.zPosition = 1;
     
+    self.secondActivityIndicator.layer.zPosition = 1;
+    
     self.loadingGiftsLabel.hidden = NO;
     self.loadingGiftsLabel.layer.zPosition = 1;
     
@@ -89,8 +91,8 @@
     pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     pathAnimation.duration = 3.0;
     
-    int imageWidth = 50;
-    int imageHeight = 50;
+    int imageWidth = 30;
+    int imageHeight = 30;
     CGMutablePathRef curvedPath = CGPathCreateMutable();
     CGRect circleContainer = CGRectMake(self.view.frame.size.width / 2 - imageWidth / 2, self.view.frame.size.height / 2 - imageHeight / 2 - 30, imageWidth, imageHeight);
     CGPathAddEllipseInRect(curvedPath, NULL, circleContainer);
@@ -171,6 +173,8 @@
                         // [self.activityIndicator stopAnimating];
                         
                         self.numItemsInBasket = 1;
+                        // change table view cell height
+                        self.giftBasketTableView.rowHeight = self.numItemsInBasket * 75 + 10;
                         [self loadGiftBaskets];
                         [self sortAscendingPrice];
                         
@@ -229,6 +233,7 @@
     
     [self combination:self.arrayOfGifts data:combo start:0 end:self.arrayOfGifts.count-1 index:0 r:self.numItemsInBasket];
     
+    // [self.secondActivityIndicator stopAnimating];
 }
 
 - (IBAction)segmentSwitch:(id)sender {
@@ -263,6 +268,7 @@
     NSMutableArray *choices = [NSMutableArray array];
     int lowBound = 1;
     int highBound = 5;
+    // [choices addObject:[NSString stringWithFormat:@"Basket of %d", 5]];
     for (int i = lowBound; i <= highBound; i++) {
         [choices addObject:[NSString stringWithFormat:@"Basket of %d", i]];
     }
@@ -283,12 +289,26 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     // [self performSelectorOnMainThread:@selector(startSecondActivityIndicator) withObject:nil waitUntilDone:YES];
+    [self.secondActivityIndicator startAnimating];
+    
+    
+    
+    self.arrayOfGiftBaskets = [NSMutableArray array];
+    [self.giftBasketTableView reloadData];
 
     NSString *selectedEntry = [self.pickerData objectAtIndex:row];
     NSString *stringNum = [selectedEntry substringFromIndex: [selectedEntry length] - 1];
     
     self.numItemsInBasket = [stringNum intValue];
-    NSLog([NSString stringWithFormat:@"Num Items %d", self.numItemsInBasket]);
+    
+    // change table view cell height
+    self.giftBasketTableView.rowHeight = self.numItemsInBasket * 75 + 10 * self.numItemsInBasket + 10;
+    
+    /*
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSelector:@selector(loadGiftBaskets) withObject:nil afterDelay:1.0];
+            });
+    */
     
     [self loadGiftBaskets];
     
