@@ -47,6 +47,10 @@
     sceneDelegate.window.rootViewController = (HolidaysViewController*) tabBarViewController;
 }
 
+- (IBAction)didTapAddGift:(id)sender {
+}
+
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     SpecificHolidayRecipientCell *cell = [self.mainTableView dequeueReusableCellWithIdentifier:@"SpecificHolidayRecipientCell"];
     NSArray *recipientNamesArray = self.holiday.dictionary.allKeys;

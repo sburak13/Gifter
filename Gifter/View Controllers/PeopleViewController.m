@@ -150,6 +150,14 @@
     return swipeActionConfig;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.alpha = 0;
+    [UIView animateWithDuration:1 delay:0.1 * indexPath.row options:nil animations:^{
+        cell.alpha = 1;
+    } completion:nil];
+}
+
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

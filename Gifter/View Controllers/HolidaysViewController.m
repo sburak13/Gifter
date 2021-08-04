@@ -131,6 +131,14 @@
    return swipeActionConfig;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.alpha = 0;
+    [UIView animateWithDuration:1 delay:0.1 * indexPath.row options:nil animations:^{
+        cell.alpha = 1;
+    } completion:nil];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

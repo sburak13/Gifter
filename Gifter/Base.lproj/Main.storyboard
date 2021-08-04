@@ -701,6 +701,9 @@
                                             <rect key="frame" x="293" y="94" width="57" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Add Gift"/>
+                                            <connections>
+                                                <action selector="didTapAddGift:" destination="hso-iI-a6z" eventType="touchUpInside" id="F2e-hW-eN7"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVX-le-Jov">
                                             <rect key="frame" x="298" y="36" width="79" height="40"/>
