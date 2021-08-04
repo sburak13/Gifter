@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *loadingGiftsLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortingSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *secondActivityIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *loadingGiftImageView;
 
 @end
 
@@ -55,16 +56,49 @@
     // [self.secondActivityIndicator startAnimating];
     // self.secondActivityIndicator.layer.zPosition = 1;
     
-    [self.activityIndicator startAnimating];
-    self.activityIndicator.layer.zPosition = 1;
+    // [self.activityIndicator startAnimating];
+    // self.activityIndicator.layer.zPosition = 1;
     
     self.loadingGiftsLabel.hidden = NO;
     self.loadingGiftsLabel.layer.zPosition = 1;
+    
+    [UIView animateWithDuration:1.0f
+                      delay:0.0f
+                    options: UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionBeginFromCurrentState
+                 animations: ^(void){
+        self.loadingGiftsLabel.alpha = 0;
+    }
+                 completion:NULL];
+    
+    self.loadingGiftImageView.hidden = NO;
+    [self animateLoadingGiftImage];
+    self.loadingGiftImageView.layer.zPosition = 1;
     
     self.noGiftBasketsLabel.layer.zPosition = 1;
     
     [self loadGifts];
         
+}
+
+- (void)animateLoadingGiftImage {
+    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    pathAnimation.calculationMode = kCAAnimationPaced;
+    pathAnimation.fillMode = kCAFillModeForwards;
+    pathAnimation.removedOnCompletion = NO;
+    pathAnimation.repeatCount = INFINITY;
+    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    pathAnimation.duration = 3.0;
+    
+    int imageWidth = 50;
+    int imageHeight = 50;
+    CGMutablePathRef curvedPath = CGPathCreateMutable();
+    CGRect circleContainer = CGRectMake(self.view.frame.size.width / 2 - imageWidth / 2, self.view.frame.size.height / 2 - imageHeight / 2 - 30, imageWidth, imageHeight);
+    CGPathAddEllipseInRect(curvedPath, NULL, circleContainer);
+
+    pathAnimation.path = curvedPath;
+    CGPathRelease(curvedPath);
+
+    [self.loadingGiftImageView.layer addAnimation:pathAnimation forKey:@"myCircleAnimation"];
 }
 
 - (void)loadGifts {
@@ -132,7 +166,9 @@
                         self.sortingSegmentedControl.hidden = NO;
                         self.loadingGiftsLabel.hidden = YES;
                         
-                        [self.activityIndicator stopAnimating];
+                        [self.loadingGiftImageView.layer removeAnimationForKey:@"myCircleAnimation"];
+                        self.loadingGiftImageView.hidden = YES;
+                        // [self.activityIndicator stopAnimating];
                         
                         self.numItemsInBasket = 1;
                         [self loadGiftBaskets];
