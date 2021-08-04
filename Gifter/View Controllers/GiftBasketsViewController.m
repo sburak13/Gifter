@@ -59,7 +59,7 @@
     // [self.activityIndicator startAnimating];
     // self.activityIndicator.layer.zPosition = 1;
     
-    self.secondActivityIndicator.layer.zPosition = 1;
+    // self.secondActivityIndicator.layer.zPosition = 1;
     
     self.loadingGiftsLabel.hidden = NO;
     self.loadingGiftsLabel.layer.zPosition = 1;
@@ -89,7 +89,7 @@
     pathAnimation.removedOnCompletion = NO;
     pathAnimation.repeatCount = INFINITY;
     pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    pathAnimation.duration = 3.0;
+    pathAnimation.duration = 2.0;
     
     int imageWidth = 30;
     int imageHeight = 30;
@@ -106,6 +106,7 @@
 - (void)loadGifts {
     self.arrayOfGifts = [NSMutableArray array];
     
+    __block int resultsCount = 0;
     NSMutableArray *interests = self.person.interests;
     // for (NSString* interest in interests) {
     for (int i = 0; i < interests.count; i++) {
@@ -125,8 +126,9 @@
                 NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
                 
                 if (apiNum == 1) {
-                    NSLog(@"%@ gifts", gifts);
+                    // NSLog(@"%@ gifts", gifts);
                     NSArray *giftDetails = gifts[@"products"];
+                    NSLog(@"%@Interest", interest);
                     NSLog(@"%@ gift details", giftDetails);
                     
                     for (NSDictionary* gift in giftDetails) {
@@ -139,9 +141,12 @@
                             }
                         }
                     }
+                    resultsCount = resultsCount + 1;
+                    
                 } else {
-                    NSLog(@"%@ gifts", gifts);
+                    // NSLog(@"%@ gifts", gifts);
                     NSArray *giftDetails = gifts[@"searchProductDetails"];
+                    NSLog(@"%@Interest", interest);
                     NSLog(@"%@ gift details", giftDetails);
                     
                     for (NSDictionary* gift in giftDetails) {
@@ -154,12 +159,19 @@
                             }
                         }
                     }
+                    resultsCount = resultsCount + 1;
                     
-                    NSLog(@"%@Gifts", giftsDictionaryArray);
                 }
                 
+                // NSLog(@"%@Interest", interest);
+                // NSLog(@"%@Gifts", giftsDictionaryArray);
                 [self.arrayOfGifts addObjectsFromArray:[Gift giftsWithArray: giftsDictionaryArray FromInterest:interest]];
-                if (i == interests.count - 1) {
+                NSLog(@"%@ Gifts Array", self.arrayOfGifts);
+                
+                
+                
+                // if (i == interests.count - 1) {
+                if (resultsCount == interests.count) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         // [self limitGifts:100];
                         
@@ -176,6 +188,8 @@
                         // change table view cell height
                         self.giftBasketTableView.rowHeight = self.numItemsInBasket * 75 + 10;
                         [self loadGiftBaskets];
+                        // NSLog(@"%@ Gift Baskets", self.arrayOfGiftBaskets);
+                        
                         [self sortAscendingPrice];
                         
                         [self.giftBasketTableView reloadData];
@@ -289,9 +303,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     // [self performSelectorOnMainThread:@selector(startSecondActivityIndicator) withObject:nil waitUntilDone:YES];
-    [self.secondActivityIndicator startAnimating];
-    
-    
+    // [self.secondActivityIndicator startAnimating];
     
     self.arrayOfGiftBaskets = [NSMutableArray array];
     [self.giftBasketTableView reloadData];
