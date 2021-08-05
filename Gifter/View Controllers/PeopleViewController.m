@@ -120,11 +120,29 @@
     [self performSegueWithIdentifier:@"addEditSegue" sender:nil];
 }
 
+-(void)generateButtonClicked:(UIButton*)sender
+{
+    // sending the button
+    [self performSegueWithIdentifier:@"giftStreamSegue" sender:sender];
+    
+    
+    /*
+    Person *person = self.peopleArray[sender.tag];
+    NSLog(@"person's name %@", person.name);
+    UINavigationController *navController = segue.destinationViewController;
+    GiftBasketsViewController *giftBasketsViewController = navController.topViewController;
+    giftBasketsViewController.person = person;
+    */
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PersonCell *cell = [self.peopleTableView dequeueReusableCellWithIdentifier:@"PersonCell"];
     Person *person = self.peopleArray[indexPath.row];
     cell.person = person;
     // [cell.containerView setBackgroundColor:[Colors salmonColor]];
+    cell.generateButton.tag = indexPath.row;
+    [cell.generateButton addTarget:self action:@selector(generateButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+
     return cell;
 }
 
@@ -164,7 +182,15 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"streamSegue"]) {
+    if ([[segue identifier] isEqualToString:@"giftStreamSegue"]) {
+        UIButton *tappedButton = sender;
+        NSInteger buttonIndex = tappedButton.tag;
+        Person *person = [self.peopleArray objectAtIndex:buttonIndex];
+        UINavigationController *navController = segue.destinationViewController;
+        GiftBasketsViewController *giftBasketsViewController = navController.topViewController;
+        giftBasketsViewController.person = person;
+        
+        /*
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.peopleTableView indexPathForCell:tappedCell];
         Person *person = self.peopleArray[indexPath.row];
@@ -172,6 +198,7 @@
         UINavigationController *navController = segue.destinationViewController;
         GiftBasketsViewController *giftBasketsViewController = navController.topViewController;
         giftBasketsViewController.person = person;
+        */
     }
 }
 

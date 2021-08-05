@@ -20,6 +20,12 @@
     // Configure the view for the selected state
 }
 
+/*
+- (IBAction)didTapGenerate:(id)sender {
+    [self performSegueWithIdentifier:@"giftStreamSegue" sender:self];
+}
+*/
+
 - (void)setPerson:(Person *)person {
     _person = person;
     
