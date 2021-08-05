@@ -21,6 +21,7 @@
 		7258BF5826B99DB2003CA4BF /* CustomHolidaySectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7258BF5726B99DB2003CA4BF /* CustomHolidaySectionHeader.xib */; };
 		7258BF5B26B9A04D003CA4BF /* SpecificHolidayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF5A26B9A04D003CA4BF /* SpecificHolidayViewController.m */; };
 		7258BF5E26B9A1E9003CA4BF /* SpecificHolidayRecipientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF5D26B9A1E9003CA4BF /* SpecificHolidayRecipientCell.m */; };
+		7258BF6426BC6AB8003CA4BF /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258BF6326BC6AB8003CA4BF /* Colors.m */; };
 		72A0C5D126A76C64007AE20B /* GiftBasket.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D026A76C64007AE20B /* GiftBasket.m */; };
 		72A0C5D426A7756D007AE20B /* GiftBasketsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D326A7756D007AE20B /* GiftBasketsViewController.m */; };
 		72A0C5D726A8CD44007AE20B /* GiftBasketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0C5D626A8CD44007AE20B /* GiftBasketCell.m */; };
@@ -89,6 +90,8 @@
 		7258BF5A26B9A04D003CA4BF /* SpecificHolidayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpecificHolidayViewController.m; sourceTree = "<group>"; };
 		7258BF5C26B9A1E9003CA4BF /* SpecificHolidayRecipientCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpecificHolidayRecipientCell.h; sourceTree = "<group>"; };
 		7258BF5D26B9A1E9003CA4BF /* SpecificHolidayRecipientCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpecificHolidayRecipientCell.m; sourceTree = "<group>"; };
+		7258BF6226BC6AB8003CA4BF /* Colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
+		7258BF6326BC6AB8003CA4BF /* Colors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Colors.m; sourceTree = "<group>"; };
 		72A0C5CF26A76C64007AE20B /* GiftBasket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasket.h; sourceTree = "<group>"; };
 		72A0C5D026A76C64007AE20B /* GiftBasket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftBasket.m; sourceTree = "<group>"; };
 		72A0C5D226A7756D007AE20B /* GiftBasketsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftBasketsViewController.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				7258BF3C26B7C6CE003CA4BF /* iCarousel.h */,
 				7258BF3D26B7C6CE003CA4BF /* iCarousel.m */,
 				72B735C526A08B8A00EC3322 /* Keys.plist */,
+				7258BF6226BC6AB8003CA4BF /* Colors.h */,
+				7258BF6326BC6AB8003CA4BF /* Colors.m */,
 			);
 			path = Gifter;
 			sourceTree = "<group>";
@@ -586,6 +591,7 @@
 				7258BF5326B91760003CA4BF /* RecipientCell.m in Sources */,
 				7258BF4D26B8E7A9003CA4BF /* HolidayCell.m in Sources */,
 				72B73572269D058400EC3322 /* main.m in Sources */,
+				7258BF6426BC6AB8003CA4BF /* Colors.m in Sources */,
 				72A0C5D426A7756D007AE20B /* GiftBasketsViewController.m in Sources */,
 				7258BF4726B8DAEB003CA4BF /* HolidaysViewController.m in Sources */,
 				72B73564269D058300EC3322 /* SceneDelegate.m in Sources */,

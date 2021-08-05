@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "PersonCell.h"
 #import "GiftBasketsViewController.h"
+#import "Colors.h"
 
 @interface PeopleViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -48,6 +49,8 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadPeople) forControlEvents:UIControlEventValueChanged];
     [self.peopleTableView insertSubview:self.refreshControl atIndex: 0];
+    
+    [self.peopleTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (void)loadPeople {
@@ -121,8 +124,7 @@
     PersonCell *cell = [self.peopleTableView dequeueReusableCellWithIdentifier:@"PersonCell"];
     Person *person = self.peopleArray[indexPath.row];
     cell.person = person;
-    NSLog(@"%@", cell.person.name);
-    
+    // [cell.containerView setBackgroundColor:[Colors salmonColor]];
     return cell;
 }
 
@@ -144,7 +146,8 @@
         [self.peopleArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                                                            }];
-    delete.backgroundColor = [UIColor redColor];
+    
+    delete.backgroundColor = [Colors darkPinkColor];
     UISwipeActionsConfiguration *swipeActionConfig = [UISwipeActionsConfiguration configurationWithActions:@[delete]];
     swipeActionConfig.performsFirstActionWithFullSwipe = NO;
     return swipeActionConfig;

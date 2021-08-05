@@ -67,16 +67,6 @@
     }
     
     [self hideUnhideUI:numItems];
-    
-    
-    /*
-    self.image21Space.constant = 10;
-    self.image32Space.constant = 10;
-    self.image43Space.constant = 10;
-    self.image54Space.constant = 10;
-     */
-    
-    
 }
 
 - (void)hideUnhideUI:(int)numItems {
@@ -103,63 +93,15 @@
             heightConstraint.constant = 75;
         }
         
-        
         if (i < self.imageViews.count - 1) {
             NSLayoutConstraint *spaceConstraint = (NSLayoutConstraint*)[self.spaceConstraints objectAtIndex: i];
             if (i >= numItems - 1) {
                 spaceConstraint.constant = 0;
-                // [imageView removeConstraint: spaceConstraint];
             } else {
                 spaceConstraint.constant = 10;
-                // [imageView addConstraint: spaceConstraint];
             }
         }
-        
-        
-        /*i = 0
-        i < 4
-        i >= 0
-        */
-        
-        
-        /*
-        if (numItems == 2) {
-            image32Space (index 1) and image43Space (index 2) and image54Space (index3) = 0
-        }
-        */
-        
-       
     }
-    
-    /*
-    for (int i = 0; i < self.imageViews.count; i++) {
-        UIImageView *imageView = (UIImageView*)[self.imageViews objectAtIndex: i];
-        UILabel *descriptionLabel = (UILabel*)[self.descriptionLabels objectAtIndex: i];
-        NSLayoutConstraint *heightConstraint = (NSLayoutConstraint*)[self.heightConstraints objectAtIndex: i];
-        NSLayoutConstraint *widthConstraint = (NSLayoutConstraint*)[self.widthConstraints objectAtIndex: i];
-        
-        imageView.hidden = NO;
-        descriptionLabel.hidden = NO;
-        
-        widthConstraint.constant = 70;
-        heightConstraint.constant = 75;
-    }
-     
-    for (int i = numItems; i < self.imageViews.count; i++) {
-        UIImageView *imageView = (UIImageView*)[self.imageViews objectAtIndex: i];
-        UILabel *descriptionLabel = (UILabel*)[self.descriptionLabels objectAtIndex: i];
-        NSLayoutConstraint *heightConstraint = (NSLayoutConstraint*)[self.heightConstraints objectAtIndex: i];
-        NSLayoutConstraint *widthConstraint = (NSLayoutConstraint*)[self.widthConstraints objectAtIndex: i];
-        
-        imageView.hidden = YES;
-        descriptionLabel.hidden = YES;
-        
-        widthConstraint.constant = 0;
-        heightConstraint.constant = 0;
-    }
-     
-    [self layoutSubviews];
-    */
 }
 
 

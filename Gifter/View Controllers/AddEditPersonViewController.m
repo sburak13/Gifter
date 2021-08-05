@@ -105,7 +105,8 @@
     
     NSString *interest = self.addInterestTextField.text;
     
-    if (self.interestsArray.count < 3 && ![interest isEqualToString:@""]) {
+    int maxInterests = 6;
+    if (self.interestsArray.count < maxInterests && ![interest isEqualToString:@""]) {
         [self.interestsArray insertObject:interest atIndex:0];
         self.addInterestTextField.text = @"";
         [self.interestsTableView reloadData];
@@ -115,8 +116,8 @@
         [addInterestAlert addAction:okAction];
         [self presentViewController:addInterestAlert animated:YES completion:nil];
         
-    } else if (self.interestsArray.count >= 3) {
-        addInterestAlert.message = @"Can't add more than 3 interests";
+    } else if (self.interestsArray.count >= maxInterests) {
+        addInterestAlert.message = [NSString stringWithFormat:@"Can't add more than %d interests", maxInterests];
         [addInterestAlert addAction:okAction];
         [self presentViewController:addInterestAlert animated:YES completion:nil];
     }

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *interestsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *budgetLabel;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @property (strong, nonatomic) Person *person;
 
