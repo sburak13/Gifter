@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortingSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *secondActivityIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *loadingGiftImageView;
+@property (weak, nonatomic) IBOutlet UILabel *personLabel;
 
 @end
 
@@ -48,18 +49,12 @@
     self.giftBasketTableView.dataSource = self;
     self.giftBasketTableView.delegate = self;
     
+    self.personLabel.text = [@"For " stringByAppendingString: self.person.name];
+    
     self.pickerData = [self createPickerData];
     
     self.picker.dataSource = self;
     self.picker.delegate = self;
-    
-    // [self.secondActivityIndicator startAnimating];
-    // self.secondActivityIndicator.layer.zPosition = 1;
-    
-    // [self.activityIndicator startAnimating];
-    // self.activityIndicator.layer.zPosition = 1;
-    
-    // self.secondActivityIndicator.layer.zPosition = 1;
     
     self.loadingGiftsLabel.hidden = NO;
     self.loadingGiftsLabel.layer.zPosition = 1;
@@ -177,6 +172,7 @@
                         
                         self.giftBasketTableView.hidden = NO;
                         self.picker.hidden = NO;
+                        self.personLabel.hidden = NO;
                         self.sortingSegmentedControl.hidden = NO;
                         self.loadingGiftsLabel.hidden = YES;
                         
