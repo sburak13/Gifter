@@ -198,6 +198,7 @@
                         <viewLayoutGuide key="safeArea" id="cZI-yc-pED"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.81568627449999997" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="kUO-th-VXH" firstAttribute="top" secondItem="AR4-M3-m4x" secondAttribute="bottom" constant="40" id="FqO-Ap-dOv"/>
                             <constraint firstItem="AR4-M3-m4x" firstAttribute="leading" secondItem="cZI-yc-pED" secondAttribute="leading" constant="100" id="KB6-hk-TVq"/>
@@ -207,6 +208,9 @@
                             <constraint firstItem="kUO-th-VXH" firstAttribute="leading" secondItem="cZI-yc-pED" secondAttribute="leading" constant="70" id="qoO-Td-rOA"/>
                             <constraint firstItem="AR4-M3-m4x" firstAttribute="centerX" secondItem="Iu3-bp-uYK" secondAttribute="centerX" id="tXx-8V-JIN"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="0Vq-pK-Vm5" appends="YES" id="Q0F-V9-Jdo"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="uhv-BY-FU6">
                         <barButtonItem key="leftBarButtonItem" title="Back" image="return" catalog="system" id="L3h-3p-f4p">
@@ -223,6 +227,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huD-tv-57U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0Vq-pK-Vm5">
+                    <connections>
+                        <action selector="tapView:" destination="04O-7E-VYb" id="W9M-3W-L7p"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2093.8461538461538" y="-654.02843601895734"/>
         </scene>
@@ -429,7 +438,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="o1h-CK-hgK">
-                                <rect key="frame" x="0.0" y="251" width="390" height="559"/>
+                                <rect key="frame" x="0.0" y="254" width="390" height="556"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search gift baskets here" id="yDk-kV-ejj">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
@@ -626,42 +635,60 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEL-8g-Ox0">
-                                <rect key="frame" x="100" y="101" width="190" height="107"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8L-yy-kmw">
+                                <rect key="frame" x="0.0" y="88" width="390" height="166"/>
+                                <subviews>
+                                    <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEL-8g-Ox0">
+                                        <rect key="frame" x="100" y="20" width="190" height="107"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="190" id="Kfc-Bc-ExB"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="107" id="eKA-2n-qjp"/>
+                                            <constraint firstAttribute="height" constant="107" id="kv7-Gn-OeO"/>
+                                        </constraints>
+                                    </pickerView>
+                                    <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="krI-xh-9QM">
+                                        <rect key="frame" x="67.666666666666686" y="122" width="255" height="32"/>
+                                        <segments>
+                                            <segment title="Price Ascending"/>
+                                            <segment title="Price Descending"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentSwitch:" destination="GO8-Ma-8Lp" eventType="valueChanged" id="Jdg-FD-mra"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.81568627449999997" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="107" id="kv7-Gn-OeO"/>
+                                    <constraint firstItem="krI-xh-9QM" firstAttribute="centerX" secondItem="c8L-yy-kmw" secondAttribute="centerX" id="1LU-HN-iSC"/>
+                                    <constraint firstAttribute="height" constant="166" id="53O-Wj-9ad"/>
+                                    <constraint firstItem="FEL-8g-Ox0" firstAttribute="centerX" secondItem="c8L-yy-kmw" secondAttribute="centerX" id="Jyb-NE-jOa"/>
+                                    <constraint firstItem="krI-xh-9QM" firstAttribute="top" secondItem="FEL-8g-Ox0" secondAttribute="bottom" constant="-5" id="QGS-mX-9GS"/>
+                                    <constraint firstItem="FEL-8g-Ox0" firstAttribute="top" secondItem="c8L-yy-kmw" secondAttribute="top" constant="20" id="XoZ-29-QJX"/>
                                 </constraints>
-                            </pickerView>
-                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="krI-xh-9QM">
-                                <rect key="frame" x="67.666666666666686" y="203" width="255" height="32"/>
-                                <segments>
-                                    <segment title="Price Ascending"/>
-                                    <segment title="Price Descending"/>
-                                </segments>
                                 <connections>
-                                    <action selector="segmentSwitch:" destination="GO8-Ma-8Lp" eventType="valueChanged" id="Jdg-FD-mra"/>
+                                    <outletCollection property="gestureRecognizers" destination="LuX-eH-2dM" appends="YES" id="HcK-y9-jAH"/>
                                 </connections>
-                            </segmentedControl>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IQ7-k4-JBg"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.81568627449999997" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="hoK-pg-kZm" firstAttribute="top" secondItem="krI-xh-9QM" secondAttribute="bottom" constant="94" id="8JQ-Cc-u8Q"/>
+                            <constraint firstItem="c8L-yy-kmw" firstAttribute="leading" secondItem="IQ7-k4-JBg" secondAttribute="leading" id="5tv-HC-vTX"/>
+                            <constraint firstItem="chN-ch-4vP" firstAttribute="top" secondItem="PZa-aV-yJC" secondAttribute="topMargin" constant="246" id="BlP-ym-vgX"/>
                             <constraint firstItem="eDY-go-Rm5" firstAttribute="centerX" secondItem="PZa-aV-yJC" secondAttribute="centerX" id="LBg-JY-r1E"/>
                             <constraint firstItem="eDY-go-Rm5" firstAttribute="centerY" secondItem="PZa-aV-yJC" secondAttribute="centerY" id="MQQ-wb-6RQ"/>
-                            <constraint firstItem="FEL-8g-Ox0" firstAttribute="leading" secondItem="IQ7-k4-JBg" secondAttribute="leading" constant="100" id="P1w-Ph-oJO"/>
                             <constraint firstItem="hoK-pg-kZm" firstAttribute="centerX" secondItem="PZa-aV-yJC" secondAttribute="centerX" id="P2N-cb-XWg"/>
-                            <constraint firstItem="chN-ch-4vP" firstAttribute="top" secondItem="krI-xh-9QM" secondAttribute="bottom" constant="100" id="PMf-gu-I4z"/>
                             <constraint firstItem="o1h-CK-hgK" firstAttribute="trailing" secondItem="IQ7-k4-JBg" secondAttribute="trailing" id="Rer-Uh-0Cy"/>
-                            <constraint firstItem="krI-xh-9QM" firstAttribute="centerX" secondItem="PZa-aV-yJC" secondAttribute="centerX" id="YoV-Bh-6nw"/>
+                            <constraint firstItem="hoK-pg-kZm" firstAttribute="top" secondItem="c8L-yy-kmw" secondAttribute="bottom" constant="74" id="SkZ-Ay-h1k"/>
+                            <constraint firstItem="c8L-yy-kmw" firstAttribute="trailing" secondItem="IQ7-k4-JBg" secondAttribute="trailing" id="Ttp-ow-zLs"/>
+                            <constraint firstItem="o1h-CK-hgK" firstAttribute="top" secondItem="c8L-yy-kmw" secondAttribute="bottom" id="XlV-HO-Btc"/>
                             <constraint firstItem="IQ7-k4-JBg" firstAttribute="bottom" secondItem="o1h-CK-hgK" secondAttribute="bottom" id="Zgc-5d-QHi"/>
                             <constraint firstItem="chN-ch-4vP" firstAttribute="leading" secondItem="IQ7-k4-JBg" secondAttribute="leading" constant="20" id="Zsp-3g-6Lr"/>
                             <constraint firstItem="IQ7-k4-JBg" firstAttribute="trailing" secondItem="chN-ch-4vP" secondAttribute="trailing" constant="20" id="ep1-Ix-ZNj"/>
                             <constraint firstItem="o1h-CK-hgK" firstAttribute="leading" secondItem="IQ7-k4-JBg" secondAttribute="leading" id="gb3-0K-xoJ"/>
-                            <constraint firstItem="o1h-CK-hgK" firstAttribute="top" secondItem="krI-xh-9QM" secondAttribute="bottom" constant="17" id="hjf-ab-GcH"/>
-                            <constraint firstItem="FEL-8g-Ox0" firstAttribute="trailing" secondItem="IQ7-k4-JBg" secondAttribute="trailing" constant="-100" id="pA4-Wq-kv0"/>
-                            <constraint firstItem="FEL-8g-Ox0" firstAttribute="top" secondItem="IQ7-k4-JBg" secondAttribute="top" constant="13" id="uLY-yd-dJ1"/>
-                            <constraint firstItem="krI-xh-9QM" firstAttribute="top" secondItem="FEL-8g-Ox0" secondAttribute="bottom" constant="-5" id="vWl-Wy-oNC"/>
+                            <constraint firstItem="c8L-yy-kmw" firstAttribute="top" secondItem="IQ7-k4-JBg" secondAttribute="top" id="tUQ-QW-eow"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Gift Baskets" id="WvS-EI-z2y">
@@ -692,12 +719,18 @@
                         <outlet property="loadingGiftImageView" destination="hoK-pg-kZm" id="o92-nw-b3M"/>
                         <outlet property="loadingGiftsLabel" destination="ckX-cX-F5a" id="QYM-AK-ot0"/>
                         <outlet property="noGiftBasketsLabel" destination="chN-ch-4vP" id="kMU-nM-dnr"/>
+                        <outlet property="optionsContainerView" destination="c8L-yy-kmw" id="wf2-3E-hFa"/>
                         <outlet property="picker" destination="FEL-8g-Ox0" id="Mse-rc-YZB"/>
                         <outlet property="searchBar" destination="yDk-kV-ejj" id="Olg-rd-Zit"/>
                         <outlet property="sortingSegmentedControl" destination="krI-xh-9QM" id="aF5-sn-b10"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaN-gw-saN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LuX-eH-2dM">
+                    <connections>
+                        <action selector="tapView:" destination="GO8-Ma-8Lp" id="Cpp-Fb-E0b"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1335.3846153846152" y="2309.7156398104266"/>
         </scene>
@@ -1089,14 +1122,14 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InterestCell" id="vpW-DY-Ynm" customClass="InterestCell">
-                                                        <rect key="frame" x="0.0" y="24.333333969116211" width="278" height="43.666667938232422"/>
+                                                        <rect key="frame" x="0.0" y="24.333333969116211" width="278" height="43"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vpW-DY-Ynm" id="lYt-N6-Lua">
-                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="43.666667938232422"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDy-cH-7gZ">
-                                                                    <rect key="frame" x="16" y="11.000000000000002" width="246" height="21.666666666666671"/>
+                                                                    <rect key="frame" x="16" y="11" width="246" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
@@ -1209,12 +1242,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R9C-1f-ELc"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="R9C-1f-ELc" firstAttribute="bottom" secondItem="4LC-yZ-MaF" secondAttribute="bottom" constant="30" id="1Ca-9j-Yu2"/>
                             <constraint firstItem="4LC-yZ-MaF" firstAttribute="top" secondItem="R9C-1f-ELc" secondAttribute="top" constant="30" id="KZG-N3-d5V"/>
                             <constraint firstItem="R9C-1f-ELc" firstAttribute="trailing" secondItem="4LC-yZ-MaF" secondAttribute="trailing" constant="30" id="d4M-Ri-Krr"/>
                             <constraint firstItem="4LC-yZ-MaF" firstAttribute="leading" secondItem="R9C-1f-ELc" secondAttribute="leading" constant="30" id="kwn-bF-U57"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8jR-Nj-Lh5" appends="YES" id="0qo-Fo-wiM"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Add Person" id="91U-it-A7D">
                         <barButtonItem key="leftBarButtonItem" title="Back" image="return" catalog="system" id="eq2-im-hLr">
@@ -1238,6 +1275,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVk-Sg-6bb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8jR-Nj-Lh5">
+                    <connections>
+                        <action selector="tapView:" destination="iaK-ca-Czo" id="RmM-Ra-9F3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="321.53846153846155" y="1590.995260663507"/>
         </scene>

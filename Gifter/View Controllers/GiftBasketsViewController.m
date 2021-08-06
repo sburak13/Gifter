@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *loadingGiftImageView;
 @property (weak, nonatomic) IBOutlet UIView *loadingContainerView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
+@property (weak, nonatomic) IBOutlet UIView *optionsContainerView;
 
 @end
 
@@ -42,8 +42,9 @@
     
     // [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} forState:UIControlStateSelected];
 
-    
-    self.title = [@"Gift Baskets For " stringByAppendingString: self.person.name];
+    NSArray *nameSubstrings = [self.person.name componentsSeparatedByString:@" "];
+    NSString *firstName = [nameSubstrings objectAtIndex:0];
+    self.title = [@"Gift Baskets For " stringByAppendingString: firstName];
     
     self.giftsAlert = [UIAlertController alertControllerWithTitle:@"Invalid Gift Search"
                                                           message:@"message"
@@ -62,6 +63,7 @@
     self.picker.delegate = self;
     
     self.loadingContainerView.hidden = NO;
+    self.optionsContainerView.hidden = YES;
     
     self.loadingGiftsLabel.hidden = NO;
     self.loadingGiftsLabel.layer.zPosition = 1;
@@ -193,6 +195,8 @@
                         [self.loadingGiftImageView.layer removeAnimationForKey:@"myCircleAnimation"];
                         self.loadingGiftImageView.hidden = YES;
                         // [self.activityIndicator stopAnimating];
+                        
+                        self.optionsContainerView.hidden = NO;
                         
                         self.numItemsInBasket = 1;
                         // change table view cell height
@@ -411,6 +415,11 @@
  
 }
 
+- (IBAction)tapView:(id)sender {
+    [self.view endEditing:true];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -418,9 +427,10 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"carouselDetailsSegue"]) {
+        [self.view endEditing:true];
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.giftBasketTableView indexPathForCell:tappedCell];
-        GiftBasket *basket = self.arrayOfGiftBaskets[indexPath.row];
+        GiftBasket *basket = self.filteredArrayOfGiftBaskets[indexPath.row];
         UINavigationController *navController = segue.destinationViewController;
         CarouselDetailsViewController *carouselBasketDetailsViewController = navController.topViewController;
         carouselBasketDetailsViewController.basket = basket;

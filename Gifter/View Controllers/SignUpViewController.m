@@ -42,6 +42,9 @@
     [self registerUser];
 }
 
+- (IBAction)tapView:(id)sender {
+    [self.view endEditing:true];
+}
 
 - (void)registerUser {
     self.signupAlert.title = @"Invalid Sign Up";

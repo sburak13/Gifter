@@ -89,6 +89,10 @@
     self.suggestedBecauseLabel.text = [@"Suggested because of interest in " stringByAppendingString:self.gift.ofInterest];
     
     self.headerLabel.text = [@"Present for " stringByAppendingString:self.person.name];
+    self.headerLabel.numberOfLines = 1;
+    self.headerLabel.minimumFontSize = 8;
+    self.headerLabel.adjustsFontSizeToFitWidth = YES;
+    
     // self.totalPriceLabel.text = [@"Total Price: $" stringByAppendingString:[@(self.basket.totalPrice) stringValue]];
     
     

@@ -44,6 +44,10 @@
     [self goToPeopleScreen];
 }
 
+- (IBAction)tapView:(id)sender {
+    [self.view endEditing:true];
+}
+
 - (IBAction)didTapDone:(id)sender {
     if ([self didFillOutAllFields]) {
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];

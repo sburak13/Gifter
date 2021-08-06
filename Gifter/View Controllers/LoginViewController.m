@@ -39,7 +39,6 @@
 }
 
 - (IBAction)tapView:(id)sender {
-    NSLog(@"hello");
     [self.view endEditing:true];
 }
 
