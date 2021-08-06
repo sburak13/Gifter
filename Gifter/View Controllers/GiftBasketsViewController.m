@@ -28,7 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *loadingGiftsLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortingSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIImageView *loadingGiftImageView;
-@property (weak, nonatomic) IBOutlet UILabel *personLabel;
+@property (weak, nonatomic) IBOutlet UIView *loadingContainerView;
+
 
 @end
 
@@ -49,13 +50,13 @@
     
     self.giftBasketTableView.dataSource = self;
     self.giftBasketTableView.delegate = self;
-    
-    // self.personLabel.text = [@"For " stringByAppendingString: self.person.name];
-    
+        
     self.pickerData = [self createPickerData];
     
     self.picker.dataSource = self;
     self.picker.delegate = self;
+    
+    self.loadingContainerView.hidden = NO;
     
     self.loadingGiftsLabel.hidden = NO;
     self.loadingGiftsLabel.layer.zPosition = 1;
@@ -173,9 +174,9 @@
                         
                         self.giftBasketTableView.hidden = NO;
                         self.picker.hidden = NO;
-                        self.personLabel.hidden = NO;
                         self.sortingSegmentedControl.hidden = NO;
                         self.loadingGiftsLabel.hidden = YES;
+                        self.loadingContainerView.hidden = YES;
                         
                         [self.loadingGiftImageView.layer removeAnimationForKey:@"myCircleAnimation"];
                         self.loadingGiftImageView.hidden = YES;

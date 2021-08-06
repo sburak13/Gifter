@@ -384,7 +384,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDY-go-Rm5">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDY-go-Rm5">
                                 <rect key="frame" x="36" y="307.66666666666669" width="318" height="229.00000000000006"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading gifts..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckX-cX-F5a">
@@ -394,7 +394,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.81568627449999997" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="ckX-cX-F5a" firstAttribute="leading" secondItem="eDY-go-Rm5" secondAttribute="leading" constant="9" id="0uu-ne-eUM"/>
                                     <constraint firstAttribute="trailing" secondItem="ckX-cX-F5a" secondAttribute="trailing" constant="9" id="Bnk-zy-5vK"/>
@@ -620,6 +620,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="7WT-QG-KOl" id="ABu-s9-IHm"/>
                         <outlet property="giftBasketTableView" destination="o1h-CK-hgK" id="EAF-6t-sv5"/>
+                        <outlet property="loadingContainerView" destination="eDY-go-Rm5" id="Zub-B4-JQ5"/>
                         <outlet property="loadingGiftImageView" destination="hoK-pg-kZm" id="o92-nw-b3M"/>
                         <outlet property="loadingGiftsLabel" destination="ckX-cX-F5a" id="QYM-AK-ot0"/>
                         <outlet property="noGiftBasketsLabel" destination="chN-ch-4vP" id="kMU-nM-dnr"/>
@@ -936,14 +937,14 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InterestCell" id="vpW-DY-Ynm" customClass="InterestCell">
-                                                        <rect key="frame" x="0.0" y="24.333333969116211" width="278" height="43"/>
+                                                        <rect key="frame" x="0.0" y="24.333333969116211" width="278" height="43.666667938232422"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vpW-DY-Ynm" id="lYt-N6-Lua">
-                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="43"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="43.666667938232422"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDy-cH-7gZ">
-                                                                    <rect key="frame" x="16" y="11" width="246" height="21"/>
+                                                                    <rect key="frame" x="16" y="11.000000000000002" width="246" height="21.666666666666671"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
