@@ -27,7 +27,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.scrollView.contentSize = CGSizeMake(374, 500);
+    CGFloat contentWidth = self.scrollView.bounds.size.width;
+    CGFloat contentHeight = self.scrollView.bounds.size.height * 3;
+    self.scrollView.contentSize = CGSizeMake(contentWidth, contentHeight);
 
     
     self.arrayOfIndivGifts = self.basket.gifts;
