@@ -48,34 +48,40 @@
     if ([self didFillOutAllFields]) {
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
         f.numberStyle = NSNumberFormatterDecimalStyle;
-        NSNumber *budgetNum = [f numberFromString:self.budgetTextField.text];
-        __weak AddEditPersonViewController *weakSelf = self;
-        [Person createPerson:self.nameTextField.text withInterests:self.interestsArray withBudget:budgetNum withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            AddEditPersonViewController *strongSelf = weakSelf;
-            if (!strongSelf) {
-                return;
-            }
-            if (succeeded) {
-                NSLog(@"Succesfully created person");
-                [strongSelf goToPeopleScreen];
-            } else {
-                UIAlertController *createPersonAlert = [UIAlertController alertControllerWithTitle:@"Could Not Create Person"
-                                                                                           message: [@"Error: " stringByAppendingString:error.localizedDescription]
-                                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                   style:UIAlertActionStyleDefault
-                                                                 handler:nil];
-                [createPersonAlert addAction:okAction];
-                [self presentViewController:createPersonAlert animated:YES completion:nil];
-                
-            }
-        }];
-        
-        /*
-         
-         Options:
-         1. Create person. 
-         */
+        NSNumber *budgetNum;
+        if ([self checkNumeric:self.budgetTextField.text]) {
+            budgetNum = [f numberFromString:self.budgetTextField.text];
+            __weak AddEditPersonViewController *weakSelf = self;
+            [Person createPerson:self.nameTextField.text withInterests:self.interestsArray withBudget:budgetNum withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                AddEditPersonViewController *strongSelf = weakSelf;
+                if (!strongSelf) {
+                    return;
+                }
+                if (succeeded) {
+                    NSLog(@"Succesfully created person");
+                    [strongSelf goToPeopleScreen];
+                } else {
+                    UIAlertController *createPersonAlert = [UIAlertController alertControllerWithTitle:@"Could Not Create Person"
+                                                                                               message: [@"Error: " stringByAppendingString:error.localizedDescription]
+                                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                       style:UIAlertActionStyleDefault
+                                                                     handler:nil];
+                    [createPersonAlert addAction:okAction];
+                    [self presentViewController:createPersonAlert animated:YES completion:nil];
+                    
+                }
+            }];
+        } else {
+            UIAlertController *nonnumericBudgetAlert = [UIAlertController alertControllerWithTitle:@"Budget Not Numeric"
+                                                                                       message:@"Please try again"
+                                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:nil];
+            [nonnumericBudgetAlert addAction:okAction];
+            [self presentViewController:nonnumericBudgetAlert animated:YES completion:nil];
+        }
     } else {
         UIAlertController *missingInfoAlert = [UIAlertController alertControllerWithTitle:@"Could Not Add Person"
                                                                                   message: @"Please make sure to fill out all fields"
@@ -86,6 +92,12 @@
         [missingInfoAlert addAction:okAction];
         [self presentViewController:missingInfoAlert animated:YES completion:nil];
     }
+}
+
+- (BOOL)checkNumeric:(NSString*)val {
+    NSCharacterSet* nonNumbers = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    NSRange r = [val rangeOfCharacterFromSet: nonNumbers];
+    return r.location == NSNotFound && val.length > 0;
 }
 
 - (BOOL)didFillOutAllFields {

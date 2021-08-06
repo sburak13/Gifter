@@ -47,20 +47,6 @@
     }
 }
 
-- (IBAction)didTapBack:(id)sender {
-    /*
-    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    PeopleViewController *peopleViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeTabBarViewController"];
-    sceneDelegate.window.rootViewController = peopleViewController;
-    */
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-              //Stuff after dismissing
-            }];
-}
-
 /*
 #pragma mark - Navigation
 
