@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Gifter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4di-WZ-gW1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gifter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4di-WZ-gW1">
                                 <rect key="frame" x="100" y="247" width="190" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="wmu-19-91M"/>
@@ -1122,14 +1122,14 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InterestCell" id="vpW-DY-Ynm" customClass="InterestCell">
-                                                        <rect key="frame" x="0.0" y="24.333333969116211" width="278" height="43"/>
+                                                        <rect key="frame" x="0.0" y="24.333333969116211" width="278" height="43.333332061767578"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vpW-DY-Ynm" id="lYt-N6-Lua">
-                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="43"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="43.333332061767578"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDy-cH-7gZ">
-                                                                    <rect key="frame" x="16" y="11" width="246" height="21"/>
+                                                                    <rect key="frame" x="16" y="10.999999999999998" width="246" height="21.333333333333329"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
