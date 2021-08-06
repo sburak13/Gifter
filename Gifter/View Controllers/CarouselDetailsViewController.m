@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSArray *arrayOfIndivGifts;
 @property (strong, nonatomic) NSMutableArray *imageArr;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -25,6 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.scrollView.contentSize = CGSizeMake(374, 500);
+
     
     self.arrayOfIndivGifts = self.basket.gifts;
     for (int i = 1; i <= self.basket.gifts.count; i++) {
@@ -123,10 +127,10 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"imageSegue"]) {
-        // ImageViewController *imageViewController = segue.destinationViewController;
+        ImageViewController *imageViewController = segue.destinationViewController;
         Gift* gift = (Gift*)self.arrayOfIndivGifts[self.iCarouselView.currentItemIndex];
-        UINavigationController *navController = segue.destinationViewController;
-        ImageViewController *imageViewController = navController.topViewController;
+        // UINavigationController *navController = segue.destinationViewController;
+       //  ImageViewController *imageViewController = navController.topViewController;
         imageViewController.img = gift.image;
     }
 }
