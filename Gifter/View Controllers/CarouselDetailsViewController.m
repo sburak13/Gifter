@@ -57,7 +57,7 @@
 }
 
 - (void)setUI {
-    self.itemNumLabel.text = [[@"Item #" stringByAppendingString:[NSString stringWithFormat:@"%d", self.gift.numInBasket]] stringByAppendingString:[@" of " stringByAppendingString:[[NSString stringWithFormat:@"%d", self.arrayOfIndivGifts.count] stringByAppendingString:@":"]]];
+    self.itemNumLabel.text = [[@"Item " stringByAppendingString:[NSString stringWithFormat:@"%d", self.gift.numInBasket]] stringByAppendingString:[@" of " stringByAppendingString:[[NSString stringWithFormat:@"%d", self.arrayOfIndivGifts.count] stringByAppendingString:@":"]]];
     
     self.descriptionLabel.text = self.gift.descrip;
     NSRange range = [self.descriptionLabel.text rangeOfString:self.descriptionLabel.text];
@@ -71,7 +71,7 @@
     NSMutableAttributedString *priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceString];
     NSString *boldString = @"Price:";
     NSRange boldRange = [priceString rangeOfString:boldString];
-    [priceAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
+    [priceAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:boldRange];
     [self.priceLabel setAttributedText: priceAttributedString];
     
     NSString *ratingString;
@@ -83,14 +83,24 @@
     NSMutableAttributedString *ratingAttributedString = [[NSMutableAttributedString alloc] initWithString:ratingString];
     boldString = @"Rating:";
     boldRange = [ratingString rangeOfString:boldString];
-    [ratingAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:15] range:boldRange];
+    [ratingAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:boldRange];
     [self.ratingLabel setAttributedText: ratingAttributedString];
     
     self.suggestedBecauseLabel.text = [@"Suggested because of interest in " stringByAppendingString:self.gift.ofInterest];
     
     self.headerLabel.text = [@"Present for " stringByAppendingString:self.person.name];
     // self.totalPriceLabel.text = [@"Total Price: $" stringByAppendingString:[@(self.basket.totalPrice) stringValue]];
-    self.totalPriceLabel.text = [@"Total Price: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", self.basket.totalPrice]];
+    
+    
+    NSString *totalPriceString = [@"Total Price: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", self.basket.totalPrice]];
+    NSMutableAttributedString *totalPriceAttributedString = [[NSMutableAttributedString alloc] initWithString:totalPriceString];
+    boldString = @"Total Price:";
+    boldRange = [totalPriceString rangeOfString:boldString];
+    [totalPriceAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:boldRange];
+    [self.totalPriceLabel setAttributedText: totalPriceAttributedString];
+    
+    
+    // self.totalPriceLabel.text = [@"Total Price: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", self.basket.totalPrice]];
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
