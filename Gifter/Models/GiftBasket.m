@@ -18,10 +18,15 @@
         self.gifts = gifts; // [NSMutableArray array];
         self.numItems = gifts.count;
         self.totalPrice = 0;
+        self.giftNames = @"";
         
         for (Gift* gift in gifts) {
             self.totalPrice += gift.price; // [gift.price doubleValue];
+            
+            self.giftNames = [self.giftNames stringByAppendingString:[gift.descrip stringByAppendingString:@" "]];
+            
         }
+        
 
     }
     

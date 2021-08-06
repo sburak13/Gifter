@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int numItems;
 @property (nonatomic) double totalPrice;
 @property (strong, nonatomic) NSMutableArray *gifts;
+@property (strong, nonatomic) NSString *giftNames;
 // @property bought
 
 - (instancetype)init:(NSMutableArray*)gifts;

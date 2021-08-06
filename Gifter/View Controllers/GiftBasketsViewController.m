@@ -14,11 +14,12 @@
 #import "APIManager.h"
 #import "CarouselDetailsViewController.h"
 
-@interface GiftBasketsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface GiftBasketsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property UIAlertController *giftsAlert;
 @property (strong, nonatomic) NSMutableArray *arrayOfGifts;
 @property (strong, nonatomic) NSMutableArray *arrayOfGiftBaskets;
+@property (strong, nonatomic) NSMutableArray *filteredArrayOfGiftBaskets;
 @property (nonatomic) int numItemsInBasket;
 @property (strong, nonatomic) NSArray *pickerData;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortingSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIImageView *loadingGiftImageView;
 @property (weak, nonatomic) IBOutlet UIView *loadingContainerView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 
 @end
@@ -81,6 +83,8 @@
     [self.giftBasketTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     [self loadGifts];
+    
+    self.searchBar.delegate = self;
 }
 
 - (int)tableViewRowHeight {
@@ -210,19 +214,6 @@
     }
 }
 
-// not really calling api, just in case gifts were limited before
-- (IBAction)didTapRefresh:(id)sender {
-    
-    [self loadGiftBaskets];
-    // [self limitGiftBaskets:250];
-    
-    [self sortAscendingPrice];
-    
-    [self.giftBasketTableView reloadData];
-    
-    [self checkNoGiftBaskets];
-}
-
 - (void)limitGifts:(int)num {
     while (self.arrayOfGifts.count > num) {
         int rand = arc4random_uniform(self.arrayOfGifts.count);
@@ -231,9 +222,9 @@
 }
 
 - (void)limitGiftBaskets:(int)num {
-    while (self.arrayOfGiftBaskets.count > num) {
-        int rand = arc4random_uniform(self.arrayOfGiftBaskets.count);
-        [self.arrayOfGiftBaskets removeObjectAtIndex:rand];
+    while (self.filteredArrayOfGiftBaskets.count > num) {
+        int rand = arc4random_uniform(self.filteredArrayOfGiftBaskets.count);
+        [self.filteredArrayOfGiftBaskets removeObjectAtIndex:rand];
     }
 }
 
@@ -275,6 +266,7 @@
     
     [self combination:self.arrayOfGifts data:combo start:0 end:self.arrayOfGifts.count-1 index:0 r:self.numItemsInBasket];
     
+    self.filteredArrayOfGiftBaskets = self.arrayOfGiftBaskets;
     // [self.secondActivityIndicator stopAnimating];
 }
 
@@ -295,7 +287,7 @@
     NSSortDescriptor *sortDescriptor;
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"totalPrice"
                                                ascending:YES];
-    self.arrayOfGiftBaskets = [self.arrayOfGiftBaskets sortedArrayUsingDescriptors:@[sortDescriptor]];
+    self.filteredArrayOfGiftBaskets = [self.filteredArrayOfGiftBaskets sortedArrayUsingDescriptors:@[sortDescriptor]];
     
 }
 
@@ -303,7 +295,7 @@
     NSSortDescriptor *sortDescriptor;
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"totalPrice"
                                                ascending:NO];
-    self.arrayOfGiftBaskets = [self.arrayOfGiftBaskets sortedArrayUsingDescriptors:@[sortDescriptor]];
+    self.filteredArrayOfGiftBaskets = [self.filteredArrayOfGiftBaskets sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
 - (NSArray *)createPickerData {
@@ -370,7 +362,7 @@
 }
 
 - (void)checkNoGiftBaskets {
-    if (self.arrayOfGiftBaskets.count == 0) {
+    if (self.filteredArrayOfGiftBaskets.count == 0) {
         self.noGiftBasketsLabel.hidden = NO;
         self.giftBasketTableView.hidden = YES;
     } else {
@@ -381,14 +373,14 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     GiftBasketCell *cell = [self.giftBasketTableView dequeueReusableCellWithIdentifier:@"GiftBasketCell" forIndexPath:indexPath];
-    GiftBasket *giftBasket = self.arrayOfGiftBaskets[indexPath.row];
+    GiftBasket *giftBasket = self.filteredArrayOfGiftBaskets[indexPath.row];
     cell.giftBasket = giftBasket;
 
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.arrayOfGiftBaskets.count;
+    return self.filteredArrayOfGiftBaskets.count;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -396,6 +388,27 @@
     [UIView animateWithDuration:1 delay:0.1 * indexPath.row options:nil animations:^{
         cell.alpha = 1;
     } completion:nil];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(giftNames CONTAINS[cd] %@)", searchText];
+        self.filteredArrayOfGiftBaskets = [self.arrayOfGiftBaskets filteredArrayUsingPredicate:predicate];
+    }
+    else {
+        self.filteredArrayOfGiftBaskets = self.arrayOfGiftBaskets;
+    }
+    
+    NSInteger selectedSegment = self.sortingSegmentedControl.selectedSegmentIndex;
+    if (selectedSegment == 0) {
+        [self sortAscendingPrice];
+    } else {
+        [self sortDescendingPrice];
+    }
+    
+    [self.giftBasketTableView reloadData];
+ 
 }
 
 #pragma mark - Navigation

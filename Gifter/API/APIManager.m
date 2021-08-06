@@ -11,7 +11,7 @@
 
 // 1 - new, amazon products/reviews/keywords
 // 2 - old, axesso
-int apiNum = 2;
+int apiNum = 1;
 
 + (instancetype)shared {
     static APIManager *sharedManager = nil;
