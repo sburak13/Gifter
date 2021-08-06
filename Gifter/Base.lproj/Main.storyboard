@@ -263,10 +263,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXu-2R-oru">
-                                                            <rect key="frame" x="20" y="111" width="150" height="30"/>
+                                                            <rect key="frame" x="20" y="111" width="175" height="30"/>
                                                             <color key="backgroundColor" red="0.98823529409999999" green="0.46274509800000002" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="150" id="EQj-Y9-V1b"/>
+                                                                <constraint firstAttribute="width" constant="175" id="EQj-Y9-V1b"/>
                                                                 <constraint firstAttribute="height" constant="30" id="IK0-93-74z"/>
                                                             </constraints>
                                                             <state key="normal" title="Generate Gift Ideas"/>
@@ -640,6 +640,19 @@
                             <connections>
                                 <action selector="didTapBackButton:" destination="GO8-Ma-8Lp" id="y3f-Mq-0LO"/>
                             </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="IAY-4e-FvF">
+                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wMb-oo-mYE">
+                                <rect key="frame" x="340" y="2.6666666666666679" width="34" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow.clockwise" catalog="system">
+                                    <color key="titleColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapRefresh:" destination="GO8-Ma-8Lp" eventType="touchUpInside" id="DA4-cL-sBV"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1490,6 +1503,7 @@
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="Modified Pink Logo" width="400" height="389"/>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="gift" catalog="system" width="128" height="124"/>
         <image name="pencil" catalog="system" width="128" height="113"/>

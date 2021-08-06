@@ -40,7 +40,7 @@ int apiNum = 1;
         NSString *requestURL = [baseURLWithKeyword stringByAppendingString: @"&country=US&category=aps"];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURL]
                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                           timeoutInterval:10.0];
+                                                           timeoutInterval:120.0];
         [request setHTTPMethod:@"GET"];
         [request setAllHTTPHeaderFields:headers];
 

@@ -193,8 +193,9 @@
                         self.numItemsInBasket = 1;
                         // change table view cell height
                         self.giftBasketTableView.rowHeight = [self tableViewRowHeight];
+                        
                         [self loadGiftBaskets];
-                        // NSLog(@"%@ Gift Baskets", self.arrayOfGiftBaskets);
+                        // [self limitGiftBaskets:250];
                         
                         [self sortAscendingPrice];
                         
@@ -209,10 +210,30 @@
     }
 }
 
+// not really calling api, just in case gifts were limited before
+- (IBAction)didTapRefresh:(id)sender {
+    
+    [self loadGiftBaskets];
+    // [self limitGiftBaskets:250];
+    
+    [self sortAscendingPrice];
+    
+    [self.giftBasketTableView reloadData];
+    
+    [self checkNoGiftBaskets];
+}
+
 - (void)limitGifts:(int)num {
     while (self.arrayOfGifts.count > num) {
         int rand = arc4random_uniform(self.arrayOfGifts.count);
         [self.arrayOfGifts removeObjectAtIndex:rand];
+    }
+}
+
+- (void)limitGiftBaskets:(int)num {
+    while (self.arrayOfGiftBaskets.count > num) {
+        int rand = arc4random_uniform(self.arrayOfGiftBaskets.count);
+        [self.arrayOfGiftBaskets removeObjectAtIndex:rand];
     }
 }
 
@@ -225,6 +246,7 @@
 }
 
 - (void)combination:(NSMutableArray*)arr data:(NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
+    
     if (self.arrayOfGiftBaskets.count == 500) {
         return;
     }
