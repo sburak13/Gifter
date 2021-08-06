@@ -38,6 +38,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} forState:UIControlStateSelected];
+
+    
     self.title = [@"Gift Baskets For " stringByAppendingString: self.person.name];
     
     self.giftsAlert = [UIAlertController alertControllerWithTitle:@"Invalid Gift Search"
@@ -75,8 +78,13 @@
     
     self.noGiftBasketsLabel.layer.zPosition = 1;
     
+    [self.giftBasketTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
     [self loadGifts];
-        
+}
+
+- (int)tableViewRowHeight {
+    return self.giftBasketTableView.rowHeight = self.numItemsInBasket * 75 + self.numItemsInBasket  * 10 + 40;
 }
 
 - (void)animateLoadingGiftImage {
@@ -184,7 +192,7 @@
                         
                         self.numItemsInBasket = 1;
                         // change table view cell height
-                        self.giftBasketTableView.rowHeight = self.numItemsInBasket * 75 + 10;
+                        self.giftBasketTableView.rowHeight = [self tableViewRowHeight];
                         [self loadGiftBaskets];
                         // NSLog(@"%@ Gift Baskets", self.arrayOfGiftBaskets);
                         
@@ -278,9 +286,9 @@
 
 - (NSArray *)createPickerData {
     NSMutableArray *choices = [NSMutableArray array];
-    int lowBound = 1;
+    int lowBound = 2;
     int highBound = 5;
-    // [choices addObject:[NSString stringWithFormat:@"Basket of %d", 5]];
+    [choices addObject:[NSString stringWithFormat:@"Single Gift"]];
     for (int i = lowBound; i <= highBound; i++) {
         [choices addObject:[NSString stringWithFormat:@"Basket of %d", i]];
     }
@@ -307,12 +315,16 @@
     [self.giftBasketTableView reloadData];
 
     NSString *selectedEntry = [self.pickerData objectAtIndex:row];
-    NSString *stringNum = [selectedEntry substringFromIndex: [selectedEntry length] - 1];
     
-    self.numItemsInBasket = [stringNum intValue];
+    if (row != 0) {
+        NSString *stringNum = [selectedEntry substringFromIndex: [selectedEntry length] - 1];
+        self.numItemsInBasket = [stringNum intValue];
+    } else {
+        self.numItemsInBasket = 1;
+    }
     
     // change table view cell height
-    self.giftBasketTableView.rowHeight = self.numItemsInBasket * 75 + 10 * self.numItemsInBasket + 10;
+    self.giftBasketTableView.rowHeight = [self tableViewRowHeight];
     
     /*
     dispatch_async(dispatch_get_main_queue(), ^{
