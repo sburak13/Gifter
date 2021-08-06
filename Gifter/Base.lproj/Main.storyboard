@@ -332,13 +332,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click the plus button on the top right to add a person you want to give a gift to." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xh-8j-Fbh">
+                                <rect key="frame" x="30" y="372" width="330" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="vY8-Kr-FzN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="z9Y-OR-Y5V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="KQB-sJ-Pmb" secondAttribute="bottom" id="COW-wY-RQg"/>
                             <constraint firstItem="KQB-sJ-Pmb" firstAttribute="top" secondItem="tiy-BG-cIw" secondAttribute="top" id="NTs-sa-wlb"/>
+                            <constraint firstItem="3Xh-8j-Fbh" firstAttribute="leading" secondItem="tiy-BG-cIw" secondAttribute="leading" constant="30" id="Oye-DR-PjM"/>
+                            <constraint firstItem="3Xh-8j-Fbh" firstAttribute="centerY" secondItem="tiy-BG-cIw" secondAttribute="centerY" id="lIe-LW-Was"/>
                             <constraint firstItem="KQB-sJ-Pmb" firstAttribute="leading" secondItem="z9Y-OR-Y5V" secondAttribute="leading" id="nPO-NQ-I56"/>
+                            <constraint firstItem="3Xh-8j-Fbh" firstAttribute="centerX" secondItem="tiy-BG-cIw" secondAttribute="centerX" id="oMU-y6-9bE"/>
+                            <constraint firstAttribute="trailing" secondItem="3Xh-8j-Fbh" secondAttribute="trailing" constant="30" id="tY8-hx-UrY"/>
                             <constraint firstItem="KQB-sJ-Pmb" firstAttribute="trailing" secondItem="z9Y-OR-Y5V" secondAttribute="trailing" id="vE9-Of-wf2"/>
                         </constraints>
                     </view>
@@ -358,6 +371,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noPeopleLabel" destination="3Xh-8j-Fbh" id="EjK-h1-9at"/>
                         <outlet property="peopleTableView" destination="KQB-sJ-Pmb" id="LdJ-om-bzX"/>
                         <segue destination="AJ7-vc-ud8" kind="presentation" identifier="giftStreamSegue" modalPresentationStyle="fullScreen" id="Uih-Za-8Mc"/>
                     </connections>
@@ -1050,14 +1064,14 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InterestCell" id="vpW-DY-Ynm" customClass="InterestCell">
-                                                        <rect key="frame" x="0.0" y="24.333333969116211" width="278" height="43.333332061767578"/>
+                                                        <rect key="frame" x="0.0" y="24.333333969116211" width="278" height="43.666667938232422"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vpW-DY-Ynm" id="lYt-N6-Lua">
-                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="43.333332061767578"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="43.666667938232422"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDy-cH-7gZ">
-                                                                    <rect key="frame" x="16" y="10.999999999999998" width="246" height="21.333333333333329"/>
+                                                                    <rect key="frame" x="16" y="11.000000000000002" width="246" height="21.666666666666671"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>

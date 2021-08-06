@@ -70,6 +70,12 @@
                 
             }
         }];
+        
+        /*
+         
+         Options:
+         1. Create person. 
+         */
     } else {
         UIAlertController *missingInfoAlert = [UIAlertController alertControllerWithTitle:@"Could Not Add Person"
                                                                                   message: @"Please make sure to fill out all fields"

@@ -9,6 +9,7 @@
 
 @implementation Person
 
+@dynamic user;
 @dynamic name;
 @dynamic interests;
 @dynamic budgetAmt;
@@ -21,6 +22,7 @@
 + (void)createPerson: ( NSString * _Nullable )name withInterests: ( NSMutableArray * _Nullable )interests withBudget: ( NSNumber * _Nullable)budget withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Person *newPerson = [Person new];
+    newPerson.user = [PFUser currentUser];
     newPerson.name = name;
     newPerson.interests = interests;
     newPerson.budgetAmt = budget;
