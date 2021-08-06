@@ -27,7 +27,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *noGiftBasketsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *loadingGiftsLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortingSegmentedControl;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *secondActivityIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *loadingGiftImageView;
 @property (weak, nonatomic) IBOutlet UILabel *personLabel;
 
@@ -37,6 +36,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = [@"Gift Baskets For " stringByAppendingString: self.person.name];
     
     self.giftsAlert = [UIAlertController alertControllerWithTitle:@"Invalid Gift Search"
                                                           message:@"message"
@@ -49,7 +50,7 @@
     self.giftBasketTableView.dataSource = self;
     self.giftBasketTableView.delegate = self;
     
-    self.personLabel.text = [@"For " stringByAppendingString: self.person.name];
+    // self.personLabel.text = [@"For " stringByAppendingString: self.person.name];
     
     self.pickerData = [self createPickerData];
     
@@ -330,9 +331,7 @@
     [self.giftBasketTableView reloadData];
 
     [self checkNoGiftBaskets];
-    
-    // [self.secondActivityIndicator stopAnimating];
-    // [self performSelectorOnMainThread:@selector(endSecondActivityIndicator) withObject:nil waitUntilDone:NO];
+
 }
 
 - (void)checkNoGiftBaskets {
@@ -343,14 +342,6 @@
         self.noGiftBasketsLabel.hidden = YES;
         self.giftBasketTableView.hidden = NO;
     }
-}
-
-- (void)startSecondActivityIndicator {
-    [self.secondActivityIndicator startAnimating];
-}
-
-- (void)endSecondActivityIndicator {
-    [self.secondActivityIndicator stopAnimating];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
