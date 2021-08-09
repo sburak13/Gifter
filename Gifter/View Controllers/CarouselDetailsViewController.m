@@ -31,7 +31,6 @@
     CGFloat contentHeight = self.scrollView.bounds.size.height * 3;
     self.scrollView.contentSize = CGSizeMake(contentWidth, contentHeight);
 
-    
     self.arrayOfIndivGifts = self.basket.gifts;
     for (int i = 1; i <= self.basket.gifts.count; i++) {
         Gift* gift = (Gift*)[self.basket.gifts objectAtIndex:i - 1];
@@ -53,6 +52,7 @@
     if (self.arrayOfIndivGifts.count > 0) {
         self.gift = (Gift*)self.arrayOfIndivGifts[0];
     }
+    
     [self setUI];
 }
 

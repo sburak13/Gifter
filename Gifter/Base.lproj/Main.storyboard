@@ -433,10 +433,6 @@
                                     <constraint firstAttribute="bottom" secondItem="ckX-cX-F5a" secondAttribute="bottom" constant="22.670000000000002" id="h4R-v6-cow"/>
                                 </constraints>
                             </view>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="7WT-QG-KOl">
-                                <rect key="frame" x="185" y="412" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="o1h-CK-hgK">
                                 <rect key="frame" x="0.0" y="254" width="390" height="556"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -656,12 +652,17 @@
                                             <action selector="segmentSwitch:" destination="GO8-Ma-8Lp" eventType="valueChanged" id="Jdg-FD-mra"/>
                                         </connections>
                                     </segmentedControl>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gyO-Fi-Fk8">
+                                        <rect key="frame" x="333" y="20" width="37" height="37"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.81568627449999997" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="krI-xh-9QM" firstAttribute="centerX" secondItem="c8L-yy-kmw" secondAttribute="centerX" id="1LU-HN-iSC"/>
+                                    <constraint firstAttribute="trailing" secondItem="gyO-Fi-Fk8" secondAttribute="trailing" constant="20" id="2gh-5e-TcK"/>
                                     <constraint firstAttribute="height" constant="166" id="53O-Wj-9ad"/>
+                                    <constraint firstItem="gyO-Fi-Fk8" firstAttribute="top" secondItem="c8L-yy-kmw" secondAttribute="top" constant="20" id="Apy-L3-KlZ"/>
                                     <constraint firstItem="FEL-8g-Ox0" firstAttribute="centerX" secondItem="c8L-yy-kmw" secondAttribute="centerX" id="Jyb-NE-jOa"/>
                                     <constraint firstItem="krI-xh-9QM" firstAttribute="top" secondItem="FEL-8g-Ox0" secondAttribute="bottom" constant="-5" id="QGS-mX-9GS"/>
                                     <constraint firstItem="FEL-8g-Ox0" firstAttribute="top" secondItem="c8L-yy-kmw" secondAttribute="top" constant="20" id="XoZ-29-QJX"/>
@@ -713,7 +714,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityIndicator" destination="7WT-QG-KOl" id="ABu-s9-IHm"/>
+                        <outlet property="activityIndicator" destination="gyO-Fi-Fk8" id="jEW-pk-K54"/>
                         <outlet property="giftBasketTableView" destination="o1h-CK-hgK" id="EAF-6t-sv5"/>
                         <outlet property="loadingContainerView" destination="eDY-go-Rm5" id="Zub-B4-JQ5"/>
                         <outlet property="loadingGiftImageView" destination="hoK-pg-kZm" id="o92-nw-b3M"/>

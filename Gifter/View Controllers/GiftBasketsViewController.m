@@ -24,7 +24,6 @@
 @property (strong, nonatomic) NSArray *pickerData;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UITableView *giftBasketTableView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *noGiftBasketsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *loadingGiftsLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortingSegmentedControl;
@@ -32,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIView *loadingContainerView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *optionsContainerView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -39,8 +39,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} forState:UIControlStateSelected];
 
     NSArray *nameSubstrings = [self.person.name componentsSeparatedByString:@" "];
     NSString *firstName = [nameSubstrings objectAtIndex:0];
@@ -90,7 +88,7 @@
 }
 
 - (int)tableViewRowHeight {
-    return self.giftBasketTableView.rowHeight = self.numItemsInBasket * 75 + self.numItemsInBasket  * 10 + 40;
+    return self.giftBasketTableView.rowHeight = self.numItemsInBasket * 75 + self.numItemsInBasket * 10 + 40;
 }
 
 - (void)animateLoadingGiftImage {
@@ -119,7 +117,7 @@
     
     __block int resultsCount = 0;
     NSMutableArray *interests = self.person.interests;
-    // for (NSString* interest in interests) {
+
     for (int i = 0; i < interests.count; i++) {
         NSString *interest = [interests objectAtIndex:i];
         NSString *editedInterest = [interest stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
@@ -127,7 +125,6 @@
         [[APIManager shared] getSearchResultsFor:editedInterest completion:^(NSDictionary *gifts, NSError *error) {
             if(error) {
                 NSLog(@"Error getting search results: %@", error.localizedDescription);
-                
                 /*
                 self.giftsAlert.message = [@"Gift search error: " stringByAppendingString:error.localizedDescription];
                 [self presentViewController:self.giftsAlert animated:YES completion:nil];
@@ -137,7 +134,7 @@
                 NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
                 
                 if (apiNum == 1) {
-                    // NSLog(@"%@ gifts", gifts);
+                
                     NSArray *giftDetails = gifts[@"products"];
                     NSLog(@"%@Interest", interest);
                     NSLog(@"%@ gift details", giftDetails);
@@ -155,7 +152,7 @@
                     resultsCount = resultsCount + 1;
                     
                 } else {
-                    // NSLog(@"%@ gifts", gifts);
+    
                     NSArray *giftDetails = gifts[@"searchProductDetails"];
                     NSLog(@"%@Interest", interest);
                     NSLog(@"%@ gift details", giftDetails);
@@ -174,18 +171,14 @@
                     
                 }
                 
-                // NSLog(@"%@Interest", interest);
-                // NSLog(@"%@Gifts", giftsDictionaryArray);
                 [self.arrayOfGifts addObjectsFromArray:[Gift giftsWithArray: giftsDictionaryArray FromInterest:interest]];
                 NSLog(@"%@ Gifts Array", self.arrayOfGifts);
                 
+                [self shuffleGifts];
                 
-                
-                // if (i == interests.count - 1) {
                 if (resultsCount == interests.count) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        // [self limitGifts:100];
-                        
+    
                         self.giftBasketTableView.hidden = NO;
                         self.picker.hidden = NO;
                         self.sortingSegmentedControl.hidden = NO;
@@ -194,7 +187,6 @@
                         
                         [self.loadingGiftImageView.layer removeAnimationForKey:@"myCircleAnimation"];
                         self.loadingGiftImageView.hidden = YES;
-                        // [self.activityIndicator stopAnimating];
                         
                         self.optionsContainerView.hidden = NO;
                         
@@ -203,8 +195,7 @@
                         self.giftBasketTableView.rowHeight = [self tableViewRowHeight];
                         
                         [self loadGiftBaskets];
-                        // [self limitGiftBaskets:250];
-                        
+    
                         [self sortAscendingPrice];
                         
                         [self.giftBasketTableView reloadData];
@@ -218,19 +209,23 @@
     }
 }
 
-- (void)limitGifts:(int)num {
-    while (self.arrayOfGifts.count > num) {
-        int rand = arc4random_uniform(self.arrayOfGifts.count);
-        [self.arrayOfGifts removeObjectAtIndex:rand];
+- (void)shuffleGifts {
+    NSUInteger count = [self.arrayOfGifts count];
+    for (NSUInteger i = 0; i < count; ++i) {
+        int nElements = count - i;
+        int n = (arc4random() % nElements) + i;
+        [self.arrayOfGifts exchangeObjectAtIndex:i withObjectAtIndex:n];
     }
 }
 
+/*
 - (void)limitGiftBaskets:(int)num {
     while (self.filteredArrayOfGiftBaskets.count > num) {
         int rand = arc4random_uniform(self.filteredArrayOfGiftBaskets.count);
         [self.filteredArrayOfGiftBaskets removeObjectAtIndex:rand];
     }
 }
+ */
 
 - (IBAction)didTapBackButton:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
@@ -243,6 +238,7 @@
 - (void)combination:(NSMutableArray*)arr data:(NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
     
     if (self.arrayOfGiftBaskets.count == 500) {
+        // [self.activityIndicator stopAnimating];
         return;
     }
     
@@ -258,9 +254,16 @@
         [data replaceObjectAtIndex:index withObject:arr[i]];
         [self combination:arr data:data start:i+1 end:end index:index+1 r:r];
     }
+    
+    NSLog(@"hi %d", self.arrayOfGiftBaskets.count);
 }
 
 - (void)loadGiftBaskets {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.activityIndicator startAnimating];
+    });
+    
     self.arrayOfGiftBaskets = [NSMutableArray array];
     
     NSMutableArray *combo = [NSMutableArray array];
@@ -268,10 +271,18 @@
         [combo addObject:@"blank"];
     }
     
+    NSLog(@"NEW LOADING");
+    
     [self combination:self.arrayOfGifts data:combo start:0 end:self.arrayOfGifts.count-1 index:0 r:self.numItemsInBasket];
     
     self.filteredArrayOfGiftBaskets = self.arrayOfGiftBaskets;
-    // [self.secondActivityIndicator stopAnimating];
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.activityIndicator stopAnimating];
+    });
+    
+    
 }
 
 - (IBAction)segmentSwitch:(id)sender {
@@ -326,9 +337,7 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    // [self performSelectorOnMainThread:@selector(startSecondActivityIndicator) withObject:nil waitUntilDone:YES];
-    // [self.secondActivityIndicator startAnimating];
-    
+
     self.arrayOfGiftBaskets = [NSMutableArray array];
     [self.giftBasketTableView reloadData];
 
@@ -341,16 +350,17 @@
         self.numItemsInBasket = 1;
     }
     
-    // change table view cell height
     self.giftBasketTableView.rowHeight = [self tableViewRowHeight];
     
-    /*
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self performSelector:@selector(loadGiftBaskets) withObject:nil afterDelay:1.0];
-            });
-    */
-    
     [self loadGiftBaskets];
+    
+    if (self.searchBar.text.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(giftNames CONTAINS[cd] %@)", self.searchBar.text];
+        self.filteredArrayOfGiftBaskets = [self.arrayOfGiftBaskets filteredArrayUsingPredicate:predicate];
+    }
+    else {
+        self.filteredArrayOfGiftBaskets = self.arrayOfGiftBaskets;
+    }
     
     NSInteger selectedSegment = self.sortingSegmentedControl.selectedSegmentIndex;
     if (selectedSegment == 0) {
@@ -362,7 +372,6 @@
     [self.giftBasketTableView reloadData];
 
     [self checkNoGiftBaskets];
-
 }
 
 - (void)checkNoGiftBaskets {
@@ -395,7 +404,6 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(giftNames CONTAINS[cd] %@)", searchText];
         self.filteredArrayOfGiftBaskets = [self.arrayOfGiftBaskets filteredArrayUsingPredicate:predicate];
