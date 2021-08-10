@@ -238,7 +238,12 @@
 - (void)combination:(NSMutableArray*)arr data:(NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
     
     if (self.arrayOfGiftBaskets.count == 500) {
-        // [self.activityIndicator stopAnimating];
+        [self.activityIndicator stopAnimating];
+        /*
+         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.activityIndicator stopAnimating];
+        });
+         */
         return;
     }
     
@@ -247,6 +252,12 @@
         if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
             [self.arrayOfGiftBaskets addObject:basket];
         }
+        // [self.activityIndicator stopAnimating];
+        /*
+         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.activityIndicator stopAnimating];
+        });
+         */
         return;
     }
     
@@ -260,9 +271,13 @@
 
 - (void)loadGiftBaskets {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    [self.activityIndicator startAnimating];
+    
+    /*dispatch_async(dispatch_get_main_queue(), ^{
         [self.activityIndicator startAnimating];
+        
     });
+     */
     
     self.arrayOfGiftBaskets = [NSMutableArray array];
     
@@ -277,10 +292,13 @@
     
     self.filteredArrayOfGiftBaskets = self.arrayOfGiftBaskets;
     
+    [self.activityIndicator stopAnimating];
     
+    /*
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.activityIndicator stopAnimating];
     });
+    */
     
     
 }
@@ -337,6 +355,8 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    
 
     self.arrayOfGiftBaskets = [NSMutableArray array];
     [self.giftBasketTableView reloadData];

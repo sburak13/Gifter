@@ -66,12 +66,15 @@
         self.image5.image = gift5.image;
     }
     
+    self.containerView.layer.masksToBounds = NO;
+    self.containerView.layer.shadowOffset = CGSizeMake(0, 1);
+    self.containerView.layer.shadowRadius = 5;
+    self.containerView.layer.shadowOpacity = 0.2;
+    
     [self hideUnhideUI:numItems];
 }
 
 - (void)hideUnhideUI:(int)numItems {
-    
-    
     for (int i = 0; i < self.imageViews.count; i++) {
         UIImageView *imageView = (UIImageView*)[self.imageViews objectAtIndex: i];
         UILabel *descriptionLabel = (UILabel*)[self.descriptionLabels objectAtIndex: i];

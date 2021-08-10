@@ -597,6 +597,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="containerView" destination="pS6-10-pLH" id="r1e-N6-vgJ"/>
                                             <outlet property="description1" destination="bNt-yG-Cgk" id="M5H-AJ-aLw"/>
                                             <outlet property="description2" destination="3kY-vo-hnX" id="Jib-Dg-yo9"/>
                                             <outlet property="description3" destination="DM7-Gt-oIH" id="W4q-2q-FaS"/>
@@ -1123,14 +1124,14 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InterestCell" id="vpW-DY-Ynm" customClass="InterestCell">
-                                                        <rect key="frame" x="0.0" y="24.333333969116211" width="278" height="43.333332061767578"/>
+                                                        <rect key="frame" x="0.0" y="24.333333969116211" width="278" height="43.666667938232422"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vpW-DY-Ynm" id="lYt-N6-Lua">
-                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="43.333332061767578"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="43.666667938232422"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDy-cH-7gZ">
-                                                                    <rect key="frame" x="16" y="10.999999999999998" width="246" height="21.333333333333329"/>
+                                                                    <rect key="frame" x="16" y="11.000000000000002" width="246" height="21.666666666666671"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
