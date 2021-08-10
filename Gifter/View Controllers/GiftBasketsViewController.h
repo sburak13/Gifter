@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GiftBasketsViewController : UIViewController
 
 @property (nonatomic, weak) Person *person;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *optionsViewHeight;
 
 @end
 

@@ -32,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *optionsContainerView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic) BOOL optionsHidden;
+@property (weak, nonatomic) IBOutlet UIButton *hideShowButton;
 
 @end
 
@@ -85,6 +87,8 @@
     [self loadGifts];
     
     self.searchBar.delegate = self;
+    
+    self.optionsHidden = false;
 }
 
 - (int)tableViewRowHeight {
@@ -202,6 +206,9 @@
                         
                         [self checkNoGiftBaskets];
                         
+                        self.activityIndicator.hidden = NO;
+                        self.hideShowButton.hidden = NO;
+                        
                         [self.activityIndicator stopAnimating];
                     });
                 }
@@ -236,6 +243,22 @@
     PeopleViewController *peopleViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeTabBarViewController"];
     sceneDelegate.window.rootViewController = peopleViewController;
 }
+
+- (IBAction)didTapHideShow:(id)sender {
+    self.optionsHidden = !self.optionsHidden;
+    if (self.optionsHidden) {
+        [sender setTitle:@"Show" forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"final up arrow.png"] forState:UIControlStateNormal];
+        self.optionsContainerView.hidden = YES;
+        self.optionsViewHeight.constant = 0;
+    } else {
+        [sender setTitle:@"Hide" forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"final down arrow.png"] forState:UIControlStateNormal];
+        self.optionsContainerView.hidden = NO;
+        self.optionsViewHeight.constant = 166;
+    }
+}
+
 
 - (void)combination:(NSMutableArray*)arr data:(NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
     
