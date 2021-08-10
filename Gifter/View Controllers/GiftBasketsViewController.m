@@ -191,7 +191,7 @@
                         self.optionsContainerView.hidden = NO;
                         
                         self.numItemsInBasket = 1;
-                        // change table view cell height
+                        
                         self.giftBasketTableView.rowHeight = [self tableViewRowHeight];
                         
                         [self loadGiftBaskets];
@@ -201,6 +201,8 @@
                         [self.giftBasketTableView reloadData];
                         
                         [self checkNoGiftBaskets];
+                        
+                        [self.activityIndicator stopAnimating];
                     });
                 }
                  
@@ -238,12 +240,6 @@
 - (void)combination:(NSMutableArray*)arr data:(NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
     
     if (self.arrayOfGiftBaskets.count == 500) {
-        [self.activityIndicator stopAnimating];
-        /*
-         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.activityIndicator stopAnimating];
-        });
-         */
         return;
     }
     
@@ -252,12 +248,6 @@
         if (basket.totalPrice < [self.person.budgetAmt floatValue]) {
             [self.arrayOfGiftBaskets addObject:basket];
         }
-        // [self.activityIndicator stopAnimating];
-        /*
-         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.activityIndicator stopAnimating];
-        });
-         */
         return;
     }
     
@@ -270,15 +260,6 @@
 }
 
 - (void)loadGiftBaskets {
-    
-    [self.activityIndicator startAnimating];
-    
-    /*dispatch_async(dispatch_get_main_queue(), ^{
-        [self.activityIndicator startAnimating];
-        
-    });
-     */
-    
     self.arrayOfGiftBaskets = [NSMutableArray array];
     
     NSMutableArray *combo = [NSMutableArray array];
@@ -286,21 +267,9 @@
         [combo addObject:@"blank"];
     }
     
-    NSLog(@"NEW LOADING");
-    
     [self combination:self.arrayOfGifts data:combo start:0 end:self.arrayOfGifts.count-1 index:0 r:self.numItemsInBasket];
     
     self.filteredArrayOfGiftBaskets = self.arrayOfGiftBaskets;
-    
-    [self.activityIndicator stopAnimating];
-    
-    /*
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.activityIndicator stopAnimating];
-    });
-    */
-    
-    
 }
 
 - (IBAction)segmentSwitch:(id)sender {
@@ -355,43 +324,46 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
-    
 
-    self.arrayOfGiftBaskets = [NSMutableArray array];
-    [self.giftBasketTableView reloadData];
+    [self.activityIndicator startAnimating];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.arrayOfGiftBaskets = [NSMutableArray array];
 
-    NSString *selectedEntry = [self.pickerData objectAtIndex:row];
-    
-    if (row != 0) {
-        NSString *stringNum = [selectedEntry substringFromIndex: [selectedEntry length] - 1];
-        self.numItemsInBasket = [stringNum intValue];
-    } else {
-        self.numItemsInBasket = 1;
-    }
-    
-    self.giftBasketTableView.rowHeight = [self tableViewRowHeight];
-    
-    [self loadGiftBaskets];
-    
-    if (self.searchBar.text.length != 0) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(giftNames CONTAINS[cd] %@)", self.searchBar.text];
-        self.filteredArrayOfGiftBaskets = [self.arrayOfGiftBaskets filteredArrayUsingPredicate:predicate];
-    }
-    else {
-        self.filteredArrayOfGiftBaskets = self.arrayOfGiftBaskets;
-    }
-    
-    NSInteger selectedSegment = self.sortingSegmentedControl.selectedSegmentIndex;
-    if (selectedSegment == 0) {
-        [self sortAscendingPrice];
-    } else {
-        [self sortDescendingPrice];
-    }
-    
-    [self.giftBasketTableView reloadData];
+        NSString *selectedEntry = [self.pickerData objectAtIndex:row];
+        
+        if (row != 0) {
+            NSString *stringNum = [selectedEntry substringFromIndex: [selectedEntry length] - 1];
+            self.numItemsInBasket = [stringNum intValue];
+        } else {
+            self.numItemsInBasket = 1;
+        }
+        
+        self.giftBasketTableView.rowHeight = [self tableViewRowHeight];
+        
+        [self loadGiftBaskets];
+        
+        if (self.searchBar.text.length != 0) {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(giftNames CONTAINS[cd] %@)", self.searchBar.text];
+            self.filteredArrayOfGiftBaskets = [self.arrayOfGiftBaskets filteredArrayUsingPredicate:predicate];
+        }
+        else {
+            self.filteredArrayOfGiftBaskets = self.arrayOfGiftBaskets;
+        }
+        
+        NSInteger selectedSegment = self.sortingSegmentedControl.selectedSegmentIndex;
+        if (selectedSegment == 0) {
+            [self sortAscendingPrice];
+        } else {
+            [self sortDescendingPrice];
+        }
 
-    [self checkNoGiftBaskets];
+        [self checkNoGiftBaskets];
+        
+        [self.activityIndicator stopAnimating];
+        [self.giftBasketTableView reloadData];
+    });
 }
 
 - (void)checkNoGiftBaskets {
