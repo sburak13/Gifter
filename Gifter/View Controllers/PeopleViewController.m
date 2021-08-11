@@ -133,19 +133,8 @@
     [self performSegueWithIdentifier:@"addEditSegue" sender:nil];
 }
 
--(void)generateButtonClicked:(UIButton*)sender
-{
-    // sending the button
+-(void)generateButtonClicked:(UIButton*)sender {
     [self performSegueWithIdentifier:@"giftStreamSegue" sender:sender];
-    
-    
-    /*
-    Person *person = self.peopleArray[sender.tag];
-    NSLog(@"person's name %@", person.name);
-    UINavigationController *navController = segue.destinationViewController;
-    GiftBasketsViewController *giftBasketsViewController = navController.topViewController;
-    giftBasketsViewController.person = person;
-    */
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -171,7 +160,6 @@
     UIContextualAction *delete = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive
                                                                          title:@"Delete"
                                                                        handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-        NSLog(@"Delete");
         PFObject *person = self.peopleArray[indexPath.row];
         [person deleteInBackground];
         [self.peopleArray removeObjectAtIndex:indexPath.row];

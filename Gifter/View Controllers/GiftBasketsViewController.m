@@ -138,10 +138,7 @@
                 NSMutableArray *giftsDictionaryArray = [NSMutableArray array];
                 
                 if (apiNum == 1) {
-                
                     NSArray *giftDetails = gifts[@"products"];
-                    NSLog(@"%@Interest", interest);
-                    NSLog(@"%@ gift details", giftDetails);
                     
                     for (NSDictionary* gift in giftDetails) {
                         NSNumber *giftPrice = gift[@"price"][@"current_price"];
@@ -156,11 +153,8 @@
                     resultsCount = resultsCount + 1;
                     
                 } else {
-    
                     NSArray *giftDetails = gifts[@"searchProductDetails"];
-                    NSLog(@"%@Interest", interest);
-                    NSLog(@"%@ gift details", giftDetails);
-                    
+
                     for (NSDictionary* gift in giftDetails) {
                         NSNumber *giftPrice = gift[@"price"];
                         if (!([giftPrice isEqualToNumber:@(0)])) {
@@ -176,8 +170,7 @@
                 }
                 
                 [self.arrayOfGifts addObjectsFromArray:[Gift giftsWithArray: giftsDictionaryArray FromInterest:interest]];
-                NSLog(@"%@ Gifts Array", self.arrayOfGifts);
-                
+
                 [self shuffleGifts];
                 
                 if (resultsCount == interests.count) {
@@ -261,7 +254,6 @@
 
 
 - (void)combination:(NSMutableArray*)arr data:(NSMutableArray*)data start:(int)start end:(int)end index:(int)index r:(int)r {
-    
     if (self.arrayOfGiftBaskets.count == 500) {
         return;
     }
@@ -278,8 +270,6 @@
         [data replaceObjectAtIndex:index withObject:arr[i]];
         [self combination:arr data:data start:i+1 end:end index:index+1 r:r];
     }
-    
-    NSLog(@"hi %d", self.arrayOfGiftBaskets.count);
 }
 
 - (void)loadGiftBaskets {
@@ -434,13 +424,11 @@
     }
     
     [self.giftBasketTableView reloadData];
- 
 }
 
 - (IBAction)tapView:(id)sender {
     [self.view endEditing:true];
 }
-
 
 #pragma mark - Navigation
 
@@ -458,7 +446,6 @@
         carouselBasketDetailsViewController.basket = basket;
         carouselBasketDetailsViewController.person = self.person;
     }
-
 }
 
 @end

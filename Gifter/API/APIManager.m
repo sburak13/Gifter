@@ -51,8 +51,6 @@ int apiNum = 1;
                                                             NSLog(@"%@", error);
                                                             completion(nil, error);
                                                         } else {
-                                                            // NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                            // NSLog(@"%@", httpResponse);
                                                             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                                                             completion(dataDictionary, nil);
                                                         }
