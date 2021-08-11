@@ -248,12 +248,12 @@
     self.optionsHidden = !self.optionsHidden;
     if (self.optionsHidden) {
         [sender setTitle:@"Show" forState:UIControlStateNormal];
-        [sender setImage:[UIImage imageNamed:@"final up arrow.png"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"final down arrow.png"] forState:UIControlStateNormal];
         self.optionsContainerView.hidden = YES;
         self.optionsViewHeight.constant = 0;
     } else {
         [sender setTitle:@"Hide" forState:UIControlStateNormal];
-        [sender setImage:[UIImage imageNamed:@"final down arrow.png"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"final up arrow.png"] forState:UIControlStateNormal];
         self.optionsContainerView.hidden = NO;
         self.optionsViewHeight.constant = 166;
     }
@@ -347,7 +347,6 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-
     [self.activityIndicator startAnimating];
     
     dispatch_async(dispatch_get_main_queue(), ^{

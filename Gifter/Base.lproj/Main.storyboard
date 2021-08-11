@@ -680,7 +680,7 @@
                                     <constraint firstAttribute="width" constant="27" id="JzI-Py-ZL7"/>
                                     <constraint firstAttribute="height" constant="10" id="gF4-gv-mK4"/>
                                 </constraints>
-                                <state key="normal" title="Hide" image="final down arrow">
+                                <state key="normal" title="Hide" image="final up arrow">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1613,7 +1613,7 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.down" catalog="system" width="120" height="128"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
-        <image name="final down arrow" width="275" height="200"/>
+        <image name="final up arrow" width="275" height="200"/>
         <image name="gift" catalog="system" width="128" height="124"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
