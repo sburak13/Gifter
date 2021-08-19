@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Holiday : PFObject<PFSubclassing>
 
+@property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSMutableArray *recipients;
 @property (nonatomic, strong) NSMutableArray *recipientNames;

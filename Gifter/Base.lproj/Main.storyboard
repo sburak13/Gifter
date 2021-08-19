@@ -810,28 +810,28 @@
                                                 <rect key="frame" x="0.0" y="392" width="390" height="506"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsh-as-v6Z">
-                                                        <rect key="frame" x="25" y="19.999999999999986" width="340" height="240.66666666666663"/>
+                                                        <rect key="frame" x="25" y="20" width="340" height="241"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XqS-EB-Ukg">
-                                                                <rect key="frame" x="20" y="106.66666666666663" width="300" height="19.333333333333329"/>
+                                                                <rect key="frame" x="20" y="107" width="300" height="19.333333333333329"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAr-wY-4Ad" customClass="TTTAttributedLabel">
-                                                                <rect key="frame" x="20" y="65" width="300" height="21.666666666666671"/>
+                                                                <rect key="frame" x="20" y="65" width="300" height="22"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0da-CN-L6w">
-                                                                <rect key="frame" x="20" y="133" width="300" height="19.333333333333343"/>
+                                                                <rect key="frame" x="20" y="133.33333333333337" width="300" height="19.333333333333343"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested because of interest in Board Games" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inw-6n-fgd">
-                                                                <rect key="frame" x="20" y="172.33333333333337" width="300" height="38.333333333333343"/>
+                                                                <rect key="frame" x="20" y="172.66666666666663" width="300" height="38.333333333333343"/>
                                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -949,16 +949,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVo-WD-ufS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xVo-WD-ufS">
                                 <rect key="frame" x="0.0" y="208" width="390" height="374"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7Xp-wo-OYa"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.81568627449999997" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="xVo-WD-ufS" firstAttribute="leading" secondItem="7Xp-wo-OYa" secondAttribute="leading" id="CZy-gK-eRg"/>
-                            <constraint firstItem="xVo-WD-ufS" firstAttribute="centerY" secondItem="mHK-JN-1uO" secondAttribute="centerY" id="HdN-SR-Kwk"/>
-                            <constraint firstItem="xVo-WD-ufS" firstAttribute="trailing" secondItem="7Xp-wo-OYa" secondAttribute="trailing" id="z5M-Bf-U3w"/>
+                            <constraint firstItem="xVo-WD-ufS" firstAttribute="leading" secondItem="7Xp-wo-OYa" secondAttribute="leading" id="5uZ-iE-CuW"/>
+                            <constraint firstItem="xVo-WD-ufS" firstAttribute="centerX" secondItem="mHK-JN-1uO" secondAttribute="centerX" id="Tre-nV-TiO"/>
+                            <constraint firstItem="xVo-WD-ufS" firstAttribute="centerY" secondItem="mHK-JN-1uO" secondAttribute="centerY" id="Vtv-BK-UfB"/>
+                            <constraint firstItem="xVo-WD-ufS" firstAttribute="top" secondItem="7Xp-wo-OYa" secondAttribute="top" constant="152" id="aPV-dR-EC6"/>
+                            <constraint firstItem="xVo-WD-ufS" firstAttribute="trailing" secondItem="7Xp-wo-OYa" secondAttribute="trailing" id="t8z-ST-ZDh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pinch To Zoom" id="dps-Hz-gqe"/>
@@ -1028,11 +1030,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Holidays" id="zds-c6-x68">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="wRH-qX-I7n">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="didTapLogout:" destination="xHb-te-8dV" id="z6c-xT-cyp"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="XSS-xp-9sU">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="XSS-xp-9sU">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="didTapAdd:" destination="xHb-te-8dV" id="gHV-1H-wgP"/>
                                 <segue destination="R2U-yY-JUk" kind="presentation" identifier="addHolidaySegue" modalPresentationStyle="fullScreen" id="KSe-zg-azl"/>
@@ -1095,7 +1099,8 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Holiday" id="KOx-VZ-qp5">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="61M-nl-EmO">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="return" catalog="system" id="61M-nl-EmO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="didTapBackButton:" destination="hso-iI-a6z" id="W9t-C0-LPB"/>
                             </connections>
@@ -1321,6 +1326,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="1LX-uh-bU9" kind="relationship" relationship="viewControllers" id="SQL-hV-Bvc"/>
+                        <segue destination="dMS-R6-2yC" kind="relationship" relationship="viewControllers" id="GLW-fJ-o8d"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MVb-1i-tSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1446,6 +1452,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ysC-SO-oDv">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1467,6 +1477,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Holiday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nk7-4C-wlz">
                                 <rect key="frame" x="70" y="148" width="251" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1499,11 +1510,14 @@
                                 <rect key="frame" x="64" y="602" width="223" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="tintColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9o-1Q-1L9">
                                 <rect key="frame" x="295" y="604" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="didTapAddRecipient:" destination="Rn1-aH-5Zq" eventType="touchUpInside" id="QWs-Ut-oIl"/>
                                 </connections>
@@ -1524,7 +1538,7 @@
                                                     <rect key="frame" x="16" y="6" width="231" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1540,12 +1554,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Holiday" id="Oea-dQ-uJI">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Xtt-90-iHt">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="return" catalog="system" id="Xtt-90-iHt">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="didTapBackButton:" destination="Rn1-aH-5Zq" id="D3N-1e-ZpO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="o4W-cI-TRy">
+                        <barButtonItem key="rightBarButtonItem" title="Done" image="checkmark" catalog="system" id="o4W-cI-TRy">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="didTapDone:" destination="Rn1-aH-5Zq" id="FoB-3t-6LR"/>
                             </connections>
@@ -1570,6 +1586,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n9o-F6-Ipe">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1588,6 +1608,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zv5-0g-CFZ">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1601,7 +1625,7 @@
     </scenes>
     <designables>
         <designable name="PAr-wY-4Ad">
-            <size key="intrinsicContentSize" width="43.666666666666664" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="44" height="22"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>

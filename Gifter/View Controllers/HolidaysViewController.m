@@ -37,6 +37,7 @@
 
 - (void)loadHolidays {
     PFQuery *holidayQuery = [Holiday query];
+    [holidayQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     [holidayQuery orderByDescending:@"createdAt"];
     holidayQuery.limit = 20;
 
@@ -55,7 +56,7 @@
             [self.refreshControl endRefreshing];
         }
         else {
-            NSLog(@"Error getting holidayse%@", error.localizedDescription);
+            NSLog(@"Error getting holidays%@", error.localizedDescription);
         }
     }];
 }

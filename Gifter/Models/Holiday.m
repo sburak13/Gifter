@@ -10,6 +10,7 @@
 
 @implementation Holiday
 
+@dynamic user;
 @dynamic name;
 @dynamic recipients;
 @dynamic recipientNames;
@@ -23,6 +24,7 @@
 
 + (void)createHoliday:(NSString *)name withRecipients:(NSMutableArray *)recipients withRecipientNames:(NSMutableArray*)recipientNames withDate:(NSDate *)date withCompletion:(PFBooleanResultBlock)completion {
     Holiday *newHoliday = [Holiday new];
+    newHoliday.user = [PFUser currentUser];
     newHoliday.name = name;
     newHoliday.recipients = recipients;
     newHoliday.recipientNames = recipientNames;

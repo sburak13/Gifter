@@ -46,6 +46,7 @@
 
 - (void)getPeople {
     PFQuery *personQuery = [Person query];
+    [personQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     [personQuery orderByDescending:@"createdAt"];
     personQuery.limit = 20;
 
@@ -164,7 +165,7 @@
     
     NSString *recipientName = self.menu.textOfRows[self.currentlySelectedPersonIndex];;
     
-    if (self.recipientsArray.count < 3 && ![recipientName isEqualToString:@""] && ![self.recipientsArray containsObject:recipientName]) {
+    if (![recipientName isEqualToString:@""] && ![self.recipientsArray containsObject:recipientName]) {
         [self.recipientsArray insertObject:recipientName atIndex:0];
         // self.addInterestTextField.text = @"";
         [self.recipientsTableView reloadData];
@@ -174,10 +175,12 @@
         [addRecipientAlert addAction:okAction];
         [self presentViewController:addRecipientAlert animated:YES completion:nil];
         
+    /*
     } else if (self.recipientsArray.count >= 3) {
         addRecipientAlert.message = @"Can't add more than 3 recipients";
         [addRecipientAlert addAction:okAction];
         [self presentViewController:addRecipientAlert animated:YES completion:nil];
+    */
         
     } else if ([self.recipientsArray containsObject:recipientName]) {
         addRecipientAlert.message = @"Can't add the same recipient";
