@@ -26,9 +26,10 @@
     newPerson.name = name;
     newPerson.interests = interests;
     newPerson.budgetAmt = budget;
-    newPerson.starredBaskets = [NSMutableArray array];
     
     [newPerson saveInBackgroundWithBlock: completion];
+    
+    newPerson.starredBaskets = [NSMutableArray array];
 }
 
 - (id)copyWithZone:(NSZone *)zone

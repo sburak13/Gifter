@@ -55,12 +55,6 @@
 }
 
 - (void)loadPeople {
-    /*
-    PFQuery *personQuery = [Person query];
-    [personQuery orderByDescending:@"createdAt"];
-    personQuery.limit = 20;
-    */
-    
     PFQuery *personQuery = [PFQuery queryWithClassName:@"Person"];
     [personQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     [personQuery orderByDescending:@"createdAt"];

@@ -18,6 +18,7 @@
 @property (nonatomic) NSMutableArray *interestsArray;
 @property (weak, nonatomic) IBOutlet UITextField *addInterestTextField;
 @property (weak, nonatomic) IBOutlet UITextField *budgetTextField;
+@property (nonatomic) NSMutableArray *peopleArray;
 
 @end
 
@@ -25,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self loadPeople];
 
     self.interestsTableView.dataSource = self;
     self.interestsTableView.delegate = self;
@@ -50,41 +53,52 @@
 
 - (IBAction)didTapDone:(id)sender {
     if ([self didFillOutAllFields]) {
-        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-        f.numberStyle = NSNumberFormatterDecimalStyle;
-        NSNumber *budgetNum;
-        if ([self checkNumeric:self.budgetTextField.text]) {
-            budgetNum = [f numberFromString:self.budgetTextField.text];
-            __weak AddEditPersonViewController *weakSelf = self;
-            [Person createPerson:self.nameTextField.text withInterests:self.interestsArray withBudget:budgetNum withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                AddEditPersonViewController *strongSelf = weakSelf;
-                if (!strongSelf) {
-                    return;
-                }
-                if (succeeded) {
-                    NSLog(@"Succesfully created person");
-                    [strongSelf goToPeopleScreen];
-                } else {
-                    UIAlertController *createPersonAlert = [UIAlertController alertControllerWithTitle:@"Could Not Create Person"
-                                                                                               message: [@"Error: " stringByAppendingString:error.localizedDescription]
-                                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                       style:UIAlertActionStyleDefault
-                                                                     handler:nil];
-                    [createPersonAlert addAction:okAction];
-                    [self presentViewController:createPersonAlert animated:YES completion:nil];
-                    
-                }
-            }];
+        if ([self nameFieldIsUnique:self.nameTextField.text]) {
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            f.numberStyle = NSNumberFormatterDecimalStyle;
+            NSNumber *budgetNum;
+            if ([self checkNumeric:self.budgetTextField.text]) {
+                budgetNum = [f numberFromString:self.budgetTextField.text];
+                __weak AddEditPersonViewController *weakSelf = self;
+                [Person createPerson:self.nameTextField.text withInterests:self.interestsArray withBudget:budgetNum withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    AddEditPersonViewController *strongSelf = weakSelf;
+                    if (!strongSelf) {
+                        return;
+                    }
+                    if (succeeded) {
+                        NSLog(@"Succesfully created person");
+                        [strongSelf goToPeopleScreen];
+                    } else {
+                        UIAlertController *createPersonAlert = [UIAlertController alertControllerWithTitle:@"Could Not Create Person"
+                                                                                                   message: [@"Error: " stringByAppendingString:error.localizedDescription]
+                                                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+                        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                           style:UIAlertActionStyleDefault
+                                                                         handler:nil];
+                        [createPersonAlert addAction:okAction];
+                        [self presentViewController:createPersonAlert animated:YES completion:nil];
+                        
+                    }
+                }];
+            } else {
+                UIAlertController *nonnumericBudgetAlert = [UIAlertController alertControllerWithTitle:@"Budget Not Numeric"
+                                                                                           message:@"Please try again"
+                                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:nil];
+                [nonnumericBudgetAlert addAction:okAction];
+                [self presentViewController:nonnumericBudgetAlert animated:YES completion:nil];
+            }
         } else {
-            UIAlertController *nonnumericBudgetAlert = [UIAlertController alertControllerWithTitle:@"Budget Not Numeric"
+            UIAlertController *nonuniqueNameAlert = [UIAlertController alertControllerWithTitle:@"Person Name Not Unique"
                                                                                        message:@"Please try again"
                                                                                 preferredStyle:(UIAlertControllerStyleAlert)];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                                style:UIAlertActionStyleDefault
                                                              handler:nil];
-            [nonnumericBudgetAlert addAction:okAction];
-            [self presentViewController:nonnumericBudgetAlert animated:YES completion:nil];
+            [nonuniqueNameAlert addAction:okAction];
+            [self presentViewController:nonuniqueNameAlert animated:YES completion:nil];
         }
     } else {
         UIAlertController *missingInfoAlert = [UIAlertController alertControllerWithTitle:@"Could Not Add Person"
@@ -96,6 +110,31 @@
         [missingInfoAlert addAction:okAction];
         [self presentViewController:missingInfoAlert animated:YES completion:nil];
     }
+}
+
+- (void)loadPeople {
+    PFQuery *personQuery = [PFQuery queryWithClassName:@"Person"];
+    [personQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [personQuery orderByDescending:@"createdAt"];
+    // personQuery.limit = 20;
+
+    [personQuery findObjectsInBackgroundWithBlock:^(NSArray<Person *> * _Nullable people, NSError * _Nullable error) {
+        if (people) {
+            self.peopleArray = people;
+        }
+        else {
+            NSLog(@"Error getting people%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (BOOL)nameFieldIsUnique:(NSString*)name {
+    for (Person* person in self.peopleArray) {
+        if ([person.name isEqualToString:name]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 - (BOOL)checkNumeric:(NSString*)val {

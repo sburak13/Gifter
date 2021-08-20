@@ -55,6 +55,7 @@
     }
     
     [self setUI];
+    
 }
 
 - (IBAction)didTapStar:(id)sender {
@@ -62,7 +63,9 @@
     
     if (self.basket.starred) {
         ((UIButton*) sender).tintColor = [UIColor yellowColor];
+        [self.person.starredBaskets addObject:self.basket];
         
+        /*
         [self.person fetchInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
             if (!error) {
         
@@ -90,9 +93,11 @@
                 NSLog(@"Failed to get person");
             }
         }];
+        */
     } else {
         [self.person.starredBaskets removeObject:self.basket];
         ((UIButton*) sender).tintColor = [UIColor whiteColor];
+        
     }
     /*
     PFQuery *query = [PFQuery queryWithClassName:@"Person"];
