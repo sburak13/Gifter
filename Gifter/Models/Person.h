@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSMutableArray *interests;
 @property (nonatomic, strong) NSNumber *budgetAmt;
-@property (nonatomic, strong) NSMutableArray *giftSuggestions;
+@property (nonatomic, strong) NSMutableArray *starredBaskets;
 
 + (void) createPerson: ( NSString * _Nullable )name
         withInterests: ( NSMutableArray * _Nullable )interests

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSArray *arrayOfIndivGifts;
 @property (strong, nonatomic) NSMutableArray *imageArr;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *starredButton;
 
 @end
 
@@ -56,6 +57,58 @@
     [self setUI];
 }
 
+- (IBAction)didTapStar:(id)sender {
+    self.basket.starred = !self.basket.starred;
+    
+    if (self.basket.starred) {
+        ((UIButton*) sender).tintColor = [UIColor yellowColor];
+        
+        [self.person fetchInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+            if (!error) {
+        
+                NSMutableArray *newArray = object[@"starredBaskets"];
+            
+                NSLog(@"before ", newArray);
+                
+                [newArray addObject: @"test"];
+                NSLog(@"after ", newArray);
+                
+                // object[@"starredBaskets"] = newArray;
+                // [object saveInBackground];
+                
+                [object setObject:newArray forKey:@"starredBaskets"];
+                
+                
+                [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if(error){
+                        NSLog(@"Error: %@", error.localizedDescription);
+                    } else {
+                        NSLog(@"Suceeded");
+                    }
+                }];
+            } else {
+                NSLog(@"Failed to get person");
+            }
+        }];
+    } else {
+        [self.person.starredBaskets removeObject:self.basket];
+        ((UIButton*) sender).tintColor = [UIColor whiteColor];
+    }
+    /*
+    PFQuery *query = [PFQuery queryWithClassName:@"Person"];
+
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:@"<PARSE_OBJECT_ID>"
+                                 block:^(PFObject *parseObject, NSError *error) {
+        parseObject[@"myCustomKey1Name"] = @"My custom value";
+        parseObject[@"myCustomKey2Name"] = @999;
+        [parseObject saveInBackground];
+    }];
+    */
+
+}
+
+
 - (void)setUI {
     self.itemNumLabel.text = [[@"Item " stringByAppendingString:[NSString stringWithFormat:@"%d", self.gift.numInBasket]] stringByAppendingString:[@" of " stringByAppendingString:[[NSString stringWithFormat:@"%d", self.arrayOfIndivGifts.count] stringByAppendingString:@":"]]];
     
@@ -63,9 +116,7 @@
     NSRange range = [self.descriptionLabel.text rangeOfString:self.descriptionLabel.text];
     self.descriptionLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
     self.descriptionLabel.delegate = self;
-    [self.descriptionLabel addLinkToURL:[NSURL URLWithString:self.gift.link] withRange:range]; // Embedding a custom link in a substring
-    
-    // NSString *priceString = [@"Price: $" stringByAppendingString:[self.gift.price stringValue]];
+    [self.descriptionLabel addLinkToURL:[NSURL URLWithString:self.gift.link] withRange:range];
     
     NSString *priceString = [@"Price: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", self.gift.price]];
     NSMutableAttributedString *priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceString];
@@ -92,10 +143,7 @@
     self.headerLabel.numberOfLines = 1;
     self.headerLabel.minimumFontSize = 8;
     self.headerLabel.adjustsFontSizeToFitWidth = YES;
-    
-    // self.totalPriceLabel.text = [@"Total Price: $" stringByAppendingString:[@(self.basket.totalPrice) stringValue]];
-    
-    
+
     NSString *totalPriceString = [@"Total Price: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", self.basket.totalPrice]];
     NSMutableAttributedString *totalPriceAttributedString = [[NSMutableAttributedString alloc] initWithString:totalPriceString];
     boldString = @"Total Price:";
@@ -103,8 +151,12 @@
     [totalPriceAttributedString addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:boldRange];
     [self.totalPriceLabel setAttributedText: totalPriceAttributedString];
     
+    if (self.basket.starred) {
+        self.starredButton.tintColor =  [UIColor yellowColor];
+    } else {
+        self.starredButton.tintColor =  [UIColor whiteColor];
+    }
     
-    // self.totalPriceLabel.text = [@"Total Price: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", self.basket.totalPrice]];
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {

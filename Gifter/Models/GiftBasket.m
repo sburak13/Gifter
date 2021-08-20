@@ -19,12 +19,12 @@
         self.numItems = gifts.count;
         self.totalPrice = 0;
         self.giftNames = @"";
+        self.starred = false;
         
         for (Gift* gift in gifts) {
-            self.totalPrice += gift.price; // [gift.price doubleValue];
+            self.totalPrice += gift.price;
             
             self.giftNames = [self.giftNames stringByAppendingString:[gift.descrip stringByAppendingString:@" "]];
-            
         }
         
 
